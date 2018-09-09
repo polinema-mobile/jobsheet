@@ -378,7 +378,7 @@
 </ul>
 <h1 id="modul">Modul</h1>
 <h3 id="a-tujuan"><strong>A. Tujuan</strong></h3>
-<p>Pada modul ini akan membahas tentang activity, dengan tujuan agar mahasiswa: </p>
+<p>Pada modul ini akan membahas tentang activity, dengan tujuan agar mahasiswa:</p>
 <ul>
 <li>Mengetahui konsep tentang Activity Lifecycle</li>
 <li>Mampu membuat Aplikasi dengan berbagai macam layout baik Linear Layout, Relative Layout, dan Constraint Layout lengkap dengan elemen elemen user interface yang umum digunakan.</li>
@@ -389,14 +389,14 @@
 <p>Komponen-komponennya adalah sebagai berikut:</p>
 <p>a) &lt;<strong>ViewGroup</strong>&gt;</p>
 <ul>
-<li>Kumpulan view yang dapat menentukan tata letak komponen view secara berbeda, seperti LinearLayout, RelativeLayout, FrameLayout, serta Tabulasi. </li>
+<li>Kumpulan view yang dapat menentukan tata letak komponen view secara berbeda, seperti LinearLayout, RelativeLayout, FrameLayout, serta Tabulasi.</li>
 <li><p>ViewGroup berfungsi sebagai kontainer view (tampilan). Hubungan ViewGroup dengan view adalah <em>root</em> - <em>child</em>. ViewGroup yang umum digunakan adalah:</p>
 <ul>
 <li><p><strong>ScrollView</strong></p>
-<p>  ViewGroup yang memungkinkan tampilan layar digulirkan dari atas kebawah dan sebaliknya.</p>
+<p>ViewGroup yang memungkinkan tampilan layar digulirkan dari atas kebawah dan sebaliknya.</p>
 </li>
 <li><p><strong>RecyclerView</strong></p>
-<p>  ViewGroup yang berisi list of view (daftar tampilan) atau ViewGroup lainnya yang memungkinkan penggulirannya menambahkan atau menghilangkan tampilan secara dinamis dari layar.</p>
+<p>ViewGroup yang berisi list of view (daftar tampilan) atau ViewGroup lainnya yang memungkinkan penggulirannya menambahkan atau menghilangkan tampilan secara dinamis dari layar.</p>
 </li>
 </ul>
 </li>
@@ -408,33 +408,34 @@
 <li><p>Beberapa ViewGroup disebut sebagai Layout karena ViewGroup tertentu mengelola <em>child</em> dan secara umum digunakan sebagai <em>root</em>. Contoh Layout tersebut diantara lain:</p>
 <ul>
 <li><p><strong>LinearLayout</strong></p>
-<p>  ViewGroup yang kontennya sejajar baik horizontal maupun vertikal. Konsep LinearLayout adalah berikut:</p>
-<p>  <img src="https://developer.android.com/images/ui/linearlayout.png?hl=id" alt="alt-text" title="konsep LinearLayout"></p>
+<p>ViewGroup yang kontennya sejajar baik horizontal maupun vertikal. Konsep LinearLayout adalah berikut:</p>
+<p><img src="https://developer.android.com/images/ui/linearlayout.png?hl=id" alt="alt-text" title="konsep LinearLayout"></p>
 </li>
 <li><p><strong>RelativeLayout</strong></p>
-<p>  ViewGroup yang kontennya dapat diposisikan pada posisi yang relatif (tidak statis). Setiap View dapat diletakkan di kanan, kiri, bawah, atau atas dari View lainnya. Konsep RelativeLayout adalah berikut:</p>
-<p>  <img src="https://developer.android.com/images/ui/relativelayout.png?hl=id" alt="alt-text"></p>
+<p>ViewGroup yang kontennya dapat diposisikan pada posisi yang relatif (tidak statis). Setiap View dapat diletakkan di kanan, kiri, bawah, atau atas dari View lainnya. Konsep RelativeLayout adalah berikut:</p>
+<p><img src="https://developer.android.com/images/ui/relativelayout.png?hl=id" alt="alt-text"></p>
 </li>
 <li><p><strong>ConstraintLayout</strong></p>
-<p>  ViewGroup yang susunan kontennya sangat fleksibel dan mudah diatur tanpa adanya <em>nested view group</em>, lebih mudah dibandingkan dengan RelativeLayout yang konten Viewnya bergantung pada hubungan parent-sibling. Gambaran ConstraintLayout adalah berikut:</p>
-<p>  <img src="https://developer.android.com/training/constraint-layout/images/constraint-fail_2x.png?hl=id" alt="alt-text"></p>
+<p>ViewGroup yang susunan kontennya sangat fleksibel dan mudah diatur tanpa adanya <em>nested view group</em>, lebih mudah dibandingkan dengan RelativeLayout yang konten Viewnya bergantung pada hubungan parent-sibling. Gambaran ConstraintLayout adalah berikut:</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/constraint-fail_2x.png?hl=id" alt="alt-text"></p>
 </li>
 </ul>
 </li>
-<li><p>Atribut dari ViewGroup biasanya terdiri dari: </p>
+<li><p>Atribut dari ViewGroup biasanya terdiri dari:</p>
 <ul>
 <li><strong>android:id</strong></li>
-<li><strong>resource id</strong>, yang berisi variabel unik dari element tersebut. </li>
+<li><strong>resource id</strong>, yang berisi variabel unik dari element tersebut.</li>
 <li><p><strong>android:layout_height</strong></p>
-<p>  dimensi valuenya (height) yang diikutinya dengan opsi &#x201C;fill_parent&#x201D; atau &#x201C;wrap_content&#x201D; </p>
+<p>dimensi valuenya (height) yang diikutinya dengan opsi &#x201C;fill_parent&#x201D; atau &#x201C;wrap_content&#x201D;</p>
 </li>
-<li><p><strong>android:layout_width</strong></p>
-<p>  dimensi valuenya (width) yang diikutinya dengan opsi &#x201C;fill_parent&#x201D; atau &#x201C;wrap_content&#x201D; </p>
+<li><p><strong>android:layout_width</strong>
+dimensi valuenya (width) yang diikutinya dengan opsi &#x201C;fill_parent&#x201D; atau &#x201C;wrap_content&#x201D;</p>
 </li>
 </ul>
 </li>
-<li>Tampilan wrap_content akan membuat layout untuk elemen tersebut selebar dan setinggi tulisan dari elemen tersebut. </li>
-<li>fill_parent akan membuat tulisan mengisi layar secara penuh (layar yang tersedia space untuk elemen tersebut) </li>
+<li><p>Tampilan wrap_content akan membuat layout untuk elemen tersebut selebar dan setinggi tulisan dari elemen tersebut.</p>
+</li>
+<li>fill_parent akan membuat tulisan mengisi layar secara penuh (layar yang tersedia space untuk elemen tersebut)</li>
 </ul>
 <p>b) &lt;<strong>View</strong>&gt;</p>
 <ul>
@@ -448,122 +449,123 @@
 </ul>
 </li>
 </ul>
-<p>c) &lt;<strong>requestFocus</strong>&gt; </p>
+<p>c) &lt;<strong>requestFocus</strong>&gt;</p>
 <ul>
-<li>Element kosong yang bisa didefinisikan didalam &lt;<strong>View</strong>&gt;. </li>
+<li>Element kosong yang bisa didefinisikan didalam &lt;<strong>View</strong>&gt;.</li>
 </ul>
-<p>d) &lt;<strong>include</strong>&gt; </p>
+<p>d) &lt;<strong>include</strong>&gt;</p>
 <ul>
 <li>Memasukkan file layout ke dalam layout. Atributnya sama dengan &lt;<strong>ViewGroup</strong>&gt; dan &lt;<strong>View</strong>&gt; tetapi ada satu tambahan atribut yaitu &lt;<strong>resource</strong>&gt; yang berfungsi untuk menentukan file layoutnya.</li>
 </ul>
 <h3 id="2-android-manifest-androidmanifestxml">2. Android Manifest (AndroidManifest.xml)</h3>
 <ul>
-<li>File AndroidManifest.xml diperlukan oleh setiap aplikasi android, file ini berada pada folder <em>root</em> aplikasi. </li>
-<li>File ini mendeskripsikan variabel global dari paket aplikasi yang digunakan. </li>
-<li>File ini berfungsi untuk mendeskripsikan resource apa saja yang akan digunakan oleh project, seperti koneksi internet, SMS, mengakses GPS, dll. </li>
-<li><p>Berikut adalah contoh file AndroidManifest.xml: 
-```xml
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</p>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.hexavara.khairy.exerciseapp">
-
-  <application android:allowbackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundicon="@mipmap/ic_launcher_round" android:supportsrtl="true" android:theme="@style/AppTheme">
-      <activity android:name=".MainActivity">
-          <intent-filter>
-              <action android:name="android.intent.action.MAIN">
-
-              <category android:name="android.intent.category.LAUNCHER">
-          </category></action></intent-filter>
-      </activity>
-  </application>
-
-</manifest></li>
+<li>File AndroidManifest.xml diperlukan oleh setiap aplikasi android, file ini berada pada folder <em>root</em> aplikasi.</li>
+<li>File ini mendeskripsikan variabel global dari paket aplikasi yang digunakan.</li>
+<li>File ini berfungsi untuk mendeskripsikan resource apa saja yang akan digunakan oleh project, seperti koneksi internet, SMS, mengakses GPS, dll.</li>
+<li>Berikut adalah contoh file AndroidManifest.xml:</li>
 </ul>
-<p>&lt;/manifest&gt;</p>
-<pre><code>
-Beberapa elemen yang terdapat dalam file AndroidManifest.xml ini adalah berikut:
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">manifest</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="hljs-attr">package</span>=<span class="hljs-string">&quot;com.hexavara.khairy.exerciseapp&quot;</span>&gt;</span>
 
-a. &lt;**manifest**&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">application</span>
+        <span class="hljs-attr">android:allowBackup</span>=<span class="hljs-string">&quot;true&quot;</span>
+        <span class="hljs-attr">android:icon</span>=<span class="hljs-string">&quot;@mipmap/ic_launcher&quot;</span>
+        <span class="hljs-attr">android:label</span>=<span class="hljs-string">&quot;@string/app_name&quot;</span>
+        <span class="hljs-attr">android:roundIcon</span>=<span class="hljs-string">&quot;@mipmap/ic_launcher_round&quot;</span>
+        <span class="hljs-attr">android:supportsRtl</span>=<span class="hljs-string">&quot;true&quot;</span>
+        <span class="hljs-attr">android:theme</span>=<span class="hljs-string">&quot;@style/AppTheme&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">activity</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.MainActivity&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span>
 
-Root utama dalam AndroidManifest.xml, berisi atribut package aplikasi serta package activity dalam project.
+                <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">activity</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">application</span>&gt;</span>
 
-```xml
-&lt;manifest
-xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    package=&quot;com.hexavara.khairy.exerciseapp&quot;&gt;
-</code></pre><p>b. &lt;<strong>uses-permission</strong>&gt;</p>
+<span class="hljs-tag">&lt;/<span class="hljs-name">manifest</span>&gt;</span>
+</code></pre>
+<p>Beberapa elemen yang terdapat dalam file AndroidManifest.xml ini adalah berikut:</p>
+<p>a. &lt;<strong>manifest</strong>&gt;</p>
+<p>Root utama dalam AndroidManifest.xml, berisi atribut package aplikasi serta package activity dalam project.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">manifest</span>
+<span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="hljs-attr">package</span>=<span class="hljs-string">&quot;com.hexavara.khairy.exerciseapp&quot;</span>&gt;</span>
+</code></pre>
+<p>b. &lt;<strong>uses-permission</strong>&gt;</p>
 <p>Berisi perijinan akses seperti penggunaan akses internet, kamera, sms, dan lain-lain.</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.INTERNET&quot;</span>/&gt;</span>
 </code></pre>
-<p>c. &lt;<strong>permission</strong>&gt; </p>
-<p>Menjelaskan batasan tentang user permission/security permission. </p>
-<p>d. &lt;<strong>instrumentation</strong>&gt; </p>
-<p>Mendeklarasikan komponen instrumen yang tersedia untuk menguji fungsionalitas dari paket aplikasi yang digunakan dalam aplikasi android. </p>
-<p>e. &lt;<strong>application</strong>&gt; </p>
+<p>c. &lt;<strong>permission</strong>&gt;</p>
+<p>Menjelaskan batasan tentang user permission/security permission.</p>
+<p>d. &lt;<strong>instrumentation</strong>&gt;</p>
+<p>Mendeklarasikan komponen instrumen yang tersedia untuk menguji fungsionalitas dari paket aplikasi yang digunakan dalam aplikasi android.</p>
+<p>e. &lt;<strong>application</strong>&gt;</p>
 <p>Elemen root yang berisi deklarasi aplikasi android.</p>
-<p>f. &lt;<strong>intent-filter</strong>&gt; </p>
-<p>Mendeklarasikan intent yang dibutuhkan oleh aplikasi android yang digunakan. Atribut-atribut bisa diberikan disini untuk mensupply label, icon, data dan informasi yang digunakan dalam aplikasi android. </p>
-<p>g. &lt;<strong>action</strong>&gt; </p>
-<p>Berisi tentang action type yang didukung oleh komponen-komponen yang berada dalam aplikasi android. </p>
-<p>h. &lt;<strong>category</strong>&gt; </p>
-<p>Mendeklarasikan kategori-kategori yang didukung oleh aplikasi android. </p>
-<p>i. &lt;<strong>data</strong>&gt; </p>
-<p>Mendeklarasikan tipe MIME, URL, authority penggunaan URL serta penentuan path yang digunakan dalam URL. </p>
-<p>j. &lt;<strong>meta-data</strong>&gt; </p>
-<p>Mendeklarasikan meta data yang dibutuhkan sebagai tambahan data yang ada yang digunakan dalam aplikasi android. </p>
-<p>k. &lt;<strong>receiver</strong>&gt; </p>
-<p>Mendeklarasikan dimana aplikasi diberikan informasi mengenai sesuatu perubahan atau aksi yang terjadi, seperti menerima SMS. </p>
-<p>l. &lt;<strong>service</strong>&gt; </p>
-<p>Mendeklarasikan komponen yang dapat berjalan sebagai service (berjalan di background). </p>
-<p>m. &lt;<strong>provider</strong>&gt; </p>
-<p>Mendeklarasikan komponen-komponen yang mengelola data dan mempublikasikannya untuk dikelola/dipakai oleh aplikasi lain. </p>
+<p>f. &lt;<strong>intent-filter</strong>&gt;</p>
+<p>Mendeklarasikan intent yang dibutuhkan oleh aplikasi android yang digunakan. Atribut-atribut bisa diberikan disini untuk mensupply label, icon, data dan informasi yang digunakan dalam aplikasi android.</p>
+<p>g. &lt;<strong>action</strong>&gt;</p>
+<p>Berisi tentang action type yang didukung oleh komponen-komponen yang berada dalam aplikasi android.</p>
+<p>h. &lt;<strong>category</strong>&gt;</p>
+<p>Mendeklarasikan kategori-kategori yang didukung oleh aplikasi android.</p>
+<p>i. &lt;<strong>data</strong>&gt;</p>
+<p>Mendeklarasikan tipe MIME, URL, authority penggunaan URL serta penentuan path yang digunakan dalam URL.</p>
+<p>j. &lt;<strong>meta-data</strong>&gt;</p>
+<p>Mendeklarasikan meta data yang dibutuhkan sebagai tambahan data yang ada yang digunakan dalam aplikasi android.</p>
+<p>k. &lt;<strong>receiver</strong>&gt;</p>
+<p>Mendeklarasikan dimana aplikasi diberikan informasi mengenai sesuatu perubahan atau aksi yang terjadi, seperti menerima SMS.</p>
+<p>l. &lt;<strong>service</strong>&gt;</p>
+<p>Mendeklarasikan komponen yang dapat berjalan sebagai service (berjalan di background).</p>
+<p>m. &lt;<strong>provider</strong>&gt;</p>
+<p>Mendeklarasikan komponen-komponen yang mengelola data dan mempublikasikannya untuk dikelola/dipakai oleh aplikasi lain.</p>
 <p>n. &lt;<strong>uses-sdk uses-sdk android:minSdkVersion = ?</strong>&gt;</p>
 <p>Mendeklarasikan versi sdk android minimum yang digunakan.</p>
 <h3 id="3-konsep-activity">3. Konsep Activity</h3>
 <ul>
-<li>Activity merupakan public class dalam aplikasi Android. </li>
-<li>Setiap activity merupakan sesuatu yang unik atau single, yang ditujukan untuk menghandle macam-macam hal yang bisa dilakukan oleh user. </li>
-<li>Activity berhubungan dengan user dimana activity menciptakan windows atau UI yang mana ditampilkan dengan concepts setContenView (View). </li>
-<li>Ada dua method yang pasti dimiliki oleh satu activity, yaitu: <ul>
-<li>onCreate untuk menginisiasi suatu activity. Biasanya dipanggil dengan perintah: <ul>
+<li>Activity merupakan public class dalam aplikasi Android.</li>
+<li>Setiap activity merupakan sesuatu yang unik atau single, yang ditujukan untuk menghandle macam-macam hal yang bisa dilakukan oleh user.</li>
+<li>Activity berhubungan dengan user dimana activity menciptakan windows atau UI yang mana ditampilkan dengan concepts setContenView (View).</li>
+<li>Ada dua method yang pasti dimiliki oleh satu activity, yaitu:<ul>
+<li>onCreate untuk menginisiasi suatu activity. Biasanya dipanggil dengan perintah:<ul>
 <li>setContentView(int) untuk resource yang didefinisikan di layout UI</li>
-<li>findViewById(int) untuk memanggil widget yang dibutuhkan UI untuk berinteraksi dengan aplikasi. </li>
+<li>findViewById(int) untuk memanggil widget yang dibutuhkan UI untuk berinteraksi dengan aplikasi.</li>
 </ul>
 </li>
-<li>onPause untuk menyatakan ketika user meniggalkan suatu activity. </li>
+<li>onPause untuk menyatakan ketika user meniggalkan suatu activity.</li>
 </ul>
 </li>
-<li>Untuk penggunaan dengan Context.startActivity(), semua kelas activity harus sesuai dengan &lt;<strong>activity</strong>&gt; yang dideklarasikan dalam suatu paket di AndroidManifest.xml. </li>
+<li>Untuk penggunaan dengan Context.startActivity(), semua kelas activity harus sesuai dengan &lt;<strong>activity</strong>&gt; yang dideklarasikan dalam suatu paket di AndroidManifest.xml.</li>
 </ul>
 <h3 id="4-siklus-activity">4. Siklus Activity</h3>
 <ul>
-<li>Activity aplikasi android dikelola dengan sistem yang dikenal dengan activity stack. </li>
-<li>Ketika activity start, activity diletakkan pada stack yang paling atas dan activity-activity yang sudah jalan berada dibawahnya dan akan terus berada pada posisi atas stack sampai muncul activity yang baru. </li>
-<li>4 keadaan yang dimiliki activity, yaitu: <ul>
+<li>Activity aplikasi android dikelola dengan sistem yang dikenal dengan activity stack.</li>
+<li>Ketika activity start, activity diletakkan pada stack yang paling atas dan activity-activity yang sudah jalan berada dibawahnya dan akan terus berada pada posisi atas stack sampai muncul activity yang baru.</li>
+<li>4 keadaan yang dimiliki activity, yaitu:<ul>
 <li>Active/running Jika activity berada pada posisi atas stack.</li>
-<li>Pause Jika activity tidak dipakai atau dibutuhkan pada suatu saat tertentu, tetapi activity itu masih ada atau visible, ketika activity baru yang ditangani oleh sistem activity yang lama disebut pause dan masih berada di memory, bisa jadi suatu activity yang sudah keadaan pause tidak ada di memori yang kemungkinan disebabkan oleh keterbatasan memory. </li>
-<li>Stopped Jika activity sudah tidak dipakai dan digantikan oleh activity lain, activity yang sudah stopped tidak akan pernah dipanggil lagi, dan secara permanen memory pun tidak menyimpan info mengenai activity ini. </li>
-<li>Restart Jika activity paused atau stopped, sistem dapat mendrop activity ini dari sistem memory, dan ketika user membutuhkan activity tersebut, activity akan kembali ke keadaan awal (restart). </li>
+<li>Pause Jika activity tidak dipakai atau dibutuhkan pada suatu saat tertentu, tetapi activity itu masih ada atau visible, ketika activity baru yang ditangani oleh sistem activity yang lama disebut pause dan masih berada di memory, bisa jadi suatu activity yang sudah keadaan pause tidak ada di memori yang kemungkinan disebabkan oleh keterbatasan memory.</li>
+<li>Stopped Jika activity sudah tidak dipakai dan digantikan oleh activity lain, activity yang sudah stopped tidak akan pernah dipanggil lagi, dan secara permanen memory pun tidak menyimpan info mengenai activity ini.</li>
+<li>Restart Jika activity paused atau stopped, sistem dapat mendrop activity ini dari sistem memory, dan ketika user membutuhkan activity tersebut, activity akan kembali ke keadaan awal (restart).</li>
 </ul>
 </li>
-<li>Berikut ini adalah gambaran mengenai activity lifecycle atau siklus activity di dalam android sistem. </li>
+<li>Berikut ini adalah gambaran mengenai activity lifecycle atau siklus activity di dalam android sistem.</li>
 </ul>
 <p><img src="https://i.imgur.com/aUd1KA1.png" alt="alt-text"></p>
 <ul>
-<li>Terdapat 3 perulangan yang mungkin dialami oleh activity: <ul>
-<li>Entire lifetime Yaitu activity yang terjadi mulai dari onCreate() sampai dengan onDestroy(). Biasanya activity ini akan dibuat setup global ketika mendefinisikannya, </li>
-<li>Visible lifetime Yaitu activity yang terjadi mulai dari onCreate() sampai dengan onStop(). </li>
-<li>Foreground lifetime Yaitu activity yang terjadi diantara onResume() dan onPause(). </li>
+<li>Terdapat 3 perulangan yang mungkin dialami oleh activity:<ul>
+<li>Entire lifetime Yaitu activity yang terjadi mulai dari onCreate() sampai dengan onDestroy(). Biasanya activity ini akan dibuat setup global ketika mendefinisikannya,</li>
+<li>Visible lifetime Yaitu activity yang terjadi mulai dari onCreate() sampai dengan onStop().</li>
+<li>Foreground lifetime Yaitu activity yang terjadi diantara onResume() dan onPause().</li>
 </ul>
 </li>
-<li>Sehingga sintaks superclass dari gambar diatas adalah sebagai berikut:<pre><code class="lang-java">  <span class="hljs-function"><span class="hljs-keyword">public</span> class Activity extends <span class="hljs-title">ApplicationContext</span><span class="hljs-params">()</span> </span>{ 
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle saveInstanceState)</span></span>; 
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onStart</span><span class="hljs-params">()</span></span>; 
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onRestart</span><span class="hljs-params">()</span></span>; 
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onResume</span><span class="hljs-params">()</span></span>; 
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPause</span><span class="hljs-params">()</span></span>; 
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onStop</span><span class="hljs-params">()</span></span>; 
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span></span>; 
-  }
+<li>Sehingga sintaks superclass dari gambar diatas adalah sebagai berikut:<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> class Activity extends <span class="hljs-title">ApplicationContext</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle saveInstanceState)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onStart</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onRestart</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onResume</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPause</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onStop</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span></span>;
+}
 </code></pre>
 </li>
 </ul>
@@ -617,7 +619,7 @@ xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
 <ol>
 <li>Buat project baru di Android Studio dengan format nama project Week02KelasNama</li>
 <li>Pada MainActivity.java, ubah AppCompatActivity menjadi Activity</li>
-<li>Tekan Ctrl+O  untuk Override/Implementasi Method. Kemudian Pilih onStart, onPause, onResume, onStop, onRestart, onDestroy, lalu klik OK dengan menekan tombol Shift</li>
+<li>Tekan Ctrl+O untuk Override/Implementasi Method. Kemudian Pilih onStart, onPause, onResume, onStop, onRestart, onDestroy, lalu klik OK dengan menekan tombol Shift</li>
 <li>Lengkapi masing-masing method dengan Toast untuk menampilkan status tiap methodnya</li>
 <li>Buat tampilan pada project anda dengan mengimplementasikan salah satu dari LinearLayout atau RelativeLayout dengan memasukkan elemen-elemen seperti Button, TextView, dan EditText. Buat dengan konten sekreatif mungkin!</li>
 </ol>
@@ -664,7 +666,7 @@ xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Layout","level":"1.3","depth":1,"next":{"title":"Intent","level":"1.4","depth":1,"path":"03.md","ref":"03.md","articles":[]},"previous":{"title":"Pendahuluan","level":"1.2","depth":1,"path":"01.md","ref":"01.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["noembed","livereload"],"pluginsConfig":{"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02.md","mtime":"2018-09-09T13:18:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-09T13:18:10.130Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Layout","level":"1.3","depth":1,"next":{"title":"Intent","level":"1.4","depth":1,"path":"03.md","ref":"03.md","articles":[]},"previous":{"title":"Pendahuluan","level":"1.2","depth":1,"path":"01.md","ref":"01.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["noembed","livereload"],"pluginsConfig":{"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02.md","mtime":"2018-09-09T13:33:05.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-09T13:30:56.904Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
