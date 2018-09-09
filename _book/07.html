@@ -374,10 +374,43 @@
                                 
                                 <h1 id="kemampuan-akhir-yang-direncanakan">Kemampuan Akhir Yang Direncanakan</h1>
 <ul>
-<li>Mahasiswa mampu membuat aplikasi yang memiliki RecyclerView dengan berbagai macam datasource dan custom adapter.</li>
-<li>Mahasiswa mampu memodifikasi RecyclerView yang dibuat sebelumnya dengan memanfaatkan layout manager.</li>
+<li>Mahasiswa mampu menginstall library SQlite pada aplikasi Android.</li>
+<li>Mahasiswa mampu mendesain database sederhana untuk aplikasi android.</li>
+<li>Mahasiswa mampu membuat program untuk operasi insert, update, delete dan read pada database SQlite</li>
 </ul>
 <h1 id="modul">Modul</h1>
+<h3 id="1-pengenalan-sqlite">1. Pengenalan SQLite</h3>
+<p>SQLite merupakan sebuah RDBMS (Relational Database Management System) yang bersifat ACID-compliant dan memiliki ukuran pustaka kode yang relatif kecil, ditulis dalam bahasa C. SQLite merupakan proyek yang bersifat public domain.</p>
+<p>SQLite adalah sebuah open source database yang telah ada cukup lama, cukup stabil, dan sangat terkenal pada perangkat kecil, termasuk Android. Android menyediakan database relasional yang ringan untuk setiap aplikasi menggunakan SQLite. Aplikasi dapat mengambil keuntungan dari itu untuk mengatur relational database engine untuk menyimpan data secara aman dan efiesien. Untuk Android, SQLite dijadikan satu di dalam Android runtime, sehingga setiap aplikasi Android dapat membuat database SQLite. Karena SQLite menggunakan antarmuka SQL, cukup mudah untuk digunakan orang orang dengan pengalaman lain yang berbasis database. </p>
+<p>Database SQLite terdapat pada semua perangkat android, anda cukup mendefinisikan perintah SQL untuk create atau update database, selanjutnya sistem pada android akan menangani hal-hal yang berhubungan dengan database. SQLite database otomatis akan tersimpan didalam path</p>
+<blockquote>
+<p><strong>data/data/nama_package/database/nama_database</strong></p>
+</blockquote>
+<p>Ada 3 kelas SQLite yaitu :</p>
+<ol>
+<li><p>SQLiteDatabase</p>
+<p> SQLiteDatabase merupakan kelas yang mempunyai method seperti</p>
+<ul>
+<li>Insert() untuk menambahkan baris ke database</li>
+<li>Update() untuk memperbarui baris pada database</li>
+<li>Delete() untuk menghapus baris pada database</li>
+<li>execSQL() untuk mengeksekusi sintak SQL</li>
+</ul>
+</li>
+<li><p>SQLiteOpenHelper</p>
+<p> SQLiteOpenHelper adalah subclass yang memiliki beberapa method seperti</p>
+<ul>
+<li>onCreate() dijalankan jika sebelumnya belum ada database</li>
+<li>onUpgrade() dijalankan jika sebelumnya sudah ditemukan database yang sama namun beda versi. Method ini bisa dimanfaatkan untuk mengubah skema database.</li>
+<li>onOpen() dijalankan jika database sudah dalam keadaan open</li>
+<li>getWritableDatabase() memanggil database agar bisa dimasuki data</li>
+<li>getReadableDatabase() memanggil database agar bisa membaca datanya</li>
+</ul>
+</li>
+<li><p>Cursor</p>
+<p> Setiap query yang dieksekusi pasti membawa nilai kembalian atau feedback. Feedback yang dihasilkan query ini disebut cursor. Jadi dengan kata lain, cursor merepresentasikan hasil query yang dieksekusi pada baris dan kolom tertentu.</p>
+</li>
+</ol>
 <h1 id="tugas">Tugas</h1>
 
                                 
@@ -422,7 +455,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Sqlite CRUD","level":"1.8","depth":1,"next":{"title":"QUIZ","level":"1.9","depth":1,"path":"08.md","ref":"08.md","articles":[]},"previous":{"title":"Shared Preference","level":"1.7","depth":1,"path":"06.md","ref":"06.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["noembed","livereload"],"pluginsConfig":{"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"07.md","mtime":"2018-08-22T05:18:04.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-22T05:07:57.681Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Sqlite CRUD","level":"1.8","depth":1,"next":{"title":"QUIZ","level":"1.9","depth":1,"path":"08.md","ref":"08.md","articles":[]},"previous":{"title":"Shared Preference","level":"1.7","depth":1,"path":"06.md","ref":"06.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["noembed","livereload"],"pluginsConfig":{"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"07.md","mtime":"2018-09-09T13:18:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-09T13:18:10.130Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
