@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menuGetPembelian"
+          android:title="Get Pembelian"/>
+    <item android:id="@+id/menuTransaksiPembelian"
+          android:title="Transaksi Pembelian"/>
+    <item android:id="@+id/menuGetPembeli"
+          android:title="Get Pembeli"/>
+    <item android:id="@+id/menuTransaksiPembeli"
+          android:title="Transaksi Pembeli"/>
+</menu>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_get_pembelian"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="demo.retrofit.GetPembeliActivity">
+    <Button
+        android:id="@+id/btGet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btGet"
+        android:layout_above="@+id/btAddData">
+    </android.support.v7.widget.RecyclerView>
+    <Button
+        android:id="@+id/btAddData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tambah Data"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
