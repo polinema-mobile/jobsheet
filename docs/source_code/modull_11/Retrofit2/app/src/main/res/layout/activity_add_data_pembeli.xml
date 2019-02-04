@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_post_put_del_pembeli"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    tools:context="demo.retrofit.PutDelPembeliActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/imgAddPhotoId"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/photoid"/>
+
+        <Button
+            android:id="@+id/btAddPhotoId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgAddPhotoId"
+            android:layout_centerHorizontal="true"
+            android:text="Select Photo Id"/>
+
+        <TextView
+            android:id="@+id/tvAddIdPembeli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btAddPhotoId"
+            android:layout_marginTop="10dp"
+            android:text="ID Pembeli :"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edtAddIdPembeli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvAddIdPembeli"
+            android:layout_toRightOf="@+id/tvAddIdPembeli"
+            android:hint="id_pembeli"/>
+
+        <TextView
+            android:id="@+id/tvAddNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvAddIdPembeli"
+            android:text="Nama :"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edtAddNamaPembeli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvAddNama"
+            android:layout_alignLeft="@+id/edtAddIdPembeli"
+            android:layout_toRightOf="@+id/tvAddNama"
+            android:hint="Nama"/>
+
+        <TextView
+            android:id="@+id/tvAddAlamat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvAddNama"
+            android:text="Alamat :"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edtAddAlamatPembeli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvAddAlamat"
+            android:layout_alignLeft="@+id/edtAddIdPembeli"
+            android:layout_toRightOf="@+id/tvAddAlamat"
+            android:hint="Alamat"/>
+
+        <TextView
+            android:id="@+id/tvAddTelpn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvAddAlamat"
+            android:text="Telepon :"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/edtAddTelpnPembeli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvAddTelpn"
+            android:layout_alignLeft="@+id/edtAddIdPembeli"
+            android:layout_toRightOf="@+id/tvAddTelpn"
+            android:hint="Telpn"
+            android:inputType="phone"/>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvAddTelpn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btAddData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Insert"/>
+
+            <Button
+                android:id="@+id/btAddBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvAddMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/LinearLayout"
+            android:hint="Pesan"
+            android:inputType="textMultiLine"
+            android:textSize="20dp"/>
+    </RelativeLayout>
+</ScrollView>
