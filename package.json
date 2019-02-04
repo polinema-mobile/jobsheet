@@ -12,6 +12,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "gitbook serve . docs/",
+    "build": "gitbook build . docs/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
