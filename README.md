@@ -1,6 +1,13 @@
-# Module Pemrograman Perangkat Mobile Rev 2018
+# Module Pemrograman Perangkat Mobile Rev 2019
 
-Modul ini dibuat menggunakan Gitbook, silahkan baca dokumentasi tentang gitbook untuk membaca atau menambahkan materi pada modul ini.Selain itu juga digunakan sintaks markdown untuk memudahkan formatting tulisan silahkan belajar markdown ya guys contoh2 markdown ta copas nang isor.
+Modul ini dibuat menggunakan Gitbook, silahkan baca dokumentasi tentang gitbook
+untuk membaca atau menambahkan materi pada modul ini.Selain itu juga digunakan
+sintaks markdown untuk memudahkan formatting tulisan silahkan belajar markdown
+ya guys contoh2 markdown ta copas nang isor.
+
+# Contribute
+
+Please run `npm install`, `npm start` then start to contribute!
 
 # Text
 
