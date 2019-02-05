@@ -1,3 +1,9 @@
 {
-  "plugins": ["noembed"]
+  "language": "id",
+  "plugins": ["noembed"],
+  "pluginsConfig": {
+    "theme-default": {
+      "showLevel": true
+    }
+  }
 }
