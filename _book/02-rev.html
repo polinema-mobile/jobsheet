@@ -417,17 +417,139 @@
 <li>Membuat aplikasi dengan relative layout</li>
 <li>Membuat aplikasi dengan constraint layout</li>
 </ol>
-<h2 id="membuat-aplikasi-hello-world-yang-menggunakan-callback-activity-lifecycle">Membuat aplikasi hello world yang menggunakan callback Activity Lifecycle</h2>
-<ol>
+<h3 id="membuat-aplikasi-hello-world-yang-menggunakan-callback-activity-lifecycle">Membuat aplikasi hello world yang menggunakan callback Activity Lifecycle</h3>
+<ul>
 <li>Bukalah aplikasi Android Studio.</li>
-<li>Buatlah sebuah project baru dengan konfigurasi seperti pada gambar dibawah ini</li>
-<li>Bukalah file MainActivity.java</li>
-<li>Tambahkan Override untuk callback pada event activity lifecycle.</li>
+<li><p>Buatlah sebuah project baru dengan konfigurasi seperti pada gambar dibawah ini</p>
+<p><img src="img/02-newproject.png" alt="&apos;newproject&apos;"></p>
+<p>Nama aplikasi silahkan disesuaikan dengan keinginan anda, perhatikan ada warning mengenai path project, sebaiknya path project tidak memiliki spasi.</p>
+<p><img src="img/02-newproject-step2.png" alt="&apos;newproject&apos;">
+Targetkan phone dan pilihlah minimum sdk sesuai kebutuhan, semakin tinggi minimum sdk semakin sedikit device yang dapat menggunakan aplikasi yang anda buat.
+<img src="img/02-newproject-step3.png" alt="&apos;newproject&apos;">
+Pilihlah empty activity sebagai template starter project anda.
+<img src="img/02-newproject-step4.png" alt="&apos;newproject&apos;"></p>
+</li>
+<li><p>Bukalah file MainActivity.java</p>
+<p><img src="img/02-newproject-step5.png" alt="&apos;newproject&apos;">
+<img src="img/02-newproject-step6.png" alt="&apos;newproject&apos;"></p>
+</li>
+<li><p>Tambahkan Override untuk callback pada event activity lifecycle.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Activity Method</th>
+<th>Deskripsi</th>
+<th>Next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onCreate()</td>
+<td>Ketika sebuah activity dibuat, pada method ini dilakukan inisialisasi seperti create view, list data, dll.</td>
+<td>onStart()</td>
+</tr>
+<tr>
+<td>onRestart()</td>
+<td>Ketika sebuah activity dihentikan, dan merupakan prioritas untuk memanggil activity itu kembali.</td>
+<td>onStart()</td>
+</tr>
+<tr>
+<td>onStart()</td>
+<td>Ketika sebuah activity dipanggil sebelum diperlihatkan ke user.</td>
+<td>onResume() / onStop()</td>
+</tr>
+<tr>
+<td>onResume()</td>
+<td>Ketika sebuah activity start/mulai melakukan interaksi dengan user, pada saat ini activity berada pada posisi teratas dari activity stack yang mana user akan melakukan input.</td>
+<td>onPause()</td>
+</tr>
+<tr>
+<td>onPause()</td>
+<td>Ketika sebuah activity lainnya dipanggil/dimulai, method ini digunakan ketika data tidak harus disimpan ke dalam sistem secara permanen.</td>
+<td>onResume() / onStop()</td>
+</tr>
+<tr>
+<td>onStop()</td>
+<td>Ketika sebuah acivity tidak lagi dibutuhkan/tidak terlihat lagi oleh user.</td>
+<td>onRestart() / onDestroy()</td>
+</tr>
+<tr>
+<td>onDestroy()</td>
+<td>Ketika sebuah activity secara permanen tidak lagi dibutuhkan (activity dihancurkan). Dapat juga dilakukan dengan fungsi finish() / isFinishing().</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p><img src="img/02-activity-lifecycle.png" alt="&apos;activity&apos;"></p>
+<ul>
 <li>Tambahkan Toast untuk masing masing event</li>
-</ol>
-<h2 id="membuat-aplikasi-dengan-linear-layout">Membuat aplikasi dengan linear layout</h2>
-<h2 id="membuat-aplikasi-dengan-relative-layout">Membuat aplikasi dengan relative layout</h2>
-<h2 id="membuat-aplikasi-dengan-constraint-layout">Membuat aplikasi dengan constraint layout</h2>
+</ul>
+<p><img src="img/02-activity-toast.png" alt="&apos;activity&apos;"></p>
+<h3 id="verifikasi-hasil-percobaan">Verifikasi Hasil Percobaan</h3>
+<p>Lakukan kompilasi program ke device android anda kemudian perhatikan apa yang terjadi di aplikasi tersebut.</p>
+<h3 id="membuat-aplikasi-dengan-linear-layout">Membuat aplikasi dengan linear layout</h3>
+<ul>
+<li>Buatlah kembali sebuah project baru dengan konfigurasi yang disesuaikan dengan kebutuhan anda seperti pada langkah praktikum sebelumnya.</li>
+<li><p>Bukalah file <code>activity_main.xml</code> kemudian buka dengan menggunakan design mode.
+<img src="img/02-linear-layout.png" alt="&apos;activity&apos;"></p>
+</li>
+<li><p>Kemudian lakukan konversi view dari constraint layout ke lineear layout.
+<img src="img/02-lienar-layout-convertview.png" alt="&apos;activity&apos;">
+<img src="img/02-linear-layout-convertview-2.png" alt="&apos;activity&apos;">
+<img src="img/02-linear-layout-convertview-3.png" alt="&apos;activity&apos;"></p>
+</li>
+<li><p>Kemudian gantilah design mode ke text mode. 
+<img src="img/02-linear-layout-text-mode.png" alt="&apos;activity&apos;"></p>
+</li>
+<li><p>Tambahkan properties <code>android:orientation=&quot;vertical&quot;</code> pada tag <code>LinearLayout</code></p>
+</li>
+</ul>
+<p><img src="img/02-linear-layout-orientation.png" alt="&apos;activity&apos;"></p>
+<p>Anda baru saja menambahkan atrribut baru pada tag xml, ada banyak properties lain yang perlu anda ketahui silahkan melakukan explorasi untuk properties atribut lain.</p>
+<ul>
+<li>Selanjutnya tambahkan properties background pada linear layout seperti pada gambar dibawah ini sehingga layout anda berubah background nya menjadi hijau.</li>
+</ul>
+<p><img src="img/02-linear-layout-background.png" alt="&apos;activity&apos;"></p>
+<ul>
+<li>Kemudian ubahlah nilai dari properties <code>layout_height</code> menjadi wrap_content</li>
+</ul>
+<p><img src="img/02-linear-layout-wrapcontent.png" alt="&apos;activity&apos;"></p>
+<ul>
+<li>Lakukanlah kompilasi kemudian simpulkan apakah perbedaan antara <code>wrap_content</code> dan <code>match_parent</code></li>
+</ul>
+<p>Selain properties diatas linear layout mempunyai properties khusus yang hanya ada pada tipe layout ini, yaitu <code>weigth_sum</code> dan <code>layout_weight</code></p>
+<ul>
+<li>weight_sum adalah bobot yang diberikan kepada LinearLayout bobot ini nantinya dapat digunakan untuk membagi ukuran yang dapat dimiliki oleh child dari LinearLayout.</li>
+<li>layout_weight adalah bobot yang diberikan kepada child dari LinearLayout untuk menentukan ukuran dari child ini pada layar.</li>
+</ul>
+<p>Untuk memahami penggunaannya lakukan langkah percobaaan berikut ini :</p>
+<ul>
+<li>Buka kembali project sebelumnya, kemudian kembalikan <code>layout_height</code> ke <code>match_parent</code>, juga hapus properties background seperti pada gambar dibawah ini :</li>
+</ul>
+<p><img src="img/02-linear-layout-text-mode.png" alt="&apos;activity&apos;"></p>
+<ul>
+<li>Hapuslah tag xml TextView kemudian isilah LinearLayout dengan dua buah child lain yang juga sebuah LinearLayout hasilnya seperti pada gambar dibawah ini.</li>
+</ul>
+<p><img src="img/02-linear-layout-nested.png" alt="&apos;activity&apos;"></p>
+<ul>
+<li>Jika anda lihat belum terjadi perubahan apapun pada layout, untuk itu lanjutkan dengan menambahkan properties background, weight_sum dan layout_weight seperti pada gambar dibawah ini.</li>
+</ul>
+<p><img src="img/02-linear-layout-weightsum.png" alt="&apos;activity&apos;"></p>
+<blockquote>
+<p>kita dapat menggunakan LinearLayout sebagai child dari LinearLayout atau layout lain proses ini dinamakan nested layout</p>
+</blockquote>
+<ul>
+<li>Berdasarkan percobaan diatas lakukan lah perubahan perubahan sebagai berikut kemudian ambil lah kesimpulan dari percobaan ini.<ul>
+<li>ubah orientasi menjadi horizontal</li>
+<li>ubah weight sum menjadi angka integer yang lain</li>
+<li>ubah layout_weight dari salah satu LinearLayout</li>
+</ul>
+</li>
+</ul>
+<h3 id="membuat-aplikasi-dengan-relative-layout">Membuat aplikasi dengan relative layout</h3>
+<h3 id="membuat-aplikasi-dengan-constraint-layout">Membuat aplikasi dengan constraint layout</h3>
 <h2 id="kesimpulan">Kesimpulan</h2>
 <h2 id="latihan-praktikum">Latihan Praktikum</h2>
 
@@ -473,7 +595,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Activity Lifecycle","level":"1.3","depth":1,"next":{"title":"Layout Lanjutan - RecyclerView","level":"1.4","depth":1,"path":"03.md","ref":"03.md","articles":[]},"previous":{"title":"Pendahuluan","level":"1.2","depth":1,"path":"01.md","ref":"01.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"02-rev.md","mtime":"2019-02-09T13:36:34.276Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-09T13:28:34.536Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Activity Lifecycle","level":"1.3","depth":1,"next":{"title":"Layout Lanjutan - RecyclerView","level":"1.4","depth":1,"path":"03.md","ref":"03.md","articles":[]},"previous":{"title":"Pendahuluan","level":"1.2","depth":1,"path":"01.md","ref":"01.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"02-rev.md","mtime":"2019-02-10T13:59:13.473Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T10:10:43.812Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

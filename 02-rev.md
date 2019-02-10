@@ -9,7 +9,7 @@ Setelah melakukan praktikum ini mahasiswa mampu :
 3. Membuat aplikasi dengan relative layout
 4. Membuat aplikasi dengan constraint layout
 
-## Membuat aplikasi hello world yang menggunakan callback Activity Lifecycle
+### Membuat aplikasi hello world yang menggunakan callback Activity Lifecycle
 
 - Bukalah aplikasi Android Studio.
 - Buatlah sebuah project baru dengan konfigurasi seperti pada gambar dibawah ini
@@ -30,13 +30,86 @@ Setelah melakukan praktikum ini mahasiswa mampu :
   !['newproject'](img/02-newproject-step6.png)
 
 * Tambahkan Override untuk callback pada event activity lifecycle.
+
+| Activity Method | Deskripsi                                                                                                                                                                      | Next                      |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- |
+| onCreate()      | Ketika sebuah activity dibuat, pada method ini dilakukan inisialisasi seperti create view, list data, dll.                                                                     | onStart()                 |
+| onRestart()     | Ketika sebuah activity dihentikan, dan merupakan prioritas untuk memanggil activity itu kembali.                                                                               | onStart()                 |
+| onStart()       | Ketika sebuah activity dipanggil sebelum diperlihatkan ke user.                                                                                                                | onResume() / onStop()     |
+| onResume()      | Ketika sebuah activity start/mulai melakukan interaksi dengan user, pada saat ini activity berada pada posisi teratas dari activity stack yang mana user akan melakukan input. | onPause()                 |
+| onPause()       | Ketika sebuah activity lainnya dipanggil/dimulai, method ini digunakan ketika data tidak harus disimpan ke dalam sistem secara permanen.                                       | onResume() / onStop()     |
+| onStop()        | Ketika sebuah acivity tidak lagi dibutuhkan/tidak terlihat lagi oleh user.                                                                                                     | onRestart() / onDestroy() |
+| onDestroy()     | Ketika sebuah activity secara permanen tidak lagi dibutuhkan (activity dihancurkan). Dapat juga dilakukan dengan fungsi finish() / isFinishing().                              | -                         |
+
+
+!['activity'](img/02-activity-lifecycle.png)
 * Tambahkan Toast untuk masing masing event
 
-## Membuat aplikasi dengan linear layout
+!['activity'](img/02-activity-toast.png)
 
-## Membuat aplikasi dengan relative layout
+### Verifikasi Hasil Percobaan
 
-## Membuat aplikasi dengan constraint layout
+Lakukan kompilasi program ke device android anda kemudian perhatikan apa yang terjadi di aplikasi tersebut.
+
+### Membuat aplikasi dengan linear layout
+
+- Buatlah kembali sebuah project baru dengan konfigurasi yang disesuaikan dengan kebutuhan anda seperti pada langkah praktikum sebelumnya.
+- Bukalah file `activity_main.xml` kemudian buka dengan menggunakan design mode.
+!['activity'](img/02-linear-layout.png)
+
+- Kemudian lakukan konversi view dari constraint layout ke lineear layout.
+!['activity'](img/02-lienar-layout-convertview.png)
+!['activity'](img/02-linear-layout-convertview-2.png)
+!['activity'](img/02-linear-layout-convertview-3.png)
+
+- Kemudian gantilah design mode ke text mode. 
+!['activity'](img/02-linear-layout-text-mode.png)
+
+- Tambahkan properties `android:orientation="vertical"` pada tag `LinearLayout`
+
+!['activity'](img/02-linear-layout-orientation.png)
+
+Anda baru saja menambahkan atrribut baru pada tag xml, ada banyak properties lain yang perlu anda ketahui silahkan melakukan explorasi untuk properties atribut lain.
+
+- Selanjutnya tambahkan properties background pada linear layout seperti pada gambar dibawah ini sehingga layout anda berubah background nya menjadi hijau.
+
+!['activity'](img/02-linear-layout-background.png)
+
+- Kemudian ubahlah nilai dari properties `layout_height` menjadi wrap_content
+
+!['activity'](img/02-linear-layout-wrapcontent.png)
+
+- Lakukanlah kompilasi kemudian simpulkan apakah perbedaan antara `wrap_content` dan `match_parent`
+
+Selain properties diatas linear layout mempunyai properties khusus yang hanya ada pada tipe layout ini, yaitu `weigth_sum` dan `layout_weight`
+
+- weight_sum adalah bobot yang diberikan kepada LinearLayout bobot ini nantinya dapat digunakan untuk membagi ukuran yang dapat dimiliki oleh child dari LinearLayout.
+- layout_weight adalah bobot yang diberikan kepada child dari LinearLayout untuk menentukan ukuran dari child ini pada layar.
+
+Untuk memahami penggunaannya lakukan langkah percobaaan berikut ini :
+
+- Buka kembali project sebelumnya, kemudian kembalikan `layout_height` ke `match_parent`, juga hapus properties background seperti pada gambar dibawah ini :
+
+!['activity'](img/02-linear-layout-text-mode.png)
+
+- Hapuslah tag xml TextView kemudian isilah LinearLayout dengan dua buah child lain yang juga sebuah LinearLayout hasilnya seperti pada gambar dibawah ini.
+
+!['activity'](img/02-linear-layout-nested.png)
+
+- Jika anda lihat belum terjadi perubahan apapun pada layout, untuk itu lanjutkan dengan menambahkan properties background, weight_sum dan layout_weight seperti pada gambar dibawah ini.
+
+!['activity'](img/02-linear-layout-weightsum.png)
+
+> kita dapat menggunakan LinearLayout sebagai child dari LinearLayout atau layout lain proses ini dinamakan nested layout
+
+- Berdasarkan percobaan diatas lakukan lah perubahan perubahan sebagai berikut kemudian ambil lah kesimpulan dari percobaan ini.
+  - ubah orientasi menjadi horizontal
+  - ubah weight sum menjadi angka integer yang lain
+  - ubah layout_weight dari salah satu LinearLayout
+  
+### Membuat aplikasi dengan relative layout
+
+### Membuat aplikasi dengan constraint layout
 
 ## Kesimpulan
 
