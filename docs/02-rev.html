@@ -549,6 +549,39 @@ Pilihlah empty activity sebagai template starter project anda.
 </li>
 </ul>
 <h3 id="membuat-aplikasi-dengan-relative-layout">Membuat aplikasi dengan relative layout</h3>
+<ul>
+<li>Selanjutnya untuk memahami relative layout kembalikan kode program pada activity_main.xml ke kondisi awal dan ubah lah layout nya menjadi relative layout. Sehingga kode program dan tampilan berubah seperti gambar dibawah ini.</li>
+</ul>
+<p><img src="img/02-relative-layout.png" alt="&apos;relativelayout&apos;"></p>
+<blockquote>
+<p>RelativeLayout adalah layout yang menempatkan suatu item relative terhadap parent atau item lain pada UI.</p>
+</blockquote>
+<ul>
+<li>Untuk mencoba nya tambahkan dua buah button pada layout anda bisa menambahkan dengan menggunakan pallet yang ada di sebelah kiri tampilan design kemudan jangan lupa menghapus TextView &quot;hello world&quot;</li>
+</ul>
+<p><img src="img/02-relative-layout-button.png" alt="&apos;relativelayout&apos;">
+<img src="img/02-relative-layout-button-drag.png" alt="&apos;relativelayout&apos;"></p>
+<ul>
+<li>Ubahlah teks dan lebar dari button sehingga menjadi seperti gambar dibawah ini.</li>
+</ul>
+<p><img src="img/02-relative-layout-button-width.png" alt="&apos;relativelayout&apos;"></p>
+<blockquote>
+<p>untuk mengubah bisa menggunakan text mode atau pada design mode dengan mengklik button dan mengganti properties di kanan editor.</p>
+</blockquote>
+<ul>
+<li>Selanjutnya ubahlah tampilan dengan mengubah kode program melalui text mode sehingga seperti gambar dibawah ini.</li>
+</ul>
+<p><img src="img/02-relative-layout-buttonpos.png" alt="&apos;relativelayout&apos;"></p>
+<p>Perhatikan pada kode program tersebut sebuah item di posisikan pada layout dengan memberikan detail posisinya relative terhadap parent. </p>
+<p>Pada button pertama button ini mempunyai properties         android:layout_alignParentStart=&quot;true&quot; android:layout_alignParentLeft=&quot;true&quot; android:layout_alignParentTop=&quot;true&quot; </p>
+<p>Dengan konfigurasi properties seperti diatas sebuah item akan diposisikan di sebelah kiri atas.</p>
+<ul>
+<li>untuk lebih memahami relative layout buatlah layout baru seperti pada gambar dibawah ini.</li>
+</ul>
+<p><img src="img/02-relative-layout-button-baru.png" alt="&apos;relativelayout&apos;"></p>
+<ul>
+<li>Berdasarkan percobaan diatas cobalah membuat layout yang sebelumnya menggunakan linear layout dengan relative layout.</li>
+</ul>
 <h3 id="membuat-aplikasi-dengan-constraint-layout">Membuat aplikasi dengan constraint layout</h3>
 <h2 id="kesimpulan">Kesimpulan</h2>
 <h2 id="latihan-praktikum">Latihan Praktikum</h2>
@@ -595,7 +628,7 @@ Pilihlah empty activity sebagai template starter project anda.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Activity Lifecycle","level":"1.3","depth":1,"next":{"title":"Layout Lanjutan - RecyclerView","level":"1.4","depth":1,"path":"03.md","ref":"03.md","articles":[]},"previous":{"title":"Pendahuluan","level":"1.2","depth":1,"path":"01.md","ref":"01.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"02-rev.md","mtime":"2019-02-10T13:59:13.473Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T13:59:55.766Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Activity Lifecycle","level":"1.3","depth":1,"next":{"title":"Layout Lanjutan - RecyclerView","level":"1.4","depth":1,"path":"03.md","ref":"03.md","articles":[]},"previous":{"title":"Pendahuluan","level":"1.2","depth":1,"path":"01.md","ref":"01.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"02-rev.md","mtime":"2019-02-10T14:57:07.533Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T14:57:17.356Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
