@@ -583,8 +583,36 @@ Pilihlah empty activity sebagai template starter project anda.
 <li>Berdasarkan percobaan diatas cobalah membuat layout yang sebelumnya menggunakan linear layout dengan relative layout.</li>
 </ul>
 <h3 id="membuat-aplikasi-dengan-constraint-layout">Membuat aplikasi dengan constraint layout</h3>
+<p>Constraint layout merupakan layout terbaru dari android, layout ini berbasis relative layout namun mempunyai tingkat kemudahan yang lebih baik dalam penggunaannya.</p>
+<p>Penggunaan Constraint layout ini mirip dengan relative layout namun dengan kemudahan dalam mengoperasikannya karena sudah dapat digunakan dengan baik pada editor di design mode.</p>
+<p>Setiap item pada constraint layout memiliki 4 arah constraint yaitu top, left, right, dan bottom. Ke empat arah ini terdapat sebuah connection source yang dapat di tarik ke parent atau ke objek lain. Perhatikan gambar dibawah ini.</p>
+<p><img src="img/02-constraint-layout-connection.png" alt="&apos;constraint&apos;"></p>
+<p>Pada text view hello world terdapat 4 constraint dan masing masing constraint di hubungkan ke parent dengan mode panah bergerigi, panah bergerigi ini mewakili <code>wrap_content</code> pilihan lain selain wrap content adalah fixed dan match constraint. Silahkan mencoba dan berikan kesimpulan terhadap pengamatan dan percobaan ada mengenai hal ini.</p>
+<ul>
+<li>untuk mencoba silahkan kembalikan kode program pada <code>activity_main.xml</code> ke kondisi awal.</li>
+<li>Kemudian buatlah layout pada latihan LinearLayout menggunakan ConstraintLayout<blockquote>
+<p>Untuk membagi layout menjadi dua bagian gunakan guidelines</p>
+</blockquote>
+</li>
+<li>Selanjutnya buatlah layout pada latihan RelativeLayout menggunakan ConstraintLayout<blockquote>
+<p>Untuk membuat ini lebih cepat menggunakan design mode dan menarik constraint ke parent atau object lain</p>
+</blockquote>
+</li>
+</ul>
 <h2 id="kesimpulan">Kesimpulan</h2>
 <h2 id="latihan-praktikum">Latihan Praktikum</h2>
+<ul>
+<li>Buatlah layout android seperti pada gambar dibawah ini menggunakan 3 tipe layout yaitu linear layout, relative layout dan constraint layot.</li>
+</ul>
+<p><img src="img/latihan/02/Login screen.png" alt="&apos;latihan&apos;"></p>
+<p>Bahan bahan tutorial yang diperlukan untuk menyelesaikan tugas ini : </p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/19189265/custom-designing-edittext" target="_blank">https://stackoverflow.com/questions/19189265/custom-designing-edittext</a></li>
+<li><a href="https://www.codeproject.com/Tips/845894/How-to-make-EditText-With-Border-and-Gradient-Back" target="_blank">https://www.codeproject.com/Tips/845894/How-to-make-EditText-With-Border-and-Gradient-Back</a></li>
+<li><a href="https://stackoverflow.com/questions/49023249/custom-background-for-edittext-in-android?noredirect=1&amp;lq=1" target="_blank">https://stackoverflow.com/questions/49023249/custom-background-for-edittext-in-android?noredirect=1&amp;lq=1</a></li>
+<li><a href="https://stackoverflow.com/questions/27588965/how-to-use-custom-font-in-a-project-written-in-android-studio" target="_blank">https://stackoverflow.com/questions/27588965/how-to-use-custom-font-in-a-project-written-in-android-studio</a></li>
+<li>Font used : <a href="https://www.fontsquirrel.com/fonts/montserrat" target="_blank">https://www.fontsquirrel.com/fonts/montserrat</a></li>
+</ul>
 
                                 
                                 </section>
@@ -628,7 +656,7 @@ Pilihlah empty activity sebagai template starter project anda.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Activity Lifecycle","level":"1.3","depth":1,"next":{"title":"Layout Lanjutan - RecyclerView","level":"1.4","depth":1,"path":"03.md","ref":"03.md","articles":[]},"previous":{"title":"Pendahuluan","level":"1.2","depth":1,"path":"01.md","ref":"01.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"02-rev.md","mtime":"2019-02-10T14:57:07.533Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T10:10:43.812Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Activity Lifecycle","level":"1.3","depth":1,"next":{"title":"Layout Lanjutan - RecyclerView","level":"1.4","depth":1,"path":"03.md","ref":"03.md","articles":[]},"previous":{"title":"Pendahuluan","level":"1.2","depth":1,"path":"01.md","ref":"01.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"02-rev.md","mtime":"2019-02-10T23:16:49.973Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T10:10:43.812Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
