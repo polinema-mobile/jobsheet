@@ -3,3 +3,5 @@ docs/.gitignore
 docs/package.json
 docs/*.pdf
 docs/pdf/*
+
+_book/
