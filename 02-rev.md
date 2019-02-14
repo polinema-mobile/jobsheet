@@ -173,3 +173,6 @@ Bahan bahan tutorial yang diperlukan untuk menyelesaikan tugas ini :
 - https://stackoverflow.com/questions/49023249/custom-background-for-edittext-in-android?noredirect=1&lq=1
 - https://stackoverflow.com/questions/27588965/how-to-use-custom-font-in-a-project-written-in-android-studio
 - Font used : https://www.fontsquirrel.com/fonts/montserrat
+
+
+Link Mi 2A : https://pastebin.com/RmJdWmKA
