@@ -7,7 +7,7 @@ Setelah melakukan praktikum ini mahasiswa mampu :
 1. Membuat Aplikasi Android untuk Mengirim Data antar Activity
 2. Membuat Aplikasi Android dengan Memanfaatkan Defined Action
 
-## Praktikum 1 - Mengirim Data antar Activity
+## Praktikum 1 - Mengirim Data antar Activity (Explicit Intent)
 
 #### Membuat Activity Pertama
 1. Buka aplikasi Android Studio dan buat sebuah project baru. Nama aplikasi bisa diisikan sesuai dengan keinginan
@@ -16,7 +16,7 @@ Setelah melakukan praktikum ini mahasiswa mampu :
 
 2. Pilihlah minimum sdk sesuai kebutuhan, misalnya pada praktikum ini kita gunakan API 15: Android 4.0.3
 
-!['intent'](img/04.1.jpg)
+!['intent'](img/04.2.jpg)
 
 3. Pilih Empty Activity untuk template project
 
@@ -287,6 +287,172 @@ Kode Program secara keseluruhan untuk SecondActivity.java seperti gambar di bawa
 
 !['intent'](img/04.18.jpg)
 
-12. Lakukan kompilasi program ke device android anda kemudian perhatikan apa yang terjadi di aplikasi tersebut.
+12. Lakukan kompilasi program ke device android anda kemudian perhatikan apa yang terjadi di aplikasi tersebut. Buat kesimpulannya!
 
-#### Percobaan
+
+## Praktikum 2 - Memanfaatkan Defined Action (Implicit Intent)
+
+#### Membuat Layout
+1. Buka aplikasi Android Studio dan buat sebuah project baru. Nama aplikasi bisa diisikan sesuai dengan keinginan
+
+2. Pilihlah minimum sdk sesuai kebutuhan, misalnya pada praktikum ini kita gunakan API 15: Android 4.0.3
+
+3. Pilih Empty Activity untuk template project
+
+4. Terima nama aktivitas default (MainActivity). Pastikan kotak Generate Layout file dicentang, kemudian klik Finish
+
+5. Buka file `res/values/strings.xml` dan tambahkan sumber daya string berikut ini:
+<string name="edittext_uri">http://www.polinema.ac.id</string>
+<string name="button_uri">Open Website</string>
+<string name="edittext_loc">Politeknik Negeri Malang</string>
+<string name="button_loc">Open Location</string>
+
+6. Ubah RelativeLayout default ke LinearLayout. Tambahkan atribut android:orientation dan berikan nilai "vertical."
+
+7. Buka `res/layout/activity_main.xml`. Pada Layout Editor, klik tab Design di bagian bawah layar. Ubah layout yang digunakan menjadi **LinearLayout**
+
+8. Tambahkan 2 Plain Text (Edit Text) dan 2 Button dengan tampilan seperti gambar berikut.
+
+!['intent'](img/04.19.jpg)
+
+9. Atur atribut dari Edit Text dan Button tersebut seperti contoh berikut.
+
+!['intent'](img/04.20.jpg)
+
+
+#### Mengimplementasikan Buka Situs Website
+
+Kita akan mengimplementasikan metode handler on-click untuk tombol pertama dalam layout ("Open Website.") Tindakan ini menggunakan intent implisit untuk mengirimkan URI yang diberikan ke aktivitas yang dapat menangani intent implisit tersebut (seperti browser web).
+
+1. Buka file MainActivity.java.
+
+2. Tambahkan variabel privat di bagian atas kelas untuk menampung objek EditText untuk URI situs web.
+
+```java
+private EditText mWebsiteEditText;
+```
+
+3. Dalam metode `onCreate()`, gunakan findViewByID() untuk mendapatkan referensi tentang instance EditText dan
+menetapkannya ke variabel privat tersebut
+
+```java
+mWebsiteEditText = (EditText) findViewById(R.id.website_edittext);
+```
+
+4. Buat metode baru bernama openWebsite()
+
+```java
+public void openWebsite(View view) { }
+```
+
+5. Dapatkan nilai string EditText menggunakan kode berikut.
+
+```java
+String url = mWebsiteEditText.getText().toString();
+```
+
+6. Enkode dan parse string ke dalam objek Uri
+
+```java
+Uri webpage = Uri.parse(url);
+```
+
+7. Buat intent baru dengan Intent.ACTION_VIEW sebagai tindakan dan URI sebagai data
+
+```java
+Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+```
+
+Konstruktor intent ini berbeda dari yang kita gunakan untuk membuat explicit intent. Dalam konstruktor sebelumnya, kita menetapkan konteks saat ini dan komponen spesifik (class aktivitas) untuk mengirim intent. Dalam konstruktor ini kita menetapkan tindakan dan data untuk tindakan tersebut. Tindakan didefinisikan oleh class intent dan dapat menyertakan ACTION_VIEW (untuk melihat data yang diberikan), ACTION_EDIT (untuk mengedit data yang diberikan), atau ACTION_DIAL (untuk menghubungi nomor telepon). Dalam hal ini, tindakan adalah ACTION_VIEW karena kita ingin membuka dan melihat laman web yang ditetapkan oleh URI dalam variabel laman web.
+
+8. Gunakan resolveActivity() dan pengelola paket Android untuk menemukan aktivitas yang dapat menangani intent
+implisit. Periksa untuk memastikan permintaan berhasil diatasi.
+
+```java
+if (intent.resolveActivity(getPackageManager()) != null) {
+}
+```
+
+Permintaan yang cocok dengan tindakan intent dan data dengan intent Anda ini memfilter aplikasi yang dipasang pada
+perangkat untuk memastikan paling tidak ada satu aktivitas yang bisa menangani permintaan Anda.
+
+9. Dalam pernyataan if, panggil `startActivity()` untuk mengirimkan intent.
+
+```java
+startActivity(intent);
+```
+
+10. Tambahkan blok else untuk mencetak pesan log jika intent tidak bisa diatasi.
+
+```java
+} else {
+Log.d("ImplicitIntents", "Can't handle this!");
+}
+```
+
+Kode Program secara keseluruhan untuk MainActivity.java seperti gambar di bawah ini.
+
+!['intent'](img/04.21.jpg)
+
+11. Lakukan kompilasi program ke device android anda kemudian perhatikan apa yang terjadi di aplikasi tersebut. Buat kesimpulannya!
+
+
+#### Mengimplementasikan Buka Lokasi
+
+Kita akan mengimplementasikan metode handler on-click untuk tombol kedua dalam UI ("Open Location"). Metode ini hampir identik dengan metode openWebsite(). Perbedaannya adalah penggunaan URI geo untuk menunjukkan lokasi peta. Anda bisa menggunakan URI geo dengan lintang dan bujur, atau gunakan string kueri untuk lokasi umum. Dalam contoh ini kami telah menggunakannya untuk tujuan yang kedua.
+
+1. Buka file MainActivity.java.
+
+2. Tambahkan variabel privat di bagian atas kelas untuk menampung objek EditText bagi URI lokasi.
+
+```java
+private EditText mLocationEditText;
+```
+
+3. Dalam metode `onCreate()`, gunakan findViewByID() untuk mendapatkan referensi tentang instance EditText dan
+menetapkannya ke variabel privat tersebut
+
+```java
+mLocationEditText = (EditText) findViewById(R.id.location_edittext);
+```
+
+4. Buat metode baru bernama openLocation untuk digunakan sebagai metode onClick untuk tombol Open Location.
+
+5. Dapatkan nilai string EditText mLocationEditText.
+
+```java
+String loc = mLocationEditText.getText().toString();
+```
+
+6. Parse string itu ke dalam objek Uri dengan kueri penelusuran geo:
+
+```java
+Uri addressUri = Uri.parse("geo:0,0?q=" + loc);
+```
+
+7. Buat intent baru dengan Intent.ACTION_VIEW sebagai tindakan dan loc sebagai datanya.
+
+```java
+Intent intent = new Intent(Intent.ACTION_VIEW, addressUri);
+```
+
+8. Pecahkan intent dan periksa untuk memastikan intent berhasil diatasi. Jika demikian, `startActivity()`, jika tidak catat log
+pesan kesalahan.
+
+```java
+if (intent.resolveActivity(getPackageManager()) != null) {
+startActivity(intent);
+} else {
+Log.d("ImplicitIntents", "Can't handle this intent!");
+}
+```
+
+Kode Program secara keseluruhan untuk MainActivity.java seperti gambar di bawah ini.
+
+!['intent'](img/04.22.jpg)
+
+9. Lakukan kompilasi program ke device android anda kemudian perhatikan apa yang terjadi di aplikasi tersebut. Buat kesimpulannya!
+
+## Latihan
+
+Buatlah sebuah aplikasi Android untuk proses Registrasi yang terdiri dari dua activity. Pada activity pertama, terdapat 3 Edit Text (Nama, Alamat, dan No. Hp) dan 1 Button (Register). Pada saat Button diklik, activity kedua akan muncul dengan menampilkan Nama dan Alamat sesuai isian sebelumnya. Selain itu, pada activity kedua juga terdapat sebuah Button (Share). Apabila Button tersebut diklik, maka data Nama dan Alamat akan di-share.
