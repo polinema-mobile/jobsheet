@@ -4,7 +4,7 @@
 - [Pendahuluan](01.md)
 - [Activity Lifecycle](02-rev.md)
 - [Layout Lanjutan - RecyclerView](03.md)
-- [Intent](04.md)
+- [Intent](04-rev.md)
 - [QUIZ](05.md)
 - [Shared Preference](06.md)
 - [Sqlite CRUD](07.md)
