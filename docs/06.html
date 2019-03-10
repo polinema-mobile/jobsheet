@@ -408,265 +408,742 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="kemampuan-akhir-yang-direncanakan">Kemampuan Akhir Yang Direncanakan</h1>
+                                <h1 id="shared-preference">Shared Preference</h1>
+<h2 id="kemampuan-akhir-yang-direncanakan">Kemampuan Akhir Yang Direncanakan</h2>
+<p>Setelah melakukan praktikum ini mahasiswa mampu:</p>
+<ol>
+<li>Membuat aplikasi yang menggunakan shared preference untuk menyimpan data yang kecil.</li>
+<li>Mengubah perilaku aplikasi sesuai konfigurasi yang dipilih oleh pengguna.</li>
+</ol>
+<h2 id="praktikum-1">Praktikum 1</h2>
+<p>Pada praktikum ini, mahasiswa akan membuat aplikasi yang memanfaatkan
+SharedPreference untuk menyimpan data (dalam hal praktikum ini session).
+Aplikasi yang dibuat berupa aplikasi yang menampilkan data catatan (notes).
+Aplikasi ini menampilkan tampilan login jika user belum terautentikasi. Untuk
+menyimpan data session autentikasi dapat disimpan pada SharedPreference.</p>
+<h3 id="langkah-praktikum">Langkah Praktikum</h3>
 <ul>
-<li>Mahasiswa mampu membuat aplikasi yang memiliki shared preference untuk menyimpan data yang kecil.</li>
-<li>Mahasiswa mampu membuat activity config untuk mengubah behavior aplikasi sesuai konfigurasi yang dipilih oleh user.</li>
+<li>Bukalah aplikasi Android Studio yang sudah terinstall pada komputer/laptop anda.</li>
+<li><p>Buatlah sebuah project baru dengan nama &quot;Notes App&quot;, untuk Company domain
+sesuaikan dengan identitas anda!</p>
+</li>
+<li><p>Pada pilihan <code>Activity</code> pilihlah <code>Basic Activity</code></p>
+</li>
+<li>Kemudian silahkan ikuti langkah-langkah wizard sampai selesai.</li>
+<li>Sebagai langkah awal, buatlah pemodelan data yang dibutuhkan oleh aplikasi.</li>
+<li>Buatlah sebuah class <code>User</code> yang digunakan untuk menyimpan informasi pengguna
+yang akan masuk ke dalam aplikasi. Keterangan atribut class <code>User</code> dapat anda
+lihat pada tabel berikut.</li>
 </ul>
-<h1 id="teori">Teori</h1>
-<p>Shared preferences berfungsi untuk menyimpan data yang kecil. Cara untuk menyimpan dan membaca data pada shared preferences menggunakan key-value. Shared preferences merupakan penyimpanan yang bersifat persistent. Berikut adalah ilustrasi dari shared preferences.</p>
-<p><img src="ImageChapter6/SharedPreferences.png" alt="">
-Gambar 1. Ilustrasi Shared Preferences</p>
-<p>Betikut adalah contoh penggunaan shared preferences</p>
-<pre><code class="lang-java">SharedPreferences prefs = getApplicationContext().getSharedPreferences(&quot;sharedprefone&#x201D;,Context.MODE_WORLD_READABLE);
-
-DateFormat dateFormat = new SimpleDateFormat(&quot;yyyy/MM/dd HH:mm:ss&quot;);
-Date date = new Date();
-
-Editor edit = prefs.edit();
-edit.putString(&quot;time&quot;, dateFormat.format(date));
-edit.commit();
-</code></pre>
-<p>Dan berikut cara untuk mendapatkan nilai yang telah disimpan dengan shared preferences.</p>
-<pre><code class="lang-java">SharedPreferences testPrefs = myContext.getSharedPreferences (<span class="hljs-string">&quot;sharedprefone&quot;</span>, Context.MODE_WORLD_READABLE);
-String prefString = testPrefs.getString(<span class="hljs-string">&quot;time&quot;</span>, <span class="hljs-string">&quot;Couldn&apos;t find&quot;</span>);
-</code></pre>
-<p>Berikut adalah sintak cara untuk menulis/ menyimpan, mendelete dan mendapatkan data yang telah disimpan pada shared preferences</p>
-<ol>
-<li>Menulis pada shared preferences<br>```java
-SharedPreferences pref = getApplicationContext().getSharedPreferences(&quot;MyPref&quot;, 0);<br>Editor editor = pref.edit();
-editor.putBoolean(&quot;key_name&quot;, true); // Storing boolean - true/false
-editor.putString(&quot;key_name&quot;, &quot;string value&quot;); // Storing string
-editor.putInt(&quot;key_name&quot;, &quot;int value&quot;); // Storing integer
-editor.putFloat(&quot;key_name&quot;, &quot;float value&quot;); // Storing float
-editor.putLong(&quot;key_name&quot;, &quot;long value&quot;); // Storing long</li>
-</ol>
-<p>editor.commit(); // commit changes</p>
-<pre><code>2. Mendapatkan nilai pada shared preferences     
-```java
-SharedPreferences pref = getApplicationContext().getSharedPreferences(&quot;MyPref&quot;, 0);  
-// returns stored preference value
-// If value is not present return second param value - In this case null
-pref.getString(&quot;key_name&quot;, null); // getting String
-pref.getInt(&quot;key_name&quot;, null); // getting Integer
-pref.getFloat(&quot;key_name&quot;, null); // getting Float
-pref.getLong(&quot;key_name&quot;, null); // getting Long
-pref.getBoolean(&quot;key_name&quot;, null); // getting boolean
-</code></pre><ol>
-<li>Menghapus data pada shared preferences<br>Menghapus data tertentu   <pre><code class="lang-java">editor.remove(<span class="hljs-string">&quot;name&quot;</span>); <span class="hljs-comment">// delete key name</span>
-editor.remove(<span class="hljs-string">&quot;email&quot;</span>); <span class="hljs-comment">// delete key email</span>
-editor.commit(); <span class="hljs-comment">// commit changes</span>
-</code></pre>
-Menghapus semua data<pre><code class="lang-java">editor.clear();
-editor.commit(); <span class="hljs-comment">// commit changes</span>
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>Atribut</th>
+<th>Tipe Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>username</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Tips:</strong>
+Gunakan fitur generate code pada Android Studio untuk menyisipkan Constructor
+serta Setter dan Getter.</p>
+</blockquote>
+<ul>
+<li>Buatlah sebuah class <code>Note</code> yang digunakan untuk menyimpan informasi data
+catatan. Detail atribut-atribut dapat anda lihat pada tabel berikut.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Atribut</th>
+<th>Tipe Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td><code>Date</code></td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Catatan:</strong>
+Tipe data <code>Date</code> di-<em>import</em> dari package <code>java.util.Date</code>.</p>
+<ul>
+<li><p>Untuk memudahkan pengorganisasian project, tambahkan package <code>models</code>.
+Letakkan class <code>User</code> dan <code>Note</code> ke dalam package ini.</p>
 </li>
-</ol>
-<h1 id="modul">Modul</h1>
-<p>Shared preferences untuk membuat session management user.</p>
-<ol>
-<li>Buat project baru pada android studio dengan nama SessionManagement dan pastikan kalian memilih template template Empty Activity.</li>
-<li><p>Setelah berhasil membuat project baru, tambahkan 1 Activity baru dengan nama <strong>Main2Activity</strong>. Jadi sekarang terdapat 2 Acticity di dalam project. Langkah selanjutnya adalah membuat tampilan MainActivity seperti berikut:
-<img src="ImageChapter6/Login.png" alt="">
-Gambar 2. Tampilan Login</p>
-<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
- <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span>
- <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
- <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
- <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center_vertical&quot;</span>
- <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span>
- <span class="hljs-attr">tools:context</span>=<span class="hljs-string">&quot;.MainActivity&quot;</span>&gt;</span>
-
- <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
-     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
-     <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
-     <span class="hljs-attr">android:layout_margin</span>=<span class="hljs-string">&quot;12dp&quot;</span>
-     <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Email&quot;</span>
-     <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;18sp&quot;</span> /&gt;</span>
-
- <span class="hljs-tag">&lt;<span class="hljs-name">EditText</span>
-     <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/editEmail&quot;</span>
-     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
-     <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
-     <span class="hljs-attr">android:layout_margin</span>=<span class="hljs-string">&quot;12dp&quot;</span>
-     <span class="hljs-attr">android:hint</span>=<span class="hljs-string">&quot;Input Email&quot;</span>
-     <span class="hljs-attr">android:inputType</span>=<span class="hljs-string">&quot;textEmailAddress&quot;</span> /&gt;</span>
-
- <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
-     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
-     <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
-     <span class="hljs-attr">android:layout_margin</span>=<span class="hljs-string">&quot;12dp&quot;</span>
-     <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Password&quot;</span>
-     <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;18sp&quot;</span> /&gt;</span>
-
- <span class="hljs-tag">&lt;<span class="hljs-name">EditText</span>
-     <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/editPassword&quot;</span>
-     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
-     <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
-     <span class="hljs-attr">android:layout_margin</span>=<span class="hljs-string">&quot;12dp&quot;</span>
-     <span class="hljs-attr">android:hint</span>=<span class="hljs-string">&quot;Input Password&quot;</span>
-     <span class="hljs-attr">android:inputType</span>=<span class="hljs-string">&quot;textPassword&quot;</span> /&gt;</span>
-
- <span class="hljs-tag">&lt;<span class="hljs-name">Button</span>
-     <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/buttonLogin&quot;</span>
-     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
-     <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
-     <span class="hljs-attr">android:layout_gravity</span>=<span class="hljs-string">&quot;center_horizontal&quot;</span>
-     <span class="hljs-attr">android:layout_margin</span>=<span class="hljs-string">&quot;12dp&quot;</span>
-     <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Login&quot;</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span>
-</code></pre>
-</li>
-<li>Setelah membuat tampilan seperti pada Gambar 2, langkah selanjutnya adalah  menggunakan layout widget yang telah kita buat pada tampilan dengan cara, membuat instansiasi dari EditText dan Button:<pre><code class="lang-java">EditText edtEmail, edtPassword;
-Button buttonLogin;
-</code></pre>
-Dan pada onCreate definisikan widget tersebut dengan cara menambahkan source code berikut:<pre><code class="lang-java">edtEmail     = findViewById(R.id.editEmail);
-edtPassword  = findViewById(R.id.editPassword);
-buttonLogin  = findViewById(R.id.buttonLogin);
-</code></pre>
-</li>
-<li><p>Selanjutnya kita gunakan shared preferences pada Activity yang ada didalam project,dengan cara membuat class java dengan nama SessionManagement.java</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SessionManagement</span> </span>{
- <span class="hljs-comment">//Share preference</span>
- <span class="hljs-keyword">private</span> SharedPreferences mSharedPreference;
- <span class="hljs-comment">//Editor for Shared preference</span>
- <span class="hljs-keyword">private</span> SharedPreferences.Editor mEditor;
- <span class="hljs-comment">//context</span>
- <span class="hljs-keyword">private</span> Context mContext;
- <span class="hljs-comment">//Shared pref mode</span>
- <span class="hljs-keyword">int</span> PRIVATE_MODE;
- <span class="hljs-comment">//Shared pref name</span>
- <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String PREF_NAME = <span class="hljs-string">&quot;SharedPrefLatihan&quot;</span>;
- <span class="hljs-comment">//Shared Preferences Keys</span>
- <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String IS_LOGIN = <span class="hljs-string">&quot;IsLoggedIn&quot;</span>;
- <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String KEY_EMAIL = <span class="hljs-string">&quot;email&quot;</span>;
- <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String KEY_PASSWOrD = <span class="hljs-string">&quot;email&quot;</span>;
-
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">SessionManagement</span><span class="hljs-params">(Context mContext)</span> </span>{
-     <span class="hljs-keyword">this</span>.mContext = mContext;
-     mSharedPreference = <span class="hljs-keyword">this</span>.mContext.getSharedPreferences(PREF_NAME,
-             PRIVATE_MODE);
-     mEditor = mSharedPreference.edit();
- }
+<li><p>Pada class <code>Note</code> sisipkan kode berikut yang digunakan untuk mengatur tampilan
+bagaimana tanggal akan ditampilkan.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getFormattedDate</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-comment">// Tampilan tanggal yang dicetak menjadi: 01 Mar 2019</span>
+  DateFormat formatter = <span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">&quot;dd MMM yyyy&quot;</span>);
+  <span class="hljs-keyword">return</span> formatter.format(date);
 }
 </code></pre>
-<p>Gambar 3. SharedPreference.java</p>
 </li>
-<li>Pada class SessionManagement tambahkan method untuk menyimpan shared preferences dengan nama createLoginSession.<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">createLoginSession</span><span class="hljs-params">(String email, String password)</span></span>{
-     <span class="hljs-comment">// Storing login value as TRUE</span>
-     mEditor.putBoolean(IS_LOGIN, <span class="hljs-keyword">true</span>);
-     <span class="hljs-comment">// Storing email</span>
-     mEditor.putString(KEY_EMAIL, password);
-     <span class="hljs-comment">// Storing password</span>
-     mEditor.putString(KEY_PASSWOrD, email);
-     mEditor.commit();
- }
-</code></pre>
-Gambar 4. createLoginSession</li>
-<li>Selanjutnya pada class SessionManagement, tambahkan method getUserInformation untuk mendapatakan informasi user.<pre><code class="lang-java"> <span class="hljs-function"><span class="hljs-keyword">public</span> HashMap&lt;String, String&gt; <span class="hljs-title">getUserInformation</span><span class="hljs-params">()</span></span>{
-     HashMap&lt;String, String&gt; user = <span class="hljs-keyword">new</span> HashMap&lt;String, String&gt;();
-     <span class="hljs-comment">// user email</span>
-     user.put(KEY_EMAIL, mSharedPreference.getString(KEY_EMAIL, <span class="hljs-keyword">null</span>));
-     <span class="hljs-comment">// user password</span>
-     user.put(KEY_PASSWOrD, mSharedPreference.getString(KEY_PASSWOrD, <span class="hljs-keyword">null</span>));
-     <span class="hljs-comment">// return user</span>
-     <span class="hljs-keyword">return</span> user;
- }
-</code></pre>
-Gambar 5. Method getUserInformation</li>
-<li><p>Selanjutnya kita tambahkan method untuk mengecek apakah user sudah login atau belum dengan menambahkan method checkIsLogin pada class SessionManagement.</p>
-<pre><code class="lang-java"> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isLoggedIn</span><span class="hljs-params">()</span></span>{
-     <span class="hljs-keyword">return</span> mSharedPreference.getBoolean(IS_LOGIN, <span class="hljs-keyword">false</span>);
- }
-
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkIsLogin</span><span class="hljs-params">()</span> </span>{
-     <span class="hljs-comment">// Check login status</span>
-     <span class="hljs-keyword">if</span> (!isLoggedIn()) {
-         <span class="hljs-comment">// user is not logged in redirect to MainActivity</span>
-         Intent i = <span class="hljs-keyword">new</span> Intent(mContext, MainActivity.class);
-
-         <span class="hljs-comment">// Closing all the Activities</span>
-         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-         <span class="hljs-comment">// Add new Flag to start new Activity</span>
-         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-         mContext.startActivity(i);
-     }
- }
-</code></pre>
-<p>Gambar 6. Method checkLoginStatus</p>
+<li><p>Tambahkan class <code>Data</code> yang digunakan untuk menyimpan data-data dummy
+aplikasi.</p>
 </li>
-<li>Method terakhir yang ditambahkan pada SessionManagement.java adalah method logoutUser(). Method ini berfungsi untuk menghapus Shared Preference yang telah disimpan.
-<img src="ImageChapter6/logOutUser.png" alt="">
-Gambar 7. Method checkLoginStatus</li>
-<li><p>Setelah membuat layout untuk aplikasi dan membuat class SessionManagement, selanjutnya gunakan class SessionManagement pada Activity. Dengan cara seperti berikut:</p>
-<pre><code class="lang-java"> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">logoutUser</span><span class="hljs-params">()</span></span>{
-     <span class="hljs-comment">// Clearing all data from Shared Preferences</span>
-     mEditor.clear();
-     mEditor.commit();
-
-     <span class="hljs-comment">// After logout redirect user to Loing Activity</span>
-     Intent i = <span class="hljs-keyword">new</span> Intent(mContext, MainActivity.class);
-     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-     mContext.startActivity(i);
- }
+<li><p>Tambahkan kode berikut pada class <code>Data</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;User&gt; users;
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;Note&gt; notes;
 </code></pre>
-<p>Gambar 8. Method logoutUser</p>
 </li>
-<li><p>Selanjutnya handle event ketika button di click.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">if</span>(sessionManagement.isLoggedIn()){
-    goToActivity();
+<li><p>Isi data dummy tersebut dengan kode berikut.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">static</span> {
+  users = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+  users.add(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;adi&quot;</span>, <span class="hljs-string">&quot;rahasia&quot;</span>));
+  users.add(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;beni&quot;</span>, <span class="hljs-string">&quot;rahasia&quot;</span>));
+  users.add(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;cindy&quot;</span>, <span class="hljs-string">&quot;rahasia&quot;</span>));
+
+  notes = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+  notes.add(<span class="hljs-keyword">new</span> Note(<span class="hljs-string">&quot;Note 1&quot;</span>, <span class="hljs-keyword">new</span> Date(), <span class="hljs-string">&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua&quot;</span>));
+  notes.add(<span class="hljs-keyword">new</span> Note(<span class="hljs-string">&quot;Note 2&quot;</span>, <span class="hljs-keyword">new</span> Date(), <span class="hljs-string">&quot;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat&quot;</span>));
+  notes.add(<span class="hljs-keyword">new</span> Note(<span class="hljs-string">&quot;Note 3&quot;</span>, <span class="hljs-keyword">new</span> Date(), <span class="hljs-string">&quot;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur&quot;</span>));
+  notes.add(<span class="hljs-keyword">new</span> Note(<span class="hljs-string">&quot;Note 4&quot;</span>, <span class="hljs-keyword">new</span> Date(), <span class="hljs-string">&quot;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</span>));
+}
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>Anda dapat menggunakan data dummy sesuai keinginan!</p>
+</blockquote>
+<ul>
+<li><p>Untuk memudahkan operasi-operasi yang terkait dengan <code>SharedPreference</code>
+dibutuhkan class <code>Constant</code> dan <code>Settings</code>. class <code>Constant</code> berisi
+daftar konstanta-konstanta sedangkan <code>Settings</code> membungkus operasi baca tulis
+ke <code>SharedPreference</code>.</p>
+</li>
+<li><p>Tambahkan kode berikut pada class <code>Constant</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Constant</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String LAYOUT_MODE = <span class="hljs-string">&quot;layout_mode&quot;</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String SESSION = <span class="hljs-string">&quot;session&quot;</span>;
+
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> LAYOUT_MODE_LIST = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> LAYOUT_MODE_GRID = <span class="hljs-number">1</span>;
+}
+</code></pre>
+</li>
+<li><p>Pada class <code>Settings</code> tambahkan atribut <code>preferences</code> dengan tipe <code>SharedPreference</code></p>
+</li>
+<li><p>Tambahkan constructor pada class <code>Settings</code></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Settings</span><span class="hljs-params">(Context context)</span> </span>{
+  <span class="hljs-keyword">this</span>.preferences = PreferenceManager.getDefaultSharedPreferences(context);
+}
+</code></pre>
+</li>
+<li><p>Tambahkan method terkait dengan operasi pada data <em>session</em> user.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getUser</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> preferences.getString(Constant.SESSION, <span class="hljs-keyword">null</span>);
 }
 
-buttonLogin.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() {
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setUser</span><span class="hljs-params">(String user)</span> </span>{
+  preferences.edit()
+    .putString(Constant.SESSION, user)
+    .apply();
+}
 
-        sessionManagement.createLoginSession(edtEmail.getText().toString(), edtPassword.getText().toString());
-        goToActivity();
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">removeUser</span><span class="hljs-params">()</span> </span>{
+  preferences.edit()
+    .remove(Constant.SESSION)
+    .apply();
+}
+</code></pre>
+</li>
+<li><p>Tambahkan method terkait dengan operasi pada data layout</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getLayoutMode</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> preferences.getInt(Constant.LAYOUT_MODE, Constant.LAYOUT_MODE_LIST);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setLayoutMode</span><span class="hljs-params">(<span class="hljs-keyword">int</span> layout)</span> </span>{
+  preferences.edit()
+    .putInt(Constant.LAYOUT_MODE, layout)
+    .apply();
+}
+</code></pre>
+</li>
+<li><p>Buatlah class <code>Session</code> yang bertanggung jawab mengurusi manajemen <em>session</em>
+user.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Session</span> </span>{
+
+  <span class="hljs-keyword">private</span> Settings settings;
+  <span class="hljs-keyword">private</span> String user;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Session</span><span class="hljs-params">(Settings settings)</span> </span>{
+    <span class="hljs-keyword">this</span>.settings = settings;
+    user = settings.getUser();
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">doLogin</span><span class="hljs-params">(String username, String password)</span> </span>{
+    User foundUser = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">for</span> (User user : Data.getUsers()) {
+      <span class="hljs-keyword">if</span> (username.equals(user.getUsername())
+        &amp;&amp; password.equals(user.getPassword())) {
+        foundUser = user;
+        <span class="hljs-keyword">break</span>;
+      }
     }
-});
-<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">goToActivity</span><span class="hljs-params">()</span></span>{
-    Intent mIntent = <span class="hljs-keyword">new</span> Intent(getApplicationContext(), Main2Activity.class);
-    startActivity(mIntent);
+    <span class="hljs-keyword">return</span> foundUser;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doLogout</span><span class="hljs-params">()</span> </span>{
+    settings.removeUser();
+    <span class="hljs-keyword">this</span>.user = <span class="hljs-keyword">null</span>;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isLogin</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> user != <span class="hljs-keyword">null</span>;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getUser</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> user;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setUser</span><span class="hljs-params">(String user)</span> </span>{
+    settings.setUser(user);
+      <span class="hljs-keyword">this</span>.user = user;
+  }
+
 }
 </code></pre>
-<p>Gambar 9. Handle Click Event</p>
 </li>
-</ol>
-<p>Sampai tahap ini kita sudah mengimplementasikan shared preference untuk membuat session pada aplikasi android. Jika kita melakukan login kemudian kita menutup aplikasi yang telah kita buat, maka session akan tetap ada sehingga aplikasi secara otomatis akan membuat Main2Activity.</p>
-<h1 id="tugas">Tugas</h1>
-<ol>
-<li>Tambahkan pengecekan / validasi bahwa email dan password tidak empty dan pastikan karakter yang dimasukkan bukan spasi didalam click event MainActivity</li>
-<li>Didalam Main2Activity gunakan class SessionManagement untuk mendapatkan informasi email dari user yang telah melakukan Login dan gunakan method logutuser untuk menghapus session yang telah dibuat. Dan setelah logout maka aplikasi akan membuat MainActivity.java. Layout pada Main2Activity gunakan layout berikut:</li>
-</ol>
-<pre><code class="lang-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+<li><p>Pada <code>MainActivity</code> buang kode yang tidak dibutuhkan.</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Hapus bagian ini</span>
+FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+fab.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() {
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>{
+    Snackbar.make(view, <span class="hljs-string">&quot;Replace with your own action&quot;</span>, Snackbar.LENGTH_LONG)
+      .setAction(<span class="hljs-string">&quot;Action&quot;</span>, <span class="hljs-keyword">null</span>).show();
+  }
+}
+</code></pre>
+</li>
+<li><p>Pada <code>activity_main</code> modifikasi sesuai kebutuhan. Buang bagian
+FloatingActionButton. Pada bagian <code>include</code> ganti dengan <code>FrameLayout</code> yang
+digunakan untuk meletakkan <code>Fragment</code>.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">FrameLayout</span>
+  <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/fragment_container&quot;</span>
+  <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+  <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+  <span class="hljs-attr">app:layout_behavior</span>=<span class="hljs-string">&quot;@string/appbar_scrolling_view_behavior&quot;</span>
+  /&gt;</span>
+</code></pre>
+</li>
+<li><p>Pada percobaan ini, untuk interaksi UI akan menggunakan <code>Fragment</code>. Buatlah
+package <code>fragments</code> yang digunakan untuk mengorganisasi <code>Fragment</code>.</p>
+</li>
+<li><p>Tambahkan <code>LoginFragment</code> pada package <code>fragments</code>. <code>LoginFragment</code>
+menampilkan tampilan login serta operasi autentikasi. Gunakan template
+<code>Fragment (Blank)</code>.</p>
+</li>
+<li><p>Pada resource layout <code>fragment_login</code>, salin kode tampilan berikut.</p>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ScrollView</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+  <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+  <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+  <span class="hljs-attr">android:fitsSystemWindows</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span>
+    <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+    <span class="hljs-attr">android:paddingTop</span>=<span class="hljs-string">&quot;56dp&quot;</span>
+    <span class="hljs-attr">android:paddingLeft</span>=<span class="hljs-string">&quot;24dp&quot;</span>
+    <span class="hljs-attr">android:paddingRight</span>=<span class="hljs-string">&quot;24dp&quot;</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Username Label --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">android.support.design.widget.TextInputLayout</span>
+      <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+      <span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">&quot;8dp&quot;</span>
+      <span class="hljs-attr">android:layout_marginBottom</span>=<span class="hljs-string">&quot;8dp&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">EditText</span> <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/text_username&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+        <span class="hljs-attr">android:hint</span>=<span class="hljs-string">&quot;Username&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">android.support.design.widget.TextInputLayout</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Password Label --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">android.support.design.widget.TextInputLayout</span>
+      <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+      <span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">&quot;8dp&quot;</span>
+      <span class="hljs-attr">android:layout_marginBottom</span>=<span class="hljs-string">&quot;8dp&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">EditText</span> <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/text_password&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+        <span class="hljs-attr">android:inputType</span>=<span class="hljs-string">&quot;textPassword&quot;</span>
+        <span class="hljs-attr">android:hint</span>=<span class="hljs-string">&quot;Password&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">android.support.design.widget.TextInputLayout</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">android.support.v7.widget.AppCompatButton</span>
+      <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/button_login&quot;</span>
+      <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+      <span class="hljs-attr">android:layout_marginTop</span>=<span class="hljs-string">&quot;24dp&quot;</span>
+      <span class="hljs-attr">android:layout_marginBottom</span>=<span class="hljs-string">&quot;24dp&quot;</span>
+      <span class="hljs-attr">android:padding</span>=<span class="hljs-string">&quot;12dp&quot;</span>
+      <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Login&quot;</span>/&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span> <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/link_signup&quot;</span>
+      <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+      <span class="hljs-attr">android:layout_marginBottom</span>=<span class="hljs-string">&quot;24dp&quot;</span>
+      <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;No account yet? Create one&quot;</span>
+      <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center&quot;</span>
+      <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;16sp&quot;</span>/&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ScrollView</span>&gt;</span>
+</code></pre>
+<blockquote>
+<p>Sesuaikan tampilan login dengan kebutuhan anda, yang terpenting id yang
+digunakan sesuai.</p>
+</blockquote>
+</li>
+<li><p>Tambahkan Fragment <code>NoteFragment</code> pada package <code>fragments</code></p>
+</li>
+<li><p>Bukalah class <code>MainActivity</code> kemudian tambahkan atribut <code>settings</code> dengan tipe
+data <code>Settings</code> dan <code>session</code> dengan tipe data <code>Session</code>.</p>
+</li>
+<li><p>Inisialisasi atribut <code>settings</code> dan <code>session</code> pada method <code>onCreate</code></p>
+<pre><code class="lang-java">settings = <span class="hljs-keyword">new</span> Settings(<span class="hljs-keyword">this</span>);
+session = <span class="hljs-keyword">new</span> Session(settings);
+</code></pre>
+</li>
+<li><p>Buatlah sebuah method dengan akses <em>private</em> seperti berikut.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addFragment</span><span class="hljs-params">()</span> </span>{
+  Fragment fragment = <span class="hljs-keyword">null</span>;
+  <span class="hljs-keyword">if</span> (session.isLogin()) {
+    fragment = <span class="hljs-keyword">new</span> NoteFragment();
+  } <span class="hljs-keyword">else</span> {
+    fragment = <span class="hljs-keyword">new</span> LoginFragment();
+  }
+
+  getSupportFragmentManager().beginTransaction()
+  .replace(R.id.fragment_container, fragment)
+  .commit();
+}
+</code></pre>
+</li>
+<li><p>Panggil method <code>addFragment</code> di dalam method <code>onCreate</code></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+  ...
+  ...
+
+  addFragment();
+}
+</code></pre>
+</li>
+<li><p>Coba jalankan dan amati hasilnya melalui Android Studio</p>
+</li>
+<li><p>Dalam <code>NoteFragment</code> digunakan <code>RecyclerView</code>. Ikuti langkah-langkah pada
+percobaan sebelumnya, untuk mengatur project yang menggunakan <code>RecyclerView</code>.</p>
+</li>
+<li><p>Tambahkan dua file layout dengan nama <code>item_note_list</code> dan
+<code>item_note_grid</code> kedua layout ini digunakan untuk menyimpan tampilan pada
+RecyclerView dengan tampilan list dan grid.</p>
+</li>
+<li><p>Sisipkan kode berikut pada <code>item_note_list</code></p>
+<p>```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+<android.support.v7.widget.cardview xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4dp" app:cardelevation="3dp"></android.support.v7.widget.cardview></p>
+  <linearlayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_margin="4dp" android:weightsum="3">
+
+    <textview android:id="@+id/text_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:textsize="20sp" android:textstyle="bold" tools:hint="Title">
+
+    <textview android:id="@+id/text_date" android:layout_width="match_parent" android:layout_height="wrap_content" android:textalignment="textEnd" android:layout_weight="2" tools:hint="10 Mar 2019">
+  </textview></textview></linearlayout>
+
+
+</li>
+</ul>
+<p>  &lt;/android.support.v7.widget.CardView&gt;</p>
+<pre><code>- Sisipkan kode berikut pada `item_note_grid`
+
+  ```xml
+  &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+  &lt;android.support.v7.widget.CardView
+      xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
     xmlns:tools=&quot;http://schemas.android.com/tools&quot;
     android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    android:orientation=&quot;vertical&quot;
-    android:gravity=&quot;center_horizontal&quot;
-    android:layout_margin=&quot;10dp&quot;
-    tools:context=&quot;.Main2Activity&quot;&gt;
+      android:layout_height=&quot;wrap_content&quot;
+    android:layout_margin=&quot;4dp&quot;
+    app:cardElevation=&quot;3dp&quot;
+    app:cardUseCompatPadding=&quot;true&quot;
+    &gt;
 
-    &lt;TextView
-        android:id=&quot;@+id/tvEmail&quot;
+    &lt;LinearLayout
+      android:layout_width=&quot;match_parent&quot;
+      android:layout_height=&quot;match_parent&quot;
+      android:layout_margin=&quot;4dp&quot;
+      android:orientation=&quot;vertical&quot;
+      &gt;
+
+      &lt;TextView
+        android:id=&quot;@+id/text_title&quot;
         android:layout_width=&quot;wrap_content&quot;
         android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;TextView&quot;
-        android:textSize=&quot;25sp&quot;/&gt;
-
-    &lt;Button
-        android:id=&quot;@+id/buttonLogout&quot;
+        android:textSize=&quot;20sp&quot;
+        android:textStyle=&quot;bold&quot;
+        tools:hint=&quot;Title&quot;
+        /&gt;
+      &lt;TextView
+        android:id=&quot;@+id/text_content&quot;
         android:layout_width=&quot;wrap_content&quot;
         android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;Logout&quot; /&gt;
-&lt;/LinearLayout&gt;
+        tools:hint=&quot;Lorem ipsum sit dollor&quot;
+        /&gt;
+    &lt;/LinearLayout&gt;
+
+
+  &lt;/android.support.v7.widget.CardView&gt;
+</code></pre><ul>
+<li>Tambahkan class <code>NoteAdapter</code> pada package <code>adapters</code>.</li>
+<li><p>Tambahkan baris seperti berikut pada class <code>NoteAdapter</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RecyclerView</span>.<span class="hljs-title">Adapter</span>&lt;<span class="hljs-title">NoteAdapter</span>.<span class="hljs-title">ViewHolder</span>&gt; </span>{
+
+}
 </code></pre>
+</li>
+<li><p>Letakkan pada baris kode yang bergaris bawah merah, kemudian tekan tombol <code>Alt+Enter</code> atau <code>Option+Enter</code> pada OSX.</p>
+</li>
+<li><p>Pada blok class <code>ViewHolder</code> tambahkan keyword <code>abstract</code> serta deklarasikan
+abstract method sehingga kodenya menjadi seperti berikut.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ViewHolder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RecyclerView</span>.<span class="hljs-title">ViewHolder</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ViewHolder</span><span class="hljs-params">(@NonNull View itemView)</span> </span>{
+    <span class="hljs-keyword">super</span>(itemView);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBindViewHolder</span><span class="hljs-params">(Note note)</span></span>;
+
+}
+</code></pre>
+</li>
+<li><p>Sisipkan inner class <code>ListViewHolder</code> serta <code>GridViewHolder</code> pada class
+<code>NoteAdapter</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListViewHolder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ViewHolder</span> </span>{
+
+  TextView titleText;
+  TextView dateText;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ListViewHolder</span><span class="hljs-params">(@NonNull View itemView)</span> </span>{
+    <span class="hljs-keyword">super</span>(itemView);
+    titleText = itemView.findViewById(R.id.text_title);
+    dateText = itemView.findViewById(R.id.text_date);
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBindViewHolder</span><span class="hljs-params">(Note note)</span> </span>{
+    titleText.setText(note.getTitle());
+    dateText.setText(note.getFormattedDate());
+  }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GridViewHolder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ViewHolder</span> </span>{
+
+  TextView titleText;
+  TextView contentText;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">GridViewHolder</span><span class="hljs-params">(@NonNull View itemView)</span> </span>{
+    <span class="hljs-keyword">super</span>(itemView);
+    titleText = itemView.findViewById(R.id.text_title);
+    contentText = itemView.findViewById(R.id.text_content);
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBindViewHolder</span><span class="hljs-params">(Note note)</span> </span>{
+    titleText.setText(note.getTitle());
+    contentText.setText(note.getContent());
+  }
+}
+</code></pre>
+</li>
+<li><p>Tambahkan atribut-atribut berikut pada class <code>NoteAdapter</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> Context context;
+<span class="hljs-keyword">private</span> List&lt;Note&gt; notes;
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> layout;
+</code></pre>
+</li>
+<li><p>Dengan menggunakan fitur generate code, tambahkan constructor seperti berikut.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">NoteAdapter</span><span class="hljs-params">(Context context, List&lt;Note&gt; notes)</span> </span>{
+  <span class="hljs-keyword">this</span>.context = context;
+  <span class="hljs-keyword">this</span>.notes = notes;
+}
+</code></pre>
+</li>
+<li><p>Tambahkan setter untuk atribut <code>layout</code></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setLayout</span><span class="hljs-params">(<span class="hljs-keyword">int</span> layout)</span> </span>{
+  <span class="hljs-keyword">this</span>.layout = layout;
+}
+</code></pre>
+</li>
+<li><p>Override juga method <code>getItemViewType</code> yang digunakan untuk menentukan layout
+mana yang akan digunakan (List atau Grid).</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getItemViewType</span><span class="hljs-params">(<span class="hljs-keyword">int</span> position)</span> </span>{
+  <span class="hljs-keyword">return</span> layout;
+}
+</code></pre>
+</li>
+<li><p>Untuk masing-masing method yang wajib di-<em>override</em> sisipkan kode berikut.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@NonNull</span>
+<span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> ViewHolder <span class="hljs-title">onCreateViewHolder</span><span class="hljs-params">(@NonNull ViewGroup viewGroup, <span class="hljs-keyword">int</span> i)</span> </span>{
+  <span class="hljs-keyword">switch</span> (getItemViewType(i)) {
+    <span class="hljs-keyword">case</span> Constant.LAYOUT_MODE_GRID:
+      View gridView = LayoutInflater.from(context)
+        .inflate(R.layout.item_note_grid, viewGroup, <span class="hljs-keyword">false</span>);
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> GridViewHolder(gridView);
+
+    <span class="hljs-keyword">default</span>:
+      View listView = LayoutInflater.from(context)
+        .inflate(R.layout.item_note_list, viewGroup, <span class="hljs-keyword">false</span>);
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ListViewHolder(listView);
+  }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBindViewHolder</span><span class="hljs-params">(@NonNull ViewHolder viewHolder, <span class="hljs-keyword">int</span> i)</span> </span>{
+  Note note = notes.get(i);
+  viewHolder.onBindViewHolder(note);
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getItemCount</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> (notes != <span class="hljs-keyword">null</span>) ? notes.size() : <span class="hljs-number">0</span>;
+}
+</code></pre>
+</li>
+<li><p>Modifikasi layout pada <code>fragment_note</code> menjadi kode berikut.</p>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">FrameLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+  <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span>
+  <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+  <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+  <span class="hljs-attr">tools:context</span>=<span class="hljs-string">&quot;.fragments.NoteFragment&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">android.support.v7.widget.RecyclerView</span>
+    <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rv_notes&quot;</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    /&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">FrameLayout</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>Pada Fragment <code>NoteFragment</code> mempunyai menu yang berbeda, tambahkan layout
+menu dengan nama <code>menu_note</code> pada folder <code>res/menu</code></p>
+</li>
+<li><p>Sisipkan kode berikut sebagai isi layout menu.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">menu</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+  <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+  <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span>
+  <span class="hljs-attr">tools:context</span>=<span class="hljs-string">&quot;com.dhanifudin.todoapp.MainActivity&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">item</span>
+    <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/action_show_list&quot;</span>
+    <span class="hljs-attr">android:orderInCategory</span>=<span class="hljs-string">&quot;97&quot;</span>
+    <span class="hljs-attr">android:title</span>=<span class="hljs-string">&quot;List&quot;</span>
+    <span class="hljs-attr">app:showAsAction</span>=<span class="hljs-string">&quot;never&quot;</span> /&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">item</span>
+    <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/action_show_grid&quot;</span>
+    <span class="hljs-attr">android:orderInCategory</span>=<span class="hljs-string">&quot;98&quot;</span>
+    <span class="hljs-attr">android:title</span>=<span class="hljs-string">&quot;Grid&quot;</span>
+    <span class="hljs-attr">app:showAsAction</span>=<span class="hljs-string">&quot;never&quot;</span> /&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">item</span>
+    <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/action_logout&quot;</span>
+    <span class="hljs-attr">android:orderInCategory</span>=<span class="hljs-string">&quot;99&quot;</span>
+    <span class="hljs-attr">android:title</span>=<span class="hljs-string">&quot;Logout&quot;</span>
+    <span class="hljs-attr">app:showAsAction</span>=<span class="hljs-string">&quot;never&quot;</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">menu</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>Pada class <code>NoteFragment</code> tambahkan atribut berikut.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> RecyclerView recyclerView;
+<span class="hljs-keyword">private</span> NoteAdapter adapter;
+</code></pre>
+</li>
+<li><p>Override method <code>onCreate</code> pada class <code>NoteFragment</code></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(@Nullable Bundle savedInstanceState)</span> </span>{
+  <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+  setHasOptionsMenu(<span class="hljs-keyword">true</span>);
+}
+</code></pre>
+</li>
+<li><p>Override method <code>onCreateOptionsMenu</code></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreateOptionsMenu</span><span class="hljs-params">(Menu menu, MenuInflater inflater)</span> </span>{
+  inflater.inflate(R.menu.menu_note, menu);
+  <span class="hljs-keyword">super</span>.onCreateOptionsMenu(menu, inflater);
+}
+</code></pre>
+</li>
+<li><p>Buat masing-masing method untuk membagi logika menampilkan secara list atau
+grid.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">displayAsList</span><span class="hljs-params">()</span> </span>{
+  RecyclerView.LayoutManager layoutManager = <span class="hljs-keyword">new</span> LinearLayoutManager(getContext());
+  recyclerView.setLayoutManager(layoutManager);
+  adapter.setLayout(Constant.LAYOUT_MODE_LIST);
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">displayAsGrid</span><span class="hljs-params">()</span> </span>{
+  RecyclerView.LayoutManager layoutManager = <span class="hljs-keyword">new</span> GridLayoutManager(getContext(), <span class="hljs-number">2</span>);
+  recyclerView.setLayoutManager(layoutManager);
+  adapter.setLayout(Constant.LAYOUT_MODE_GRID);
+}
+</code></pre>
+</li>
+<li><p>Override <code>onOptionsItemSelected</code></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onOptionsItemSelected</span><span class="hljs-params">(MenuItem item)</span> </span>{
+  <span class="hljs-keyword">switch</span> (item.getItemId()) {
+    <span class="hljs-keyword">case</span> R.id.action_show_list:
+      displayAsList();
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">case</span> R.id.action_show_grid:
+      displayAsGrid();
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+
+    <span class="hljs-keyword">case</span> R.id.action_logout:
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.onOptionsItemSelected(item);
+}
+</code></pre>
+</li>
+<li><p>Pada method <code>onCreateView</code> modifikasi kode menjadi berikut.</p>
+<pre><code class="lang-java">View view = inflater.inflate(R.layout.fragment_note, container, <span class="hljs-keyword">false</span>);
+recyclerView = view.findViewById(R.id.rv_notes);
+
+adapter = <span class="hljs-keyword">new</span> NoteAdapter(getContext(), Data.getNotes());
+recyclerView.setAdapter(adapter);
+displayAsList();
+
+<span class="hljs-keyword">return</span> view;
+</code></pre>
+</li>
+<li><p>Aplikasi secara tampilan sudah selesai, tinggal menambahkan logic untuk
+menangani interaksi dari pengguna.</p>
+</li>
+<li><p>Pada class <code>LoginFragment</code> tambahkan interface <code>OnLoginFragmentListener</code>
+dengan kode berikut.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">OnLoginFragmentListener</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">onLoginClicked</span><span class="hljs-params">(View view, String username, String password)</span></span>;
+}
+</code></pre>
+</li>
+<li><p>Tambahkan atribut <code>listener</code> dengan interface <code>OnLoginFragmentListener</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> OnLoginFragmentListener listener;
+</code></pre>
+</li>
+<li><p>Pada method <code>onCreateView</code> modifikasi kode menjadi berikut.</p>
+<pre><code class="lang-java">View view = inflater.inflate(R.layout.fragment_login, container, <span class="hljs-keyword">false</span>);
+<span class="hljs-keyword">final</span> EditText usernameText = view.findViewById(R.id.text_username);
+<span class="hljs-keyword">final</span> EditText passwordText = view.findViewById(R.id.text_password);
+Button loginButton = view.findViewById(R.id.button_login);
+
+<span class="hljs-keyword">return</span> view;
+</code></pre>
+</li>
+<li><p>Tambahkan event <code>setOnClickListener</code> pada <code>loginButton</code> sehingga menjadi
+berikut.</p>
+<pre><code class="lang-java">loginButton.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() {
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>{
+    String username = usernameText.getText().toString();
+    String password = passwordText.getText().toString();
+    listener.onLoginClicked(view, username, password);
+  }
+});
+</code></pre>
+</li>
+<li><p>Pada class <code>MainActivity</code> implementasikan interface
+<code>LoginFragment.OnLoginFragmentListener</code></p>
+</li>
+<li><p>Implement method sehingga menjadi berikut.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLoginClicked</span><span class="hljs-params">(View view, String username, String password)</span> </span>{
+  User user = session.doLogin(username, password);
+  String message = <span class="hljs-string">&quot;Authentication failed&quot;</span>;
+  <span class="hljs-keyword">if</span> (user != <span class="hljs-keyword">null</span>) {
+    message = <span class="hljs-string">&quot;Welcome &quot;</span> + username;
+    session.setUser(username);
+  }
+  Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show();
+  addFragment();
+}
+</code></pre>
+</li>
+<li><p>Pada method <code>addFragment</code> set listener pada <code>LoginFragment</code></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addFragment</span><span class="hljs-params">()</span> </span>{
+  ...
+  <span class="hljs-keyword">if</span> (session.isLogin()) {
+    fragment = <span class="hljs-keyword">new</span> NoteFragment();
+  } <span class="hljs-keyword">else</span> {
+    fragment = <span class="hljs-keyword">new</span> LoginFragment();
+    ((LoginFragment) fragment).setListener(<span class="hljs-keyword">this</span>);
+  }
+  ...
+}
+</code></pre>
+</li>
+<li><p>Jalankan aplikasi dan ujilah fungsionalitas tombol login ketika ditekan, untuk
+data login silahkan buka class <code>Data</code>.</p>
+</li>
+<li><p>Jika aplikasi berjalan dengan semestinya, maka akan tampil Fragment
+<code>NoteFragment</code> setelah login berhasil.</p>
+</li>
+<li><p>Tutup aplikasi dan kemudian bukalah kembali, maka aplikasi akan menampilkan
+langsung Fragment <code>NoteFragment</code>.</p>
+</li>
+<li><p>Pada <code>NoteFragment</code> dibutuhkan implementasi fungsionalitas untuk logout.
+Tambahkan interface <code>OnNoteFragmentListener</code> sebagai berikut.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">OnNoteFragmentListener</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">onLogoutClick</span><span class="hljs-params">()</span></span>;
+  }
+</code></pre>
+</li>
+<li><p>Sisipkan atribut <code>listener</code> dengan interface <code>OnNoteFragmentListener</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> OnNoteFragmentListener listener;
+</code></pre>
+</li>
+<li><p>Pada class <code>MainActivity</code> implementasikan interface
+<code>NoteFragment.OnNoteFragmentListener</code></p>
+</li>
+<li><p>Implement method sehingga menjadi berikut.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLogoutClick</span><span class="hljs-params">()</span> </span>{
+  session.doLogout();
+  addFragment();
+}
+</code></pre>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -710,7 +1187,7 @@ buttonLogin.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClic
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Shared Preference","level":"1.7","depth":1,"next":{"title":"Sqlite CRUD","level":"1.8","depth":1,"path":"07.md","ref":"07.md","articles":[]},"previous":{"title":"QUIZ","level":"1.6","depth":1,"path":"05.md","ref":"05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"06.md","mtime":"2019-02-04T23:33:20.466Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-25T07:31:27.313Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Shared Preference","level":"1.7","depth":1,"next":{"title":"Sqlite CRUD","level":"1.8","depth":1,"path":"07.md","ref":"07.md","articles":[]},"previous":{"title":"QUIZ","level":"1.6","depth":1,"path":"05.md","ref":"05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"06.md","mtime":"2019-03-10T20:40:12.360Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-10T12:34:22.603Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -721,6 +1198,10 @@ buttonLogin.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClic
     
         
         <script src="gitbook/gitbook-plugin-noembed/scripts.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
