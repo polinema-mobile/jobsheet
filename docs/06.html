@@ -765,61 +765,91 @@ percobaan sebelumnya, untuk mengatur project yang menggunakan <code>RecyclerView
 RecyclerView dengan tampilan list dan grid.</p>
 </li>
 <li><p>Sisipkan kode berikut pada <code>item_note_list</code></p>
-<p>```xml
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-<android.support.v7.widget.cardview xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4dp" app:cardelevation="3dp"></android.support.v7.widget.cardview></p>
-  <linearlayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_margin="4dp" android:weightsum="3">
-
-    <textview android:id="@+id/text_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:textsize="20sp" android:textstyle="bold" tools:hint="Title">
-
-    <textview android:id="@+id/text_date" android:layout_width="match_parent" android:layout_height="wrap_content" android:textalignment="textEnd" android:layout_weight="2" tools:hint="10 Mar 2019">
-  </textview></textview></linearlayout>
-
-
 </li>
 </ul>
-<p>  &lt;/android.support.v7.widget.CardView&gt;</p>
-<pre><code>- Sisipkan kode berikut pada `item_note_grid`
+<pre><code class="lang-xml">  <span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">android.support.v7.widget.CardView</span>
+    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+    <span class="hljs-attr">android:layout_margin</span>=<span class="hljs-string">&quot;4dp&quot;</span>
+    <span class="hljs-attr">app:cardElevation</span>=<span class="hljs-string">&quot;3dp&quot;</span>
+    &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span>
+      <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+      <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;horizontal&quot;</span>
+      <span class="hljs-attr">android:layout_margin</span>=<span class="hljs-string">&quot;4dp&quot;</span>
+      <span class="hljs-attr">android:weightSum</span>=<span class="hljs-string">&quot;3&quot;</span>
+      &gt;</span>
 
-  ```xml
-  &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-  &lt;android.support.v7.widget.CardView
-      xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
-    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
-    android:layout_width=&quot;match_parent&quot;
-      android:layout_height=&quot;wrap_content&quot;
-    android:layout_margin=&quot;4dp&quot;
-    app:cardElevation=&quot;3dp&quot;
-    app:cardUseCompatPadding=&quot;true&quot;
-    &gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/text_title&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+        <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;1&quot;</span>
+        <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;20sp&quot;</span>
+        <span class="hljs-attr">android:textStyle</span>=<span class="hljs-string">&quot;bold&quot;</span>
+        <span class="hljs-attr">tools:hint</span>=<span class="hljs-string">&quot;Title&quot;</span>
+        /&gt;</span>
 
-    &lt;LinearLayout
-      android:layout_width=&quot;match_parent&quot;
-      android:layout_height=&quot;match_parent&quot;
-      android:layout_margin=&quot;4dp&quot;
-      android:orientation=&quot;vertical&quot;
-      &gt;
-
-      &lt;TextView
-        android:id=&quot;@+id/text_title&quot;
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:textSize=&quot;20sp&quot;
-        android:textStyle=&quot;bold&quot;
-        tools:hint=&quot;Title&quot;
-        /&gt;
-      &lt;TextView
-        android:id=&quot;@+id/text_content&quot;
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        tools:hint=&quot;Lorem ipsum sit dollor&quot;
-        /&gt;
-    &lt;/LinearLayout&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/text_date&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+        <span class="hljs-attr">android:textAlignment</span>=<span class="hljs-string">&quot;textEnd&quot;</span>
+        <span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;2&quot;</span>
+        <span class="hljs-attr">tools:hint</span>=<span class="hljs-string">&quot;10 Mar 2019&quot;</span>
+        /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span>
 
 
-  &lt;/android.support.v7.widget.CardView&gt;
-</code></pre><ul>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">android.support.v7.widget.CardView</span>&gt;</span>
+</code></pre>
+<ul>
+<li>Sisipkan kode berikut pada <code>item_note_grid</code></li>
+</ul>
+<pre><code class="lang-xml">  <span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">android.support.v7.widget.CardView</span>
+      <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+    <span class="hljs-attr">android:layout_margin</span>=<span class="hljs-string">&quot;4dp&quot;</span>
+    <span class="hljs-attr">app:cardElevation</span>=<span class="hljs-string">&quot;3dp&quot;</span>
+    <span class="hljs-attr">app:cardUseCompatPadding</span>=<span class="hljs-string">&quot;true&quot;</span>
+    &gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span>
+      <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+      <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+      <span class="hljs-attr">android:layout_margin</span>=<span class="hljs-string">&quot;4dp&quot;</span>
+      <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;vertical&quot;</span>
+      &gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/text_title&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+        <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;20sp&quot;</span>
+        <span class="hljs-attr">android:textStyle</span>=<span class="hljs-string">&quot;bold&quot;</span>
+        <span class="hljs-attr">tools:hint</span>=<span class="hljs-string">&quot;Title&quot;</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/text_content&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+        <span class="hljs-attr">tools:hint</span>=<span class="hljs-string">&quot;Lorem ipsum sit dollor&quot;</span>
+        /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span>
+
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">android.support.v7.widget.CardView</span>&gt;</span>
+</code></pre>
+<ul>
 <li>Tambahkan class <code>NoteAdapter</code> pada package <code>adapters</code>.</li>
 <li><p>Tambahkan baris seperti berikut pada class <code>NoteAdapter</code></p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RecyclerView</span>.<span class="hljs-title">Adapter</span>&lt;<span class="hljs-title">NoteAdapter</span>.<span class="hljs-title">ViewHolder</span>&gt; </span>{
@@ -1125,7 +1155,7 @@ langsung Fragment <code>NoteFragment</code>.</p>
 Tambahkan interface <code>OnNoteFragmentListener</code> sebagai berikut.</p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">OnNoteFragmentListener</span> </span>{
   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">onLogoutClick</span><span class="hljs-params">()</span></span>;
-  }
+}
 </code></pre>
 </li>
 <li><p>Sisipkan atribut <code>listener</code> dengan interface <code>OnNoteFragmentListener</code></p>
@@ -1142,6 +1172,8 @@ Tambahkan interface <code>OnNoteFragmentListener</code> sebagai berikut.</p>
   addFragment();
 }
 </code></pre>
+</li>
+<li><p>Jalankan aplikasi dan ujilah fitur logout pada aplikasi.</p>
 </li>
 </ul>
 
@@ -1187,7 +1219,7 @@ Tambahkan interface <code>OnNoteFragmentListener</code> sebagai berikut.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Shared Preference","level":"1.7","depth":1,"next":{"title":"Sqlite CRUD","level":"1.8","depth":1,"path":"07.md","ref":"07.md","articles":[]},"previous":{"title":"QUIZ","level":"1.6","depth":1,"path":"05.md","ref":"05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"06.md","mtime":"2019-03-10T20:40:12.360Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-10T12:34:22.603Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Shared Preference","level":"1.7","depth":1,"next":{"title":"Sqlite CRUD","level":"1.8","depth":1,"path":"07.md","ref":"07.md","articles":[]},"previous":{"title":"QUIZ","level":"1.6","depth":1,"path":"05.md","ref":"05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"06.md","mtime":"2019-03-11T00:41:30.680Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-11T00:42:24.647Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -1198,10 +1230,6 @@ Tambahkan interface <code>OnNoteFragmentListener</code> sebagai berikut.</p>
     
         
         <script src="gitbook/gitbook-plugin-noembed/scripts.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
