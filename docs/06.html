@@ -758,7 +758,8 @@ session = <span class="hljs-keyword">new</span> Session(settings);
 <li><p>Coba jalankan dan amati hasilnya melalui Android Studio</p>
 </li>
 <li><p>Dalam <code>NoteFragment</code> digunakan <code>RecyclerView</code>. Ikuti langkah-langkah pada
-percobaan sebelumnya, untuk mengatur project yang menggunakan <code>RecyclerView</code>.</p>
+percobaan sebelumnya, untuk mengatur project yang menggunakan <code>RecyclerView</code>.
+Tambahkan <em>dependency</em> recyclerView dan juga cardview.</p>
 </li>
 <li><p>Tambahkan dua file layout dengan nama <code>item_note_list</code> dan
 <code>item_note_grid</code> kedua layout ini digunakan untuk menyimpan tampilan pada
@@ -1125,7 +1126,7 @@ langsung Fragment <code>NoteFragment</code>.</p>
 Tambahkan interface <code>OnNoteFragmentListener</code> sebagai berikut.</p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">OnNoteFragmentListener</span> </span>{
   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">onLogoutClick</span><span class="hljs-params">()</span></span>;
-  }
+}
 </code></pre>
 </li>
 <li><p>Sisipkan atribut <code>listener</code> dengan interface <code>OnNoteFragmentListener</code></p>
@@ -1143,7 +1144,136 @@ Tambahkan interface <code>OnNoteFragmentListener</code> sebagai berikut.</p>
 }
 </code></pre>
 </li>
+<li><p>Jalankan aplikasi dan ujilah fitur logout pada aplikasi.</p>
+</li>
 </ul>
+<h2 id="praktikum-2">Praktikum 2</h2>
+<p>Pada praktikum ini, mahasiswa akan menambahkan halaman pengaturan dengan
+menggunakan <code>PreferenceFragmentCompat</code> yang memanfaatkan <code>SharedPreference</code>
+untuk menyimpan data. Selain menggunakan <code>PreferenceFragmentCompat</code> dapat juga
+memanfaatkan <code>PreferenceActivity</code> dan <code>PreferenceFragment</code>, tetapi pendekatan
+ini sudah <em>deprecated</em>.</p>
+<h3 id="langkah-langkah-praktikum">Langkah-langkah Praktikum</h3>
+<ul>
+<li><p>Pada project sebelumnya, tambahkan dependency pada file <code>build.gradle</code></p>
+<pre><code class="lang-gradle">...
+implementation <span class="hljs-string">&apos;com.android.support:preference-v7:28.0.0&apos;</span>
+...
+</code></pre>
+<blockquote>
+<p>Sesuaikan versi dengan target SDK yang terinstall.</p>
+</blockquote>
+</li>
+<li><p>Tambahkan <strong>Android Resource File</strong> pada folder <code>values</code> dan beri nama <code>arrays</code></p>
+</li>
+<li><p>Pada file tersebut, tambahkan dua buah array yang berisi nilai ukuran Text
+Size</p>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">string-array</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;text_size&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">item</span>&gt;</span>Small<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">item</span>&gt;</span>Medium<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">item</span>&gt;</span>Large<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">string-array</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">string-array</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;text_size_value&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">item</span>&gt;</span>14<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">item</span>&gt;</span>20<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">item</span>&gt;</span>24<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">string-array</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>Tambahkan <strong>Android Resource Directory</strong> pada folder <code>res</code> dan beri nama
+dengan <code>xml</code>. Buatlah <strong>Android Resource File</strong> dalam folder tersebut dan beri
+nama dengan <code>preferences</code></p>
+</li>
+<li><p>Sisipkan baris kode berikut.</p>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">PreferenceScreen</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">ListPreference</span>
+    <span class="hljs-attr">android:key</span>=<span class="hljs-string">&quot;pref_text_size&quot;</span>
+    <span class="hljs-attr">android:title</span>=<span class="hljs-string">&quot;Text Size&quot;</span>
+    <span class="hljs-attr">android:summary</span>=<span class="hljs-string">&quot;Text Size&quot;</span>
+    <span class="hljs-attr">android:defaultValue</span>=<span class="hljs-string">&quot;14sp&quot;</span>
+    <span class="hljs-attr">android:entries</span>=<span class="hljs-string">&quot;@array/text_size&quot;</span>
+    <span class="hljs-attr">android:entryValues</span>=<span class="hljs-string">&quot;@array/text_size_value&quot;</span>
+    /&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">PreferenceScreen</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>Kemudian tambahkan class java <code>SettingsFragment</code> pada package <code>fragments</code>.
+Sesuaikan nilainya dengan gambar berikut.</p>
+<p><img src="img/06/SettingsFragment.png" alt="SettingsFragment"></p>
+</li>
+<li><p>Override method <code>onCreatePreferences</code>, kemudian sisipkan kode berikut.</p>
+<pre><code class="lang-java">addPreferencesFromResource(R.xml.preferences);
+</code></pre>
+</li>
+<li><p>Deklarasikan konstanta baru pada class <code>Constant</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String PREF_TEXT_SIZE = <span class="hljs-string">&quot;pref_text_size&quot;</span>;
+</code></pre>
+</li>
+<li><p>Untuk memudahkan manipulasi, tambahkan method pada class <code>Settings</code> untuk
+mengakses nilai preferences.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-title">getTextSize</span><span class="hljs-params">()</span> </span>{
+  String textSize = preferences.getString(Constant.PREF_TEXT_SIZE, <span class="hljs-string">&quot;20&quot;</span>);
+  <span class="hljs-keyword">return</span> Float.parseFloat(textSize);
+}
+</code></pre>
+</li>
+<li><p>Bukalah class <code>NoteAdapter</code>, kemudian deklarasikan atribut <code>settings</code> dengan
+tipe data <code>Settings</code></p>
+</li>
+<li><p>Inisialisasi atribut tersebut pada constructor.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">this</span>.settings = <span class="hljs-keyword">new</span> Settings(context);
+</code></pre>
+</li>
+<li><p>Pada blok constructor ListViewHolder lakukan pengambilan nilai Text Size,
+kemudian atur text size judul dengan menggunakan kode berikut.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">float</span> textSize = settings.getTextSize();
+titleText.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+</code></pre>
+</li>
+<li><p>Pada class <code>MainActivity</code> buatlah method <code>createSettingsFragment</code> yang
+bertanggung jawab untuk membuat Fragment <code>SettingsFragment</code>. Pada peletakkan
+fragment, ada sedikit perbedaan. Terdapat tambahan method <code>addToBackStack</code> yang
+dimaksudkan ketika tombol back ditekan, aplikasi tidak langsung keluar.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">createSettingFragment</span><span class="hljs-params">()</span> </span>{
+  Fragment settingsFragment = <span class="hljs-keyword">new</span> SettingsFragment();
+  getSupportFragmentManager().beginTransaction()
+    .replace(R.id.fragment_container, settingsFragment)
+    .addToBackStack(<span class="hljs-keyword">null</span>)
+    .commit();
+}
+</code></pre>
+</li>
+<li><p>Sebagai langkah terakhir, lakukan pemanggilan <code>createSettingFragment()</code> ketika
+menu <code>Settings</code> ditekan. Pada blok method <code>onOptionsItemSelected</code> tambahkan
+kode berikut.</p>
+<pre><code class="lang-java">...
+<span class="hljs-keyword">if</span> (id == R.id.action_settings) {
+  createSettingFragment();
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+...
+</code></pre>
+</li>
+<li><p>Jalankan aplikasi, kemudian masuk ke Settings, coba ubah nilai ukuran Text
+Size kemudian perhatikan perubahan yang terjadi.</p>
+</li>
+</ul>
+<h2 id="tugas">Tugas</h2>
+<ol>
+<li><p>Lakukan modifikasi pada aplikasi, sehingga default tampilan ketika
+<code>NoteFragment</code> dipanggil adalah tampilan terakhir yang dipilih (List atau
+Grid).</p>
+</li>
+<li><p>Tambahkan settings tambahan, sehingga pengguna dapat mengkustomisasi aplikasi
+sesuai keinginan.</p>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -1187,7 +1317,7 @@ Tambahkan interface <code>OnNoteFragmentListener</code> sebagai berikut.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Shared Preference","level":"1.7","depth":1,"next":{"title":"Sqlite CRUD","level":"1.8","depth":1,"path":"07.md","ref":"07.md","articles":[]},"previous":{"title":"QUIZ","level":"1.6","depth":1,"path":"05.md","ref":"05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"06.md","mtime":"2019-03-10T20:40:12.360Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-10T12:34:22.603Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Shared Preference","level":"1.7","depth":1,"next":{"title":"Sqlite CRUD","level":"1.8","depth":1,"path":"07.md","ref":"07.md","articles":[]},"previous":{"title":"QUIZ","level":"1.6","depth":1,"path":"05.md","ref":"05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"06.md","mtime":"2019-03-11T01:23:48.353Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-11T01:24:38.387Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
