@@ -653,7 +653,8 @@ package <code>fragments</code> yang digunakan untuk mengorganisasi <code>Fragmen
 </li>
 <li><p>Tambahkan <code>LoginFragment</code> pada package <code>fragments</code>. <code>LoginFragment</code>
 menampilkan tampilan login serta operasi autentikasi. Gunakan template
-<code>Fragment (Blank)</code>.</p>
+<code>Fragment (Blank)</code>. Sesuaikan konfigurasi dengan gambar berikut.</p>
+<p><img src="img/06/LoginFragment.png" alt="LoginFragment"></p>
 </li>
 <li><p>Pada resource layout <code>fragment_login</code>, salin kode tampilan berikut.</p>
 <pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
@@ -1174,6 +1175,21 @@ Tambahkan interface <code>OnNoteFragmentListener</code> sebagai berikut.</p>
 }
 </code></pre>
 </li>
+<li><p>Register listener <code>NoteFragment.OnNoteFragmentListener</code> dengan <code>MainActivity</code>,
+dengan menggunakan kode berikut pada class <code>MainActivity</code> method
+<code>addFragment()</code></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addFragment</span><span class="hljs-params">()</span> </span>{
+  ...
+  <span class="hljs-keyword">if</span> (session.isLogin()) {
+    fragment = <span class="hljs-keyword">new</span> NoteFragment();
+    ((NoteFragment) fragment).setListener(<span class="hljs-keyword">this</span>)
+  } <span class="hljs-keyword">else</span> {
+    ...
+  }
+  ...
+}
+</code></pre>
+</li>
 <li><p>Jalankan aplikasi dan ujilah fitur logout pada aplikasi.</p>
 </li>
 </ul>
@@ -1347,7 +1363,7 @@ sesuai keinginan.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Shared Preference","level":"1.7","depth":1,"next":{"title":"Sqlite CRUD","level":"1.8","depth":1,"path":"07.md","ref":"07.md","articles":[]},"previous":{"title":"QUIZ","level":"1.6","depth":1,"path":"05.md","ref":"05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"06.md","mtime":"2019-03-11T01:29:58.844Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-11T01:30:36.351Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Shared Preference","level":"1.7","depth":1,"next":{"title":"Sqlite CRUD","level":"1.8","depth":1,"path":"07.md","ref":"07.md","articles":[]},"previous":{"title":"QUIZ","level":"1.6","depth":1,"path":"05.md","ref":"05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"06.md","mtime":"2019-03-12T01:44:50.852Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-12T01:45:49.209Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
