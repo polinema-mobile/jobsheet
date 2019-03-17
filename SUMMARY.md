@@ -10,6 +10,7 @@
 - [Sqlite CRUD](07/00.md)
   - [Starter Project](07/01.md)
   - [Menyiapkan Dependency](07/02.md)
+  - [Membuat Entitas](07/03.md)
   - [Tugas](07/tugas.md)
 - [QUIZ](08.md)
 - [SQLite Relational, Master Detail](09.md)

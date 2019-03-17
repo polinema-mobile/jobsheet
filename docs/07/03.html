@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Sqlite CRUD · GitBook</title>
+        <title>Membuat Entitas · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="01.html" />
+    <link rel="next" href="tugas.html" />
     
     
-    <link rel="prev" href="../06.html" />
+    <link rel="prev" href="02.html" />
     
 
     </head>
@@ -198,7 +198,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8" data-path="00.html">
+        <li class="chapter " data-level="1.8" data-path="00.html">
             
                 <a href="00.html">
             
@@ -244,7 +244,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="03.html">
+        <li class="chapter active" data-level="1.8.3" data-path="03.html">
             
                 <a href="03.html">
             
@@ -459,7 +459,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Sqlite CRUD</a>
+        <a href=".." >Membuat Entitas</a>
     </h1>
 </div>
 
@@ -474,13 +474,83 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="sqlite-crud">Sqlite CRUD</h1>
-<h2 id="kemampuan-akhir-yang-direncanakan">Kemampuan Akhir yang Direncanakan</h2>
-<ol>
-<li>Mahasiswa mampu menginstall library SQlite pada aplikasi Android.</li>
-<li>Mahasiswa mampu mendesain database sederhana untuk aplikasi android.</li>
-<li>Mahasiswa mampu membuat program untuk operasi insert, update, delete dan read pada database SQlite</li>
-</ol>
+                                <h1 id="membuat-entitas">Membuat Entitas</h1>
+<p>Pada aplikasi dalam percobaan ini membutuhkan data <code>user</code> dan <code>note</code>. Setiap
+data tersebut dikenal dengan <a href="https://developer.android.com/training/data-storage/room/defining-data.html" target="_blank">Entity</a>.
+Perhatikan pada dua class <code>User</code> dan <code>Note</code>. Dalam entitas terdapat constructor
+serta setter dan getter. Hal ini diperlukan sehingga <code>Room</code> dapat mengenal
+bagaimana sebuah object akan dibuat.</p>
+<p>Room menggunakan annotation untuk mendeklarasikan struktur schema tabel.
+Dengan annotation ini Room dapat mengidentifikasi setiap bagian pada class yang
+terkait dengan database dan meng-<code>generate</code> code. Lakukan langkah berikut untuk
+mendefinisikan schema pada class <code>User</code> dan <code>Note</code>.</p>
+<ul>
+<li><p>Tambahkan annotation <code>@Entity(tableName = &quot;users&quot;)</code> pada class <code>User</code> sehingga
+menjadi seperti berikut.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Entity</span>(tableName = <span class="hljs-string">&quot;users&quot;</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>{
+
+...
+
+}
+</code></pre>
+</li>
+<li><p>Lakukan hal yang sama juga untuk class <code>Note</code>, tetapi set nilai <code>tableName</code>
+dengan nilai <code>notes</code>.</p>
+</li>
+<li><p>Definisikan primary key pada masing-masing entitas dengan menggunakan
+annotation <code>@PrimaryKey</code> dan auto increment. Kode untuk implementasi dapat
+dilihat sebagai berikut.</p>
+<pre><code class="lang-java">...
+<span class="hljs-meta">@PrimaryKey</span>(autoGenerate = <span class="hljs-keyword">true</span>)
+<span class="hljs-meta">@ColumnInfo</span>(name = <span class="hljs-string">&quot;id&quot;</span>)
+<span class="hljs-keyword">private</span> Long id;
+...
+</code></pre>
+</li>
+<li><p>Untuk mendefinisikan mandatory kolom (tidak boleh <code>null</code>), Room menggunakan
+annotation <code>@NonNull</code>. Tambahkan annotation tersebut di kolom entitas yang
+bersifat mandatory.</p>
+</li>
+<li><p>Room hanya bisa menggunakan satu constructor dalam satu class, jika terdapat
+lebih dari satu constructor dalam entitas diperlukan penambahan annotation
+<code>@Ignore</code>.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Ignore</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String username, String password)</span> </span>{
+  <span class="hljs-keyword">this</span>(<span class="hljs-keyword">null</span>, username, password);
+}
+</code></pre>
+<pre><code class="lang-java">...
+<span class="hljs-meta">@Ignore</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Note</span><span class="hljs-params">()</span> </span>{ }
+
+<span class="hljs-meta">@Ignore</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Note</span><span class="hljs-params">(String title, Date date, String content)</span> </span>{
+  <span class="hljs-keyword">this</span>(<span class="hljs-keyword">null</span>, title, date, content);
+}
+...
+</code></pre>
+</li>
+<li><p>Pada class <code>Note</code> terdapat kolom date yang bertipe <code>Date</code>. Room secara default
+hanya mendukung tipe data yang didefinisikan di <code>java.lang</code>. Jika terdapat tipe
+data khusus, maka dibutuhkan class bantu untuk mengkonversi nilai tersebut.</p>
+</li>
+<li><p>Buatlah sebuah class <code>DateConverter</code> dan letakkan pada package <code>db</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DateConverter</span> </span>{
+  <span class="hljs-meta">@TypeConverter</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Date <span class="hljs-title">toDate</span><span class="hljs-params">(Long timestamp)</span> </span>{
+    <span class="hljs-keyword">return</span> timestamp == <span class="hljs-keyword">null</span> ? <span class="hljs-keyword">null</span> : <span class="hljs-keyword">new</span> Date(timestamp);
+  }
+
+  <span class="hljs-meta">@TypeConverter</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Long <span class="hljs-title">toTimestamp</span><span class="hljs-params">(Date date)</span> </span>{
+    <span class="hljs-keyword">return</span> date == <span class="hljs-keyword">null</span> ? <span class="hljs-keyword">null</span> : date.getTime();
+  }
+
+}
+</code></pre>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -508,12 +578,12 @@
 
             
                 
-                <a href="../06.html" class="navigation navigation-prev " aria-label="Previous page: Shared Preference">
+                <a href="02.html" class="navigation navigation-prev " aria-label="Previous page: Menyiapkan Dependency">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="01.html" class="navigation navigation-next " aria-label="Next page: Starter Project">
+                <a href="tugas.html" class="navigation navigation-next " aria-label="Next page: Tugas">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -524,7 +594,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Sqlite CRUD","level":"1.8","depth":1,"next":{"title":"Starter Project","level":"1.8.1","depth":2,"path":"07/01.md","ref":"07/01.md","articles":[]},"previous":{"title":"Shared Preference","level":"1.7","depth":1,"path":"06.md","ref":"06.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"07/00.md","mtime":"2019-03-17T23:32:01.033Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-17T23:58:39.398Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Membuat Entitas","level":"1.8.3","depth":2,"next":{"title":"Tugas","level":"1.8.4","depth":2,"path":"07/tugas.md","ref":"07/tugas.md","articles":[]},"previous":{"title":"Menyiapkan Dependency","level":"1.8.2","depth":2,"path":"07/02.md","ref":"07/02.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"07/03.md","mtime":"2019-03-17T23:57:12.847Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-17T23:58:39.398Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
