@@ -1,6 +1,7 @@
 node_modules/
 docs/.gitignore
 docs/package.json
+docs/gitbook/gitbook-plugin-livereload/*
 docs/*.pdf
 docs/pdf/*
 
