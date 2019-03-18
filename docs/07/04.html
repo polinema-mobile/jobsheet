@@ -1,0 +1,633 @@
+
+<!DOCTYPE HTML>
+<html lang="id" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Membuat DAO · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-noembed/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="tugas.html" />
+    
+    
+    <link rel="prev" href="03.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../01.html">
+            
+                <a href="../01.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Pendahuluan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../02-rev.html">
+            
+                <a href="../02-rev.html">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Activity Lifecycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../03.html">
+            
+                <a href="../03.html">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    Layout Lanjutan - RecyclerView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../04-rev.html">
+            
+                <a href="../04-rev.html">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Intent
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../05.html">
+            
+                <a href="../05.html">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    QUIZ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../06.html">
+            
+                <a href="../06.html">
+            
+                    
+                        <b>1.7.</b>
+                    
+                    Shared Preference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="00.html">
+            
+                <a href="00.html">
+            
+                    
+                        <b>1.8.</b>
+                    
+                    Sqlite CRUD
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="01.html">
+            
+                <a href="01.html">
+            
+                    
+                        <b>1.8.1.</b>
+                    
+                    Starter Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="02.html">
+            
+                <a href="02.html">
+            
+                    
+                        <b>1.8.2.</b>
+                    
+                    Menyiapkan Dependency
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="03.html">
+            
+                <a href="03.html">
+            
+                    
+                        <b>1.8.3.</b>
+                    
+                    Membuat Entitas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.4" data-path="04.html">
+            
+                <a href="04.html">
+            
+                    
+                        <b>1.8.4.</b>
+                    
+                    Membuat DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="tugas.html">
+            
+                <a href="tugas.html">
+            
+                    
+                        <b>1.8.5.</b>
+                    
+                    Tugas
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../08.html">
+            
+                <a href="../08.html">
+            
+                    
+                        <b>1.9.</b>
+                    
+                    QUIZ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../09.html">
+            
+                <a href="../09.html">
+            
+                    
+                        <b>1.10.</b>
+                    
+                    SQLite Relational, Master Detail
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../10.html">
+            
+                <a href="../10.html">
+            
+                    
+                        <b>1.11.</b>
+                    
+                    Install Retrofit, REST Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../11.html">
+            
+                <a href="../11.html">
+            
+                    
+                        <b>1.12.</b>
+                    
+                    Retrofit dengan RecyclerView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../12.html">
+            
+                <a href="../12.html">
+            
+                    
+                        <b>1.13.</b>
+                    
+                    Retrofit Picasso n Custom Layout, Rest dengan Token
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../13.html">
+            
+                <a href="../13.html">
+            
+                    
+                        <b>1.14.</b>
+                    
+                    Quiz2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../14.html">
+            
+                <a href="../14.html">
+            
+                    
+                        <b>1.15.</b>
+                    
+                    Android Camera API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../15.html">
+            
+                <a href="../15.html">
+            
+                    
+                        <b>1.16.</b>
+                    
+                    Android Camera API Part 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../16.html">
+            
+                <a href="../16.html">
+            
+                    
+                        <b>1.17.</b>
+                    
+                    Google Maps API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="../17.html">
+            
+                <a href="../17.html">
+            
+                    
+                        <b>1.18.</b>
+                    
+                    UAS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Membuat DAO</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="membuat-dao">Membuat DAO</h1>
+<p>DAO (Data Access Object), DAO menspesifikasikan SQL query dengan method. Pada
+room persistence, terdapat annotation-annotation khusus yang digunakan untuk
+mengimplementasikan DAO, seperti contohnya <code>@Insert</code>. Untuk membuat DAO, harus
+didefinisikan sebagai <code>interface</code> atau <code>abstract class</code>.</p>
+<p>Untuk mengimplementasikan DAO, silahkan ikuti langkah-langkah berikut:</p>
+<ul>
+<li>Buatlah sebuah package <code>dao</code> pada project anda.</li>
+<li>Buatlah interface dan beri nama dengan <code>UserDao</code>, dan jangan lupa untuk
+memberikan annotation <code>@Dao</code> untuk menandai bahwa ini adalah implementasi DAO
+dalam Room.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Dao</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserDao</span> </span>{
+
+}
+</code></pre>
+<ul>
+<li>Pada interface <code>UserDao</code> definisikan method untuk melakukan operasi insert
+dengan annotation <code>@Insert</code></li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Insert</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(User... user)</span></span>;
+</code></pre>
+<blockquote>
+<p><strong>Catatan</strong>: notasi tiga titik pada java adalah shortcut code untuk mendefinisikan
+bahwa method ini dapat menerima argumen array atau multiple argumen.</p>
+</blockquote>
+<ul>
+<li>Pada aplikasi ini dibutuhkan proses login, alur proses login membutuhkan
+pengecekan data berdasarkan username. Jika data ditemukan baru diproses lebih
+lanjut dengan pencocokan password. Untuk mendefinisikan custom query pada room
+digunakan annotation <code>@Query</code>. Definisikan operasi query tersebut dengan kode
+berikut.</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Query</span>(<span class="hljs-string">&quot;SELECT * FROM users WHERE username = :username LIMIT 1&quot;</span>)
+<span class="hljs-function">LiveData&lt;User&gt; <span class="hljs-title">getUserByUsername</span><span class="hljs-params">(String username)</span></span>;
+</code></pre>
+<blockquote>
+<p><strong>Catatan</strong>: <code>LiveData</code> digunakan untuk mendapatkan data terbaru ketika terjadi
+perubahan. Referensi lebih lanjut silahkan dibaca pada <a href="https://developer.android.com/topic/libraries/architecture/livedata" target="_blank">dokumentasi Livedata</a>. <code>LiveData</code> umumnya digunakan ketika bekerja dengan UI.</p>
+</blockquote>
+<ul>
+<li>Buatlah interface <code>NoteDao</code> pada package <code>dao</code>.</li>
+<li><p>Pada interface <code>NoteDao</code> definisikan operasi <code>insert</code>, <code>update</code>, <code>delete</code>
+dengan annotation <code>@Insert</code>, <code>@Update</code>, <code>@Delete</code></p>
+</li>
+<li><p>Untuk mengambil semua data catatan dibutuhkan sebuah query. Definisikan query
+tersebut dengan kode berikut.</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@Query</span>(<span class="hljs-string">&quot;SELECT * FROM notes&quot;</span>)
+LiveData&lt;List&lt;Note&gt;&gt; getAll();
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="03.html" class="navigation navigation-prev " aria-label="Previous page: Membuat Entitas">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="tugas.html" class="navigation navigation-next " aria-label="Next page: Tugas">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Membuat DAO","level":"1.8.4","depth":2,"next":{"title":"Tugas","level":"1.8.5","depth":2,"path":"07/tugas.md","ref":"07/tugas.md","articles":[]},"previous":{"title":"Membuat Entitas","level":"1.8.3","depth":2,"path":"07/03.md","ref":"07/03.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"07/04.md","mtime":"2019-03-18T00:25:25.106Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-17T23:34:23.433Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-noembed/scripts.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
