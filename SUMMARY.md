@@ -13,6 +13,8 @@
   - [Membuat Entitas](07/03.md)
   - [Membuat DAO](07/04.md)
   - [Implementasi Room Database](07/05.md)
+  - [Membuat repository](07/06.md)
+  - [Membuat ViewModel](07/07.md)
   - [Tugas](07/tugas.md)
 - [QUIZ](08.md)
 - [SQLite Relational, Master Detail](09.md)
