@@ -61,7 +61,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tugas.html" />
+    <link rel="next" href="08.html" />
     
     
     <link rel="prev" href="06.html" />
@@ -296,7 +296,7 @@
                     
                         <b>1.8.6.</b>
                     
-                    Membuat repository
+                    Membuat Repository
             
                 </a>
             
@@ -319,12 +319,27 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.8" data-path="tugas.html">
+        <li class="chapter " data-level="1.8.8" data-path="08.html">
+            
+                <a href="08.html">
+            
+                    
+                        <b>1.8.8.</b>
+                    
+                    Membuat Register Fragment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="tugas.html">
             
                 <a href="tugas.html">
             
                     
-                        <b>1.8.8.</b>
+                        <b>1.8.9.</b>
                     
                     Tugas
             
@@ -535,10 +550,85 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="membuat-viewmodel">Membuat ViewModel</h1>
+<p><img src="img/viewmodel-architecture.png" alt="Architecture ViewModel"></p>
+<p><img src="img/viewmodel.png" alt="ViewModel"></p>
 <p>Untuk mengimplementasikan <code>ViewModel</code> silahkan mengikuti langkah-langkah
 berikut:</p>
 <ul>
-<li>Buatlah class <code>UserViewModel</code> yang diturunkan dari class <code>AndroidViewModel</code>.</li>
+<li><p>Buatlah class <code>UserViewModel</code> yang diturunkan dari class <code>AndroidViewModel</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserViewModel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AndroidViewModel</span> </span>{
+  ...
+  ...
+}
+</code></pre>
+</li>
+<li><p>Tekan tombol <code>Alt-Enter</code> pada baris kode yang bergaris bawah merah, kemudian
+pilih menu <code>Create constructor matching super</code>.</p>
+</li>
+<li><p>Tambahkan atribut-atribut berikut ke dalam <code>UserViewModel</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> UserRepository repository;
+<span class="hljs-keyword">private</span> LiveData&lt;User&gt; user;
+</code></pre>
+</li>
+<li><p>Modifikasi constructor yang telah di auto generate, tambahkan untuk
+instansiasi atribut <code>repository</code>.</p>
+<pre><code class="lang-java">...
+<span class="hljs-keyword">this</span>.repository = <span class="hljs-keyword">new</span> UserRepository(application);
+...
+</code></pre>
+</li>
+<li><p><code>UserRepository</code> bertanggung jawab untuk proses login dan register user, untuk
+menangani proses tersebut buatlah method <code>getUser()</code> yang akan mendapatkan
+user berdasarkan <code>username</code> serta method <code>insert()</code> yang digunakan untuk
+proses registrasi.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> LiveData&lt;User&gt; <span class="hljs-title">getUser</span><span class="hljs-params">(String username)</span> </span>{
+  user = repository.getUserByUsername(username);
+  <span class="hljs-keyword">return</span> user;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(User user)</span> </span>{
+  repository.insert(user);
+}
+</code></pre>
+</li>
+<li><p>Tambahkan class <code>NoteViewModel</code> yang diturunkan dari <code>AndroidViewModel</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteViewModel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AndroidViewModel</span> </span>{
+  ...
+  ...
+}
+</code></pre>
+</li>
+<li><p>Generate constructor dengan menggunakan shortcut <code>Alt-Enter</code></p>
+</li>
+<li><p>Kemudian, tambahkan atribut-atribut berikut</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> NoteRepository repository;
+<span class="hljs-keyword">private</span> LiveData&lt;List&lt;Note&gt;&gt; notes;
+</code></pre>
+</li>
+<li><p>Modifikasi constructor bawaan dengan menambahkan pernyataan berikut yang
+digunakan untuk menginstansiasi obyek serta mengambil nilai awal.</p>
+<pre><code class="lang-java">...
+<span class="hljs-keyword">this</span>.repository = <span class="hljs-keyword">new</span> NoteRepository(application);
+<span class="hljs-keyword">this</span>.notes = repository.getNotes();
+...
+</code></pre>
+</li>
+<li><p>Buatlah method getter untuk mendapatkan semua data catatan, ketik <code>getNotes</code>
+kemudian tekan enter.</p>
+</li>
+<li><p>Buatlah method untuk melakukan operasi insert, proses insert akan dilakukan
+oleh repository.</p>
+<pre><code>public void insert(Note note) {
+repository.insert(note);
+}
+</code></pre></li>
+<li><p>Buatlah method untuk melakukan operasi update, proses update akan dilakukan
+oleh repository.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(Note note)</span> </span>{
+  repository.update(note);
+}
+</code></pre>
+</li>
 </ul>
 
                                 
@@ -567,12 +657,12 @@ berikut:</p>
 
             
                 
-                <a href="06.html" class="navigation navigation-prev " aria-label="Previous page: Membuat repository">
+                <a href="06.html" class="navigation navigation-prev " aria-label="Previous page: Membuat Repository">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="tugas.html" class="navigation navigation-next " aria-label="Next page: Tugas">
+                <a href="08.html" class="navigation navigation-next " aria-label="Next page: Membuat Register Fragment">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -583,7 +673,7 @@ berikut:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Membuat ViewModel","level":"1.8.7","depth":2,"next":{"title":"Tugas","level":"1.8.8","depth":2,"path":"07/tugas.md","ref":"07/tugas.md","articles":[]},"previous":{"title":"Membuat repository","level":"1.8.6","depth":2,"path":"07/06.md","ref":"07/06.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"07/07.md","mtime":"2019-03-22T09:18:44.905Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-20T03:12:11.570Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Membuat ViewModel","level":"1.8.7","depth":2,"next":{"title":"Membuat Register Fragment","level":"1.8.8","depth":2,"path":"07/08.md","ref":"07/08.md","articles":[]},"previous":{"title":"Membuat Repository","level":"1.8.6","depth":2,"path":"07/06.md","ref":"07/06.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"07/07.md","mtime":"2019-03-24T23:27:25.764Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-25T07:41:17.920Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -594,10 +684,6 @@ berikut:</p>
     
         
         <script src="../gitbook/gitbook-plugin-noembed/scripts.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
