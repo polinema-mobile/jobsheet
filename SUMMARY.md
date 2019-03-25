@@ -15,6 +15,7 @@
   - [Implementasi Room Database](07/05.md)
   - [Membuat Repository](07/06.md)
   - [Membuat ViewModel](07/07.md)
+  - [Membuat Register Fragment](07/08.md)
   - [Tugas](07/tugas.md)
 - [QUIZ](08.md)
 - [SQLite Relational, Master Detail](09.md)
