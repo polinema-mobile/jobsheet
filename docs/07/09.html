@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Starter Project · GitBook</title>
+        <title>Membuat Save Note Fragment · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="02.html" />
+    <link rel="next" href="tugas.html" />
     
     
-    <link rel="prev" href="00.html" />
+    <link rel="prev" href="08.html" />
     
 
     </head>
@@ -214,7 +214,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.8.1" data-path="01.html">
+        <li class="chapter " data-level="1.8.1" data-path="01.html">
             
                 <a href="01.html">
             
@@ -334,7 +334,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.9" data-path="09.html">
+        <li class="chapter active" data-level="1.8.9" data-path="09.html">
             
                 <a href="09.html">
             
@@ -549,7 +549,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Starter Project</a>
+        <a href=".." >Membuat Save Note Fragment</a>
     </h1>
 </div>
 
@@ -564,10 +564,200 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="starter-project">Starter Project</h1>
-<p>Untuk menyelesaikan percobaan ini, silahkan unduh starter project pada <a href="NotesApp.zip">tautan
-berikut</a>. Sesuaikan versi SDK dan library support yang sudah
-terinstall pada environment anda. Build dan pastikan tidak ada pesan error.</p>
+                                <h1 id="membuat-save-note-fragment">Membuat Save Note Fragment</h1>
+<ul>
+<li>Buatlah fragment baru yang digunakan untuk menyimpan catatan yang akan
+ditambahkan dan simpan pada package <code>fragments</code>. Gunakan menu <strong>Fragment</strong> -&gt;
+<strong>Fragment (Blank)</strong>.</li>
+<li>Beri nama fragment dengan <code>SaveNoteFragment</code>, <em>uncheck</em> <strong>Include fragment
+factory methods?</strong> dan <em>uncheck</em> <strong>Include interface callbacks?</strong></li>
+<li><p>Pada layout <code>fragment_save_note</code>, replace dengan layout berikut.</p>
+<p>```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</p>
+<scrollview xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fitssystemwindows="true">
+
+  <linearlayout android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingtop="56dp" android:paddingleft="24dp" android:paddingright="24dp" android:orientation="vertical">
+
+<pre><code>&lt;!--  Name Label --&gt;
+&lt;android.support.design.widget.TextInputLayout
+  android:layout_width=&quot;match_parent&quot;
+  android:layout_height=&quot;wrap_content&quot;
+  android:layout_marginTop=&quot;8dp&quot;
+  android:layout_marginBottom=&quot;8dp&quot;&gt;
+  &lt;EditText android:id=&quot;@+id/input_title&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:inputType=&quot;textCapWords&quot;
+    android:hint=&quot;Title&quot; /&gt;
+&lt;/android.support.design.widget.TextInputLayout&gt;
+
+&lt;android.support.design.widget.TextInputLayout
+  android:layout_width=&quot;match_parent&quot;
+  android:layout_height=&quot;wrap_content&quot;
+  android:layout_marginTop=&quot;8dp&quot;
+  android:layout_marginBottom=&quot;8dp&quot;&gt;
+  &lt;EditText android:id=&quot;@+id/input_content&quot;
+    android:gravity=&quot;start&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:inputType=&quot;textMultiLine&quot;
+    android:lines=&quot;6&quot;
+    android:hint=&quot;Note&quot; /&gt;
+&lt;/android.support.design.widget.TextInputLayout&gt;
+
+&lt;android.support.v7.widget.AppCompatButton
+  android:id=&quot;@+id/button_save&quot;
+  android:layout_width=&quot;match_parent&quot;
+  android:layout_height=&quot;wrap_content&quot;
+  android:layout_marginTop=&quot;24dp&quot;
+  android:layout_marginBottom=&quot;24dp&quot;
+  android:padding=&quot;12dp&quot;
+  android:text=&quot;Save Note&quot;/&gt;
+</code></pre></linearlayout></scrollview></li>
+</ul>
+<pre><code>&lt;/LinearLayout&gt;
+</code></pre><p>  &lt;/ScrollView&gt;</p>
+<pre><code>
+- Pada class `SaveNoteFragment` tambahkan sebuah interface yang digunakan untuk
+ berkomunikasi dengan activity. Beri nama interface
+ `OnSaveNoteFragmentListener`.
+
+  ```java
+  public class SaveNoteFragment extends Fragment {
+
+    ...
+    ...
+    public interface OnSaveNoteFragmentListener {
+      void onSaveButtonClicked(View view, Note note, int tag);
+    }
+  }
+</code></pre><ul>
+<li><p>Tambahkan atribut listener pada <code>SaveNoteFragment</code> dengan tipe interface
+<code>OnSaveNoteFragmentListener</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> OnSaveNoteFragmentListener listener;
+</code></pre>
+</li>
+<li><p>Override method <code>onAttach</code>, register listener yang didapatkan dari activity.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onAttach</span><span class="hljs-params">(Context context)</span> </span>{
+  <span class="hljs-keyword">super</span>.onAttach(context);
+  <span class="hljs-keyword">if</span> (context <span class="hljs-keyword">instanceof</span> OnSaveNoteFragmentListener) {
+    listener = (OnSaveNoteFragmentListener) context;
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(context.toString()
+      + <span class="hljs-string">&quot;must implement OnNewNoteFragmentListener&quot;</span>);
+  }
+}
+</code></pre>
+</li>
+<li><p>Override method <code>onDetach</code>, unregister listener dari activity.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDetach</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">super</span>.onDetach();
+  listener = <span class="hljs-keyword">null</span>;
+}
+</code></pre>
+</li>
+<li><p>Modifikasi method <code>onCreateView</code>, tambahkan logika untuk menghubungkan view
+dengan fragment.</p>
+<pre><code class="lang-java">...
+...
+View view =  inflater.inflate(R.layout.fragment_new_note, container, <span class="hljs-keyword">false</span>);
+<span class="hljs-keyword">final</span> EditText titleText = view.findViewById(R.id.input_title);
+<span class="hljs-keyword">final</span> EditText contentText = view.findViewById(R.id.input_content);
+Button saveButton = view.findViewById(R.id.button_save);
+<span class="hljs-keyword">return</span> view;
+...
+</code></pre>
+</li>
+<li><p>Tambahkan event listener click pada <code>saveButton</code>.</p>
+<pre><code class="lang-java">...
+saveButton.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() {
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>{
+
+  }
+});
+...
+...
+<span class="hljs-keyword">return</span> view
+</code></pre>
+</li>
+<li><p>Pada event <code>onClick</code> tambahkan logika untuk mengirimkan data catatan ke
+activity.</p>
+<pre><code class="lang-java">...
+<span class="hljs-keyword">if</span> (listener != <span class="hljs-keyword">null</span>) {
+  <span class="hljs-keyword">int</span> tag = Constant.INSERT_NOTE;
+  String title = titleText.getText().toString();
+  String content = contentText.getText().toString();
+
+  Note newNote = <span class="hljs-keyword">new</span> Note();
+  newNote.setTitle(title);
+  newNote.setContent(content);
+  listener.onSaveButtonClicked(view, newNote, tag);
+}
+...
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p><strong>Catatan</strong>: Tambahkan konstanta <code>INSERT_NOTE</code> dengan tipe data <code>int</code> pada
+class <code>Constant</code>.</p>
+</blockquote>
+<ul>
+<li><p>Bukalah class <code>MainActivity</code>, kemudian implementasikan interface dari
+<code>SaveNoteFragment.OnSaveNoteFragmentListener</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> <span class="hljs-keyword">implements</span>
+  ...
+  <span class="hljs-title">SaveNoteFragment</span>.<span class="hljs-title">OnSaveNoteFragmentListener</span>,
+  ... </span>{
+
+}
+</code></pre>
+</li>
+<li><p>Generate method yang harus diimplementasikan dengan shortcut <code>Alt-Enter</code>.</p>
+</li>
+<li><p>Tambahkan viewmodel yang berkaitan dengan entitas <code>Note</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">private</span> NoteViewModel noteViewModel;
+</code></pre>
+</li>
+<li><p>Instansiasi <code>noteViewModel</code> pada method <code>onCreate</code></p>
+<pre><code class="lang-java">noteViewModel = ViewModelProviders.of(<span class="hljs-keyword">this</span>)
+  .get(NoteViewModel.class);
+</code></pre>
+</li>
+<li><p>Pada method <code>onNotesLoad</code> tambahkan logika untuk mengambil data semua catatan
+yang kemudian dikirimkan melalui adapter ke RecyclerView.</p>
+<pre><code class="lang-java">noteViewModel.getNotes()
+  .observe(<span class="hljs-keyword">this</span>, <span class="hljs-keyword">new</span> Observer&lt;List&lt;Note&gt;&gt;() {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onChanged</span><span class="hljs-params">(@Nullable List&lt;Note&gt; notes)</span> </span>{
+      adapter.setNotes(notes);
+    }
+});
+</code></pre>
+</li>
+<li><p>Pada method <code>onAddButtonClicked</code> tambahkan logika untuk berpindah fragment ke
+<code>SaveNoteFragment</code>.</p>
+<pre><code class="lang-java">Fragment fragment = <span class="hljs-keyword">new</span> SaveNoteFragment();
+Bundle bundle = <span class="hljs-keyword">new</span> Bundle();
+bundle.putInt(Constant.NOTE_TAG, Constant.INSERT_NOTE);
+fragment.setArguments(bundle);
+changeFragment(fragment, <span class="hljs-keyword">true</span>);
+</code></pre>
+</li>
+<li><p>Tambahkan logika pada method <code>onSaveButtonClicked</code> untuk melakukan operasi penyimpanan ke dalam database SQLite melalui viewmodel.</p>
+<pre><code class="lang-java">noteViewModel.insert(note);
+Fragment fragment = <span class="hljs-keyword">new</span> NoteFragment();
+changeFragment(fragment, <span class="hljs-keyword">false</span>);
+Snackbar.make(view, <span class="hljs-string">&quot;Saving note....&quot;</span>, Snackbar.LENGTH_SHORT)
+  .show();
+<span class="hljs-comment">// return to previous fragment</span>
+getSupportFragmentManager()
+  .popBackStack();
+</code></pre>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -595,12 +785,12 @@ terinstall pada environment anda. Build dan pastikan tidak ada pesan error.</p>
 
             
                 
-                <a href="00.html" class="navigation navigation-prev " aria-label="Previous page: Sqlite CRUD">
+                <a href="08.html" class="navigation navigation-prev " aria-label="Previous page: Membuat Register Fragment">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="02.html" class="navigation navigation-next " aria-label="Next page: Menyiapkan Dependency">
+                <a href="tugas.html" class="navigation navigation-next " aria-label="Next page: Tugas">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -611,7 +801,7 @@ terinstall pada environment anda. Build dan pastikan tidak ada pesan error.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Starter Project","level":"1.8.1","depth":2,"next":{"title":"Menyiapkan Dependency","level":"1.8.2","depth":2,"path":"07/02.md","ref":"07/02.md","articles":[]},"previous":{"title":"Sqlite CRUD","level":"1.8","depth":1,"path":"07/00.md","ref":"07/00.md","articles":[{"title":"Starter Project","level":"1.8.1","depth":2,"path":"07/01.md","ref":"07/01.md","articles":[]},{"title":"Menyiapkan Dependency","level":"1.8.2","depth":2,"path":"07/02.md","ref":"07/02.md","articles":[]},{"title":"Membuat Entitas","level":"1.8.3","depth":2,"path":"07/03.md","ref":"07/03.md","articles":[]},{"title":"Membuat DAO","level":"1.8.4","depth":2,"path":"07/04.md","ref":"07/04.md","articles":[]},{"title":"Implementasi Room Database","level":"1.8.5","depth":2,"path":"07/05.md","ref":"07/05.md","articles":[]},{"title":"Membuat Repository","level":"1.8.6","depth":2,"path":"07/06.md","ref":"07/06.md","articles":[]},{"title":"Membuat ViewModel","level":"1.8.7","depth":2,"path":"07/07.md","ref":"07/07.md","articles":[]},{"title":"Membuat Register Fragment","level":"1.8.8","depth":2,"path":"07/08.md","ref":"07/08.md","articles":[]},{"title":"Membuat Save Note Fragment","level":"1.8.9","depth":2,"path":"07/09.md","ref":"07/09.md","articles":[]},{"title":"Tugas","level":"1.8.10","depth":2,"path":"07/tugas.md","ref":"07/tugas.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"07/01.md","mtime":"2019-03-17T23:32:01.035Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T02:20:45.114Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Membuat Save Note Fragment","level":"1.8.9","depth":2,"next":{"title":"Tugas","level":"1.8.10","depth":2,"path":"07/tugas.md","ref":"07/tugas.md","articles":[]},"previous":{"title":"Membuat Register Fragment","level":"1.8.8","depth":2,"path":"07/08.md","ref":"07/08.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"07/09.md","mtime":"2019-03-26T02:17:40.023Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T02:20:45.114Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
