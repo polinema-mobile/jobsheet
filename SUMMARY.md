@@ -16,6 +16,7 @@
   - [Membuat Repository](07/06.md)
   - [Membuat ViewModel](07/07.md)
   - [Membuat Register Fragment](07/08.md)
+  - [Membuat Save Note Fragment](07/09.md)
   - [Tugas](07/tugas.md)
 - [QUIZ](08.md)
 - [SQLite Relational, Master Detail](09.md)
