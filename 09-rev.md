@@ -913,3 +913,15 @@ public class updateData extends AppCompatActivity {
 ```
 
 13. Jalankan aplikasi
+
+!['firebase'](img/09-11.jpeg)
+
+!['firebase'](img/09-12.jpeg)
+
+!['firebase'](img/09-13.jpeg)
+
+!['firebase'](img/09-14.jpeg)
+
+!['firebase'](img/09-15.jpeg)
+
+!['firebase'](img/09-16.jpeg)
