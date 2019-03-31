@@ -444,7 +444,88 @@ public class data_mahasiswa {
 }
 ```
 
-4. Buat Recycler View bernama **RecyclerViewAdapter** pada `adapter/RecyclerViewAdapter.java`
+Untuk menampilkan data yang sudah disimpan, kita menggunakan RecyclerView sehingga kita perlu membuat layout-layoutnya terlebih dahulu.
+
+4. Buat layout baru bernama **activity_my_list_data.xml** pada `res/layout/`
+
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:background="#FFFFFF"
+    tools:context="com.vip.firebasecrud.ui.MyListData">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/datalist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>
+```
+
+5. Buat kembali layout baru bernama **view_design.xml** pada `res/layout/`
+
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_weight="2.5"
+        app:srcCompat="@drawable/graduation_cap" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="NIM"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Nama" />
+
+        <TextView
+            android:id="@+id/jurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Jurusan:" />
+
+    </LinearLayout>
+
+</LinearLayout>
+```
+
+Selanjutnya kita perlu membuat class Adapter yang akan digunakan di RecyclerView. Adapter ini berfungsi untuk mengolah data yang kita download dan menampilkannya pada RecyclerView.
+
+6. Buat Recycler View bernama **RecyclerViewAdapter** pada `adapter/RecyclerViewAdapter.java`
 
 ```java
 //Class Adapter ini Digunakan Untuk Mengatur Bagaimana Data akan Ditampilkan
@@ -553,92 +634,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 }
 ```
 
-5. Tambahkan kode berikut pada method **onClick** `MainActivity.java` yang berfungsi untuk menampilkan Data ketika button Lihat Data diklik.
+Setelah kita membuat layout untuk Lihat Data, maka kita perlu menambahkan sebuah Activity yang berfungsi untuk membaca data dari Firebase Realtime Database dan kemudian menampilkannya di RecyclerView.
 
-```java
-            case R.id.showdata:
-                startActivity(new Intent(MainActivity.this, MyListData.class));
-                break;
-```                
-
-6. Buat layout baru bernama **activity_my_list_data.xml** pada `res/layout/`
-
-```java
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="8dp"
-    android:background="#FFFFFF"
-    tools:context="com.vip.firebasecrud.ui.MyListData">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/datalist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical" />
-
-</RelativeLayout>
-```
-
-7. Buat kembali layout baru bernama **view_design.xml** pada `res/layout/`
-
-```java
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/list_item"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#FFFFFF"
-    android:gravity="center"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_weight="2.5"
-        app:srcCompat="@drawable/graduation_cap" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/nim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="NIM"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/nama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Nama" />
-
-        <TextView
-            android:id="@+id/jurusan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Jurusan:" />
-
-    </LinearLayout>
-
-</LinearLayout>
-```
-
-8. Selanjutnya buat class baru bernama **MyListData.java**
+7. Buat sebuah file activity bernama **MyListData.java**
 
 ```java
 public class MyListData extends AppCompatActivity implements RecyclerViewAdapter.dataListener {
@@ -744,4 +742,25 @@ public class MyListData extends AppCompatActivity implements RecyclerViewAdapter
 }
 ```
 
-9. 
+
+8. Tambahkan kode berikut pada method **onClick** `MainActivity.java` yang berfungsi untuk menampilkan data ketika button Lihat Data diklik.
+
+```java
+            case R.id.showdata:
+                startActivity(new Intent(MainActivity.this, MyListData.class));
+                break;
+```                
+
+
+9. Sebagai tambahan untuk memperindah tampilan, buat file bernama **line.xml** pada `res/drawable/`
+
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#FFD8D8D8"/>
+    <size android:height="0.5dp"/>
+</shape>
+```
+
+10. 
