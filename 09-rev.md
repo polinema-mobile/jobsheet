@@ -19,7 +19,7 @@ Firebase authentication memberikan fungsi dalam mengelelola akun pengguna dengan
 
 ## Praktikum
 
-### Menambahkan Firebase pada project aplikasi Android
+### A. Menambahkan Firebase pada project aplikasi Android
 
 1. Pada langkah pertama buat project baru dengan empty activity, seperti gambar berikut:
 
@@ -27,25 +27,43 @@ Firebase authentication memberikan fungsi dalam mengelelola akun pengguna dengan
 
 !['firebase'](img/09-2.png)
 
-2.Pada langkah berikutnya login/masuk pada Firebase dengan menggunakan Alamat Gmail kalian, pada link berikut ini https://firebase.google.com/?hl=id kemudian pilih Buka Console
+2.Pada langkah berikutnya login/masuk pada Firebase dengan menggunakan Alamat Gmail pada link berikut ini https://firebase.google.com/?hl=id kemudian pilih `Buka Konsol`
 
 !['firebase'](img/09-3.png)
 
-3. Selanjutnya tambahkan project baru kita kedalam Firebase Console, dengan mengklik `Tambahkan proyek(+)`.
+3. Selanjutnya tambahkan project baru kita kedalam Firebase Console, dengan mengklik `Tambahkan proyek(+)`
 
 !['firebase'](img/09-4.png)
 
-4. Isi nama proyek, ID project dan Negara/Wilayah kalian, setelah itu klik Buat Proyek.
+4. Isi nama proyek, ID project dan Negara/Wilayah kalian, setelah itu klik `Buat Proyek`
 
 !['firebase'](img/09-5.png)
 
-5. Pada halaman Dashboard Firebase, disini pilih platform yang akan digunakan, klik icon berlogo android, untuk menambahkan Firebase kedalam aplikasi Android.
+5. Pada halaman Dashboard Firebase, disini pilih platform yang akan digunakan, klik icon berlogo android, untuk menambahkan Firebase ke dalam aplikasi Android.
 
 !['firebase'](img/09-6.png)
 
 6. Isi nama package (wajib), nama pendek aplikasi (jika diperlukan), lalu masukan kode SHA-1 kedalam Firebase.
 
 !['firebase'](img/09-7.png)
+
+Untuk mendapatkan SHA-1 fingerprint, lakukan langkah-langkah berikut:
+
+a. Buka kembali project Android Studio
+
+b. Klik tab **Gradle** yang berada di sebelah kanan jendela Android Studio. Jika tidak ada isi apapun yang ditampilkan, klik **Refresh all Gradle projects** di bagian pojok kiri jendela Gradle
+
+c. Cari dan klik nama project kalian
+
+d. Masuk ke `Tasks` - `Android` - `SigningReport`
+
+!['firebase'](img/09-9.PNG)
+
+e. Klik dua kali pada **SigningReport** sehingga console terbuka
+
+f. Tunggu hingga proses selesai dan informasi SHA-1 akan ditampilkan. Salin kode SHA-1 tersebut ke halaman Firebase
+
+!['firebase'](img/09-10.PNG)
 
 7. Download File Konfigurasi **google-services.json**, setelah selesai, pindahkan file tersebut pada direktori `app/root` yang terdapat pada project aplikasi.
 
@@ -104,3 +122,102 @@ dependencies {
 }
 apply plugin: 'com.google.gms.google-services'
 ```
+
+### B. Membuat Fitur Create, Read, Update, dan Delete Data pada Firebase
+
+1. Buka layout activity_main.xml untuk membuat halaman menu aplikasinya terlebih dahulu dengan menyalin kode berikut.
+
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="12dp"
+    tools:context="com.vip.firebasecrud.ui.MainActivity">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/nim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="NIM"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Masukan Nama"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/jurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Jurusan"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Login" />
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Simpan" />
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Logout" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/showdata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lihat Data" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+```
+
+2. 
