@@ -47,23 +47,23 @@ Firebase authentication memberikan fungsi dalam mengelelola akun pengguna dengan
 
 !['firebase'](img/09-7.png)
 
- Untuk mendapatkan SHA-1 fingerprint, lakukan langkah-langkah berikut:
+Untuk mendapatkan SHA-1 fingerprint, lakukan langkah-langkah berikut:
 
- a. Buka kembali project Android Studio
+* Buka kembali project Android Studio
 
- b. Klik tab **Gradle** yang berada di sebelah kanan jendela Android Studio. Jika tidak ada isi apapun yang ditampilkan, klik **Refresh all Gradle projects** di bagian pojok kiri jendela Gradle
+* Klik tab **Gradle** yang berada di sebelah kanan jendela Android Studio. Jika tidak ada isi apapun yang ditampilkan, klik **Refresh all Gradle projects** di bagian pojok kiri jendela Gradle
 
- c. Cari dan klik nama project kalian
+* Cari dan klik nama project kalian
 
- d. Masuk ke `Tasks` - `android` - `signingReport`
+* Masuk ke `Tasks` - `android` - `signingReport`
 
- !['firebase'](img/09-9.PNG)
+!['firebase'](img/09-9.PNG)
 
- e. Klik dua kali pada **SigningReport** sehingga console terbuka
+* Klik dua kali pada **SigningReport** sehingga console terbuka
 
- f. Tunggu hingga proses selesai dan informasi SHA-1 akan ditampilkan. Salin kode SHA-1 tersebut ke halaman Firebase
+* Tunggu hingga proses selesai dan informasi SHA-1 akan ditampilkan. Salin kode SHA-1 tersebut ke halaman Firebase
 
- !['firebase'](img/09-10.PNG)
+!['firebase'](img/09-10.PNG)
 
 7. Download File Konfigurasi **google-services.json**, setelah selesai, pindahkan file tersebut pada direktori `app/root` yang terdapat pada project aplikasi.
 
@@ -484,8 +484,7 @@ Untuk menampilkan data yang sudah disimpan, kita menggunakan RecyclerView sehing
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:layout_weight="2.5"
-        app:srcCompat="@drawable/graduation_cap" />
+        android:layout_weight="2.5" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -763,4 +762,154 @@ public class MyListData extends AppCompatActivity implements RecyclerViewAdapter
 </shape>
 ```
 
-10. 
+Untuk melakukan update data pada Firebase Realtime Database, secara umum langkah-langkah yang perlu dilakukan adalah sebagai berikut:
+
+* Menyiapkan data baru yang akan di-update sebagai parameter input
+
+* Mencari key dari data mahasiswa baru tersebut
+
+* Jika key sudah ditemukan, maka kita bisa langsung setValue pada key tersebut ke data mahasiswa yang sudah di-update
+
+Key yang menjadi id mahasiswa tersebut didapatkan ketika kita melakukan Read Data. Pada saat kita membaca data, maka kita juga sekaligus mengambil data key tersebut.
+
+10. Buat activity baru bernama **update_Data.java**
+
+```java
+public class updateData extends AppCompatActivity {
+
+    //Deklarasi Variable
+    private EditText nimBaru, namaBaru, jurusanBaru;
+    private Button update;
+    private DatabaseReference database;
+    private FirebaseAuth auth;
+    private String cekNIM, cekNama, cekJurusan;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_update_data);
+        getSupportActionBar().setTitle("Update Data");
+        nimBaru = findViewById(R.id.new_nim);
+        namaBaru = findViewById(R.id.new_nama);
+        jurusanBaru = findViewById(R.id.new_jurusan);
+        update = findViewById(R.id.update);
+
+        //Mendapatkan Instance autentikasi dan Referensi dari Database
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance().getReference();
+        getData();
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Mendapatkan Data Mahasiswa yang akan dicek
+                cekNIM = nimBaru.getText().toString();
+                cekNama = namaBaru.getText().toString();
+                cekJurusan = jurusanBaru.getText().toString();
+
+                //Mengecek agar tidak ada data yang kosong, saat proses update
+                if(isEmpty(cekNIM) || isEmpty(cekNama) || isEmpty(cekJurusan)){
+                    Toast.makeText(updateData.this, "Data tidak boleh ada yang kosong", Toast.LENGTH_SHORT).show();
+                }else {
+                    //Menjalankan proses update data
+                    data_mahasiswa setMahasiswa = new data_mahasiswa();
+                    setMahasiswa.setNim(nimBaru.getText().toString());
+                    setMahasiswa.setNama(namaBaru.getText().toString());
+                    setMahasiswa.setJurusan(jurusanBaru.getText().toString());
+                    updateMahasiswa(setMahasiswa);
+                }
+            }
+        });
+    }
+
+    // Mengecek apakah ada data yang kosong, sebelum diupdate
+    private boolean isEmpty(String s){
+        return TextUtils.isEmpty(s);
+    }
+
+    //Menampilkan data yang akan di update
+    private void getData(){
+        final String getNIM = getIntent().getExtras().getString("dataNIM");
+        final String getNama = getIntent().getExtras().getString("dataNama");
+        final String getJurusan = getIntent().getExtras().getString("dataJurusan");
+        nimBaru.setText(getNIM);
+        namaBaru.setText(getNama);
+        jurusanBaru.setText(getJurusan);
+    }
+
+    //Proses Update data yang sudah ditentukan
+    private void updateMahasiswa(data_mahasiswa mahasiswa){
+        String userID = auth.getUid();
+        String getKey = getIntent().getExtras().getString("getPrimaryKey");
+        database.child("Admin")
+                .child(userID)
+                .child("Mahasiswa")
+                .child(getKey)
+                .setValue(mahasiswa)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        nimBaru.setText("");
+                        namaBaru.setText("");
+                        jurusanBaru.setText("");
+                        Toast.makeText(updateData.this, "Data Berhasil diubah", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
+    }
+}
+```
+
+11. Buat layout baru bernama **activity_update_data.xml** pada `res/layout/`
+
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="12dp"
+    android:orientation="vertical"
+    tools:context="com.vip.firebasecrud.ui.updateData">
+
+    <EditText
+        android:id="@+id/new_nim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="NIM Baru"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/new_nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nama Baru"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/new_jurusan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Jurusan Baru"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update" />
+
+</LinearLayout>
+```
+
+12. Jangan lupa tambahkan **MyListData** dan **updateData** ke dalam daftar activity pada `AndroidManifest.xml`
+
+```java        
+        <activity android:name="com.vip.firebasecrud.ui.MyListData" />
+        <activity android:name="com.vip.firebasecrud.ui.updateData"></activity>
+```
+
+13. Jalankan aplikasi
