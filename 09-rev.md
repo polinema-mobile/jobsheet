@@ -55,7 +55,7 @@ Firebase authentication memberikan fungsi dalam mengelelola akun pengguna dengan
 
  c. Cari dan klik nama project kalian
 
- d. Masuk ke `Tasks` - `Android` - `SigningReport`
+ d. Masuk ke `Tasks` - `android` - `signingReport`
 
  !['firebase'](img/09-9.PNG)
 
@@ -223,31 +223,6 @@ apply plugin: 'com.google.gms.google-services'
 2. Tambahkan kode berikut ini pada `MainActivity.java`
 
 ```java
-package com.vip.firebasecrud.ui;
-
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.vip.firebasecrud.R;
-import com.vip.firebasecrud.models.data_mahasiswa;
-
-import java.util.Collections;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     //Deklarasi Variable
@@ -406,9 +381,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         });
                 break;
-            case R.id.showdata:
-                startActivity(new Intent(MainActivity.this, MyListData.class));
-                break;
         }
     }
 }
@@ -419,8 +391,6 @@ Pada aplikasi ini terdapat empat Button, yaitu **Login, Simpan, Logout, dan Liha
 3. Selanjutnya, buat model Mahasiswa terlebih dahulu bernama **data_mahasiswa.java** pada `models/data_mahasiswa.java`. Fungsi class ini adalah untuk menyimpan atribut-atribut dari data mahasiswa yang dimasukkan, serta beberapa method *getter* dan *setter*.
 
 ```java
-package com.vip.firebasecrud.models;
-
 public class data_mahasiswa {
 
     //Deklarasi Variable
@@ -474,4 +444,304 @@ public class data_mahasiswa {
 }
 ```
 
-4. 
+4. Buat Recycler View bernama **RecyclerViewAdapter** pada `adapter/RecyclerViewAdapter.java`
+
+```java
+//Class Adapter ini Digunakan Untuk Mengatur Bagaimana Data akan Ditampilkan
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+
+    //Deklarasi Variable
+    private ArrayList<data_mahasiswa> listMahasiswa;
+    private Context context;
+
+    //Membuat Interfece
+    public interface dataListener{
+        void onDeleteData(data_mahasiswa data, int position);
+    }
+
+    //Deklarasi objek dari Interfece
+    dataListener listener;
+
+    //Membuat Konstruktor, untuk menerima input dari Database
+    public RecyclerViewAdapter(ArrayList<data_mahasiswa> listMahasiswa, Context context) {
+        this.listMahasiswa = listMahasiswa;
+        this.context = context;
+        listener = (MyListData)context;
+    }
+
+    //ViewHolder Digunakan Untuk Menyimpan Referensi Dari View-View
+    class ViewHolder extends RecyclerView.ViewHolder{
+
+        private TextView NIM, Nama, Jurusan;
+        private LinearLayout ListItem;
+
+        ViewHolder(View itemView) {
+            super(itemView);
+            //Menginisialisasi View-View yang terpasang pada layout RecyclerView kita
+            NIM = itemView.findViewById(R.id.nim);
+            Nama = itemView.findViewById(R.id.nama);
+            Jurusan = itemView.findViewById(R.id.jurusan);
+            ListItem = itemView.findViewById(R.id.list_item);
+        }
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //Membuat View untuk Menyiapkan dan Memasang Layout yang Akan digunakan pada RecyclerView
+        View V = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_design, parent, false);
+        return new ViewHolder(V);
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        //Mengambil Nilai/Value yenag terdapat pada RecyclerView berdasarkan Posisi Tertentu
+        final String NIM = listMahasiswa.get(position).getNim();
+        final String Nama = listMahasiswa.get(position).getNama();
+        final String Jurusan = listMahasiswa.get(position).getJurusan();
+
+        //Memasukan Nilai/Value kedalam View (TextView: NIM, Nama, Jurusan)
+        holder.NIM.setText("NIM: "+NIM);
+        holder.Nama.setText("Nama: "+Nama);
+        holder.Jurusan.setText("Jurusan: "+Jurusan);
+
+        //Menampilkan Menu Update dan Delete saat user melakukan long klik pada salah satu item
+        holder.ListItem.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(final View view) {
+                final String[] action = {"Update", "Delete"};
+                AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
+                alert.setItems(action,  new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        switch (i){
+                            case 0:
+                                /*
+                                  Berpindah Activity pada halaman layout updateData
+                                  dan mengambil data pada listMahasiswa, berdasarkan posisinya
+                                  untuk dikirim pada activity updateData
+                                 */
+                                Bundle bundle = new Bundle();
+                                bundle.putString("dataNIM", listMahasiswa.get(position).getNim());
+                                bundle.putString("dataNama", listMahasiswa.get(position).getNama());
+                                bundle.putString("dataJurusan", listMahasiswa.get(position).getJurusan());
+                                bundle.putString("getPrimaryKey", listMahasiswa.get(position).getKey());
+                                Intent intent = new Intent(view.getContext(), updateData.class);
+                                intent.putExtras(bundle);
+                                context.startActivity(intent);
+                                break;
+                            case 1:
+                                //Menggunakan interface untuk mengirim data mahasiswa, yang akan dihapus
+                                listener.onDeleteData(listMahasiswa.get(position), position);
+                                break;
+                        }
+                    }
+                });
+                alert.create();
+                alert.show();
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        //Menghitung Ukuran/Jumlah Data Yang Akan Ditampilkan Pada RecyclerView
+        return listMahasiswa.size();
+    }
+
+}
+```
+
+5. Tambahkan kode berikut pada method **onClick** `MainActivity.java` yang berfungsi untuk menampilkan Data ketika button Lihat Data diklik.
+
+```java
+            case R.id.showdata:
+                startActivity(new Intent(MainActivity.this, MyListData.class));
+                break;
+```                
+
+6. Buat layout baru bernama **activity_my_list_data.xml** pada `res/layout/`
+
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:background="#FFFFFF"
+    tools:context="com.vip.firebasecrud.ui.MyListData">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/datalist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>
+```
+
+7. Buat kembali layout baru bernama **view_design.xml** pada `res/layout/`
+
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_weight="2.5"
+        app:srcCompat="@drawable/graduation_cap" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="NIM"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Nama" />
+
+        <TextView
+            android:id="@+id/jurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Jurusan:" />
+
+    </LinearLayout>
+
+</LinearLayout>
+```
+
+8. Selanjutnya buat class baru bernama **MyListData.java**
+
+```java
+public class MyListData extends AppCompatActivity implements RecyclerViewAdapter.dataListener {
+
+    //Deklarasi Variable untuk RecyclerView
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+    //Deklarasi Variable Database Reference dan ArrayList dengan Parameter Class Model kita.
+    private DatabaseReference reference;
+    private ArrayList<data_mahasiswa> dataMahasiswa;
+
+    private FirebaseAuth auth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R .layout.activity_my_list_data);
+        recyclerView = findViewById(R.id.datalist);
+        getSupportActionBar().setTitle("Data Mahasiswa");
+        auth = FirebaseAuth.getInstance();
+        MyRecyclerView();
+        GetData();
+    }
+
+    //Berisi baris kode untuk mengambil data dari Database dan menampilkannya kedalam Adapter
+    private void GetData(){
+        //Mendapatkan Referensi Database
+        reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("Admin").child(auth.getUid()).child("Mahasiswa")
+                 .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //Inisialisasi ArrayList
+                dataMahasiswa = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    //Mapping data pada DataSnapshot ke dalam objek mahasiswa
+                    data_mahasiswa mahasiswa = snapshot.getValue(data_mahasiswa.class);
+
+                    //Mengambil Primary Key, digunakan untuk proses Update dan Delete
+                    mahasiswa.setKey(snapshot.getKey());
+                    dataMahasiswa.add(mahasiswa);
+                }
+
+                //Inisialisasi Adapter dan data Mahasiswa dalam bentuk Array
+                adapter = new RecyclerViewAdapter(dataMahasiswa, MyListData.this);
+
+                //Memasang Adapter pada RecyclerView
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+              /*
+                Kode ini akan dijalankan ketika ada error dan
+                pengambilan data error tersebut lalu memprint error nya
+                ke LogCat
+               */
+                Toast.makeText(getApplicationContext(),"Data Gagal Dimuat", Toast.LENGTH_LONG).show();
+                Log.e("MyListActivity", databaseError.getDetails()+" "+databaseError.getMessage());
+            }
+        });
+    }
+
+    //Methode yang berisi kumpulan baris kode untuk mengatur RecyclerView
+    private void MyRecyclerView(){
+        //Menggunakan Layout Manager, Dan Membuat List Secara Vertical
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        //Membuat Underline pada Setiap Item Didalam List
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
+        itemDecoration.setDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.line));
+        recyclerView.addItemDecoration(itemDecoration);
+    }
+
+    @Override
+    public void onDeleteData(data_mahasiswa data, int position) {
+        /*
+         * Kode ini akan dipanggil ketika method onDeleteData
+         * dipanggil dari adapter pada RecyclerView melalui interface.
+         * kemudian akan menghapus data berdasarkan primary key dari data tersebut
+         * Jika berhasil, maka akan memunculkan Toast
+         */
+        String userID = auth.getUid();
+        if(reference != null){
+            reference.child("Admin")
+                    .child(userID)
+                    .child("Mahasiswa")
+                    .child(data.getKey())
+                    .removeValue()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(MyListData.this, "Data Berhasil Dihapus", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+    }
+}
+```
+
+9. 
