@@ -19,7 +19,7 @@
   - [Membuat Save Note Fragment](07/09.md)
   - [Tugas](07/tugas.md)
 - [QUIZ](08.md)
-- [SQLite Relational, Master Detail](09.md)
+- [Firebase CRUD](09-rev.md)
 - [Install Retrofit, REST Request](10.md)
 - [Retrofit dengan RecyclerView](11.md)
 - [Retrofit Picasso n Custom Layout, Rest dengan Token](12.md)
