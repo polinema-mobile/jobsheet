@@ -1,6 +1,5 @@
 # Summary
 
-- [Introduction](README.md)
 - [Pendahuluan](01.md)
 - [Activity Lifecycle](02-rev.md)
 - [Layout Lanjutan - RecyclerView](03.md)
@@ -20,7 +19,15 @@
   - [Tugas](07/tugas.md)
 - [QUIZ](08.md)
 - [Firebase CRUD](09-rev.md)
-- [Install Retrofit, REST Request](10.md)
+- [Retrofit Dasar](10/00.md)
+  - [Menyiapkan Project](10/01.md)
+  - [Menyiapkan Dependency](10/02.md)
+  - [Membuat Model](10/03.md)
+  - [Membuat ServiceGenerator](10/04.md)
+  - [Membuat Service](10/05.md)
+  - [Membuat Layout UI](10/06.md)
+  - [Mengintegrasikan Activity](10/07.md)
+  - [Tugas](10/tugas.md)
 - [Retrofit dengan RecyclerView](11.md)
 - [Retrofit Picasso n Custom Layout, Rest dengan Token](12.md)
 - [Quiz2](13.md)
