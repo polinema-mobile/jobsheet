@@ -28,7 +28,7 @@
   - [Membuat Layout UI](10/06.md)
   - [Mengintegrasikan Activity](10/07.md)
   - [Tugas](10/tugas.md)
-- [Retrofit dengan RecyclerView](11.md)
+- [Retrofit dengan RecyclerView](11-rev.md)
 - [Retrofit Picasso n Custom Layout, Rest dengan Token](12.md)
 - [Quiz2](13.md)
 - [Android Camera API](14.md)

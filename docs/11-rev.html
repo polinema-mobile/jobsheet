@@ -1,0 +1,1239 @@
+
+<!DOCTYPE HTML>
+<html lang="id" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Retrofit dengan RecyclerView · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-noembed/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="12.html" />
+    
+    
+    <link rel="prev" href="10/tugas.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="01.html">
+            
+                <a href="01.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Pendahuluan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="02-rev.html">
+            
+                <a href="02-rev.html">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Activity Lifecycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="03.html">
+            
+                <a href="03.html">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    Layout Lanjutan - RecyclerView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="04-rev.html">
+            
+                <a href="04-rev.html">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Intent
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="05.html">
+            
+                <a href="05.html">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    QUIZ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="06.html">
+            
+                <a href="06.html">
+            
+                    
+                        <b>1.7.</b>
+                    
+                    Shared Preference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="07/00.html">
+            
+                <a href="07/00.html">
+            
+                    
+                        <b>1.8.</b>
+                    
+                    Sqlite CRUD
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="07/01.html">
+            
+                <a href="07/01.html">
+            
+                    
+                        <b>1.8.1.</b>
+                    
+                    Starter Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="07/02.html">
+            
+                <a href="07/02.html">
+            
+                    
+                        <b>1.8.2.</b>
+                    
+                    Menyiapkan Dependency
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="07/03.html">
+            
+                <a href="07/03.html">
+            
+                    
+                        <b>1.8.3.</b>
+                    
+                    Membuat Entitas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="07/04.html">
+            
+                <a href="07/04.html">
+            
+                    
+                        <b>1.8.4.</b>
+                    
+                    Membuat DAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="07/05.html">
+            
+                <a href="07/05.html">
+            
+                    
+                        <b>1.8.5.</b>
+                    
+                    Implementasi Room Database
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="07/06.html">
+            
+                <a href="07/06.html">
+            
+                    
+                        <b>1.8.6.</b>
+                    
+                    Membuat Repository
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="07/07.html">
+            
+                <a href="07/07.html">
+            
+                    
+                        <b>1.8.7.</b>
+                    
+                    Membuat ViewModel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="07/08.html">
+            
+                <a href="07/08.html">
+            
+                    
+                        <b>1.8.8.</b>
+                    
+                    Membuat Register Fragment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="07/09.html">
+            
+                <a href="07/09.html">
+            
+                    
+                        <b>1.8.9.</b>
+                    
+                    Membuat Save Note Fragment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="07/tugas.html">
+            
+                <a href="07/tugas.html">
+            
+                    
+                        <b>1.8.10.</b>
+                    
+                    Tugas
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="08.html">
+            
+                <a href="08.html">
+            
+                    
+                        <b>1.9.</b>
+                    
+                    QUIZ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="09-rev.html">
+            
+                <a href="09-rev.html">
+            
+                    
+                        <b>1.10.</b>
+                    
+                    Firebase CRUD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="10/00.html">
+            
+                <a href="10/00.html">
+            
+                    
+                        <b>1.11.</b>
+                    
+                    Retrofit Dasar
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="10/01.html">
+            
+                <a href="10/01.html">
+            
+                    
+                        <b>1.11.1.</b>
+                    
+                    Menyiapkan Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="10/02.html">
+            
+                <a href="10/02.html">
+            
+                    
+                        <b>1.11.2.</b>
+                    
+                    Menyiapkan Dependency
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="10/03.html">
+            
+                <a href="10/03.html">
+            
+                    
+                        <b>1.11.3.</b>
+                    
+                    Membuat Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="10/04.html">
+            
+                <a href="10/04.html">
+            
+                    
+                        <b>1.11.4.</b>
+                    
+                    Membuat ServiceGenerator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="10/05.html">
+            
+                <a href="10/05.html">
+            
+                    
+                        <b>1.11.5.</b>
+                    
+                    Membuat Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="10/06.html">
+            
+                <a href="10/06.html">
+            
+                    
+                        <b>1.11.6.</b>
+                    
+                    Membuat Layout UI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.7" data-path="10/07.html">
+            
+                <a href="10/07.html">
+            
+                    
+                        <b>1.11.7.</b>
+                    
+                    Mengintegrasikan Activity
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.8" data-path="10/tugas.html">
+            
+                <a href="10/tugas.html">
+            
+                    
+                        <b>1.11.8.</b>
+                    
+                    Tugas
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.12" data-path="11-rev.html">
+            
+                <a href="11-rev.html">
+            
+                    
+                        <b>1.12.</b>
+                    
+                    Retrofit dengan RecyclerView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="12.html">
+            
+                <a href="12.html">
+            
+                    
+                        <b>1.13.</b>
+                    
+                    Retrofit Picasso n Custom Layout, Rest dengan Token
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="13.html">
+            
+                <a href="13.html">
+            
+                    
+                        <b>1.14.</b>
+                    
+                    Quiz2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="14.html">
+            
+                <a href="14.html">
+            
+                    
+                        <b>1.15.</b>
+                    
+                    Android Camera API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="15.html">
+            
+                <a href="15.html">
+            
+                    
+                        <b>1.16.</b>
+                    
+                    Android Camera API Part 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="16.html">
+            
+                <a href="16.html">
+            
+                    
+                        <b>1.17.</b>
+                    
+                    Google Maps API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="17.html">
+            
+                <a href="17.html">
+            
+                    
+                        <b>1.18.</b>
+                    
+                    UAS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Retrofit dengan RecyclerView</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="retrofit---recyclerview">Retrofit - RecyclerView</h1>
+<h2 id="kemampuan-akhir-yang-diharapkan">Kemampuan akhir yang diharapkan</h2>
+<p>Setelah melakukan praktikum ini mahasiswa mampu :</p>
+<ol>
+<li>Membuat aplikasi yang memiliki request REST API berupa GET</li>
+<li>Mengkonsumsi REST API sederhana menggunakan Retrofit serta menyambungkannya dengan RecyclerView</li>
+</ol>
+<h2 id="dasar-teori">Dasar Teori</h2>
+<p>Retrofit digunakan untuk mempermudah aplikasi android kita mengambil data dari API server. Dengan menggunakan Retrofit kita lebih mudah untuk melakukan request melalui HTTP. Request yang disediakan Retrofit ada lima yaitu GET, POST, PUT, DELETE, dan HEAD.</p>
+<p>Untuk menggunakan Retrofit pada aplikasi Android, kita membutuhkan 3 class utama.</p>
+<p><strong>1. Interface yang mendefinisikan operasi HTTP (fungsi atau method)</strong></p>
+<p>Retrofit mengubah HTTP API menjadi Java interface. Berikut ini contoh kode interface dan metode yang dideklarasikan di dalamnya:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">GitHubService</span> </span>{
+<span class="hljs-meta">@GET</span>(<span class="hljs-string">&quot;users/{user}/repos&quot;</span>)
+Call&lt;List&lt;Repo&gt;&gt; listRepos(<span class="hljs-meta">@Path</span>(<span class="hljs-string">&quot;user&quot;</span>) String user);
+<span class="hljs-meta">@GET</span>(<span class="hljs-string">&quot;group/{id}/users&quot;</span>)
+Call&lt;List&lt;User&gt;&gt; groupList(<span class="hljs-meta">@Path</span>(<span class="hljs-string">&quot;id&quot;</span>) <span class="hljs-keyword">int</span> groupId);
+}
+</code></pre>
+<p>Setiap method di dalam interface mewakili sebuah kemungkinan API call, yang harus mempunyai anotasi HTTP (GET, POST, dll) untuk menentukan jenis request dan URL relatif.</p>
+<p>Parameter query juga dapat ditambahkan ke dalam method.</p>
+<pre><code class="lang-java"><span class="hljs-meta">@GET</span>(&#x201C;group/{id}/users&#x201D;)
+Call&lt;List&lt;User&gt;&gt; groupList(<span class="hljs-meta">@Path</span>(&#x201C;id&#x201D;) <span class="hljs-keyword">int</span> groupId, <span class="hljs-meta">@Query</span>(&#x201C;sort&#x201D;) String sort);
+</code></pre>
+<p><strong>2. Class Retrofit yang menghasilkan implementasi interface GitHubService</strong></p>
+<p>Berikut ini contoh kode program di dalam class Retrofit:</p>
+<pre><code class="lang-java">Retrofit retrofit = <span class="hljs-keyword">new</span> Retrofit.Builder()
+.baseUrl(&#x201C;https:<span class="hljs-comment">//api.github.com/&quot;)</span>
+.build();
+GitHubService service = retrofit.create(GitHubService.class);
+Call&lt;List&lt;Repo&gt;&gt; repos = service.listRepos(&#x201C;Mahasiswa&#x201D;);
+</code></pre>
+<p><strong>3. POJO sederhana yang sesuai dengan setiap field dalam objek response JSON yang didapatkan dari permintaan API</strong></p>
+<p>Ini adalah sebuah class sederhana dengan method setter dan getter untuk setiap field.</p>
+<h2 id="praktikum">Praktikum</h2>
+<p>Kita akan membuat aplikasi Android yang menggunakan Library Retrofit untuk mengunduh objek JSON yang berisi detail film dari The Movie DB API, yang kemudian detail film akan ditampilkan dalam RecyclerView pada aplikasi Android.</p>
+<ol>
+<li><p>Buka website TMDB (www.themoviedb.org). TMDB merupakan website populer untuk mendapatkan informasi tentang film. Situs ini juga menyediakan API REST yang didokumentasikan dengan baik.</p>
+</li>
+<li><p>Lakukan registrasi dan login, kemudian buka www.themoviedb.org/settings/api untuk mendapatkan API key baru.</p>
+</li>
+</ol>
+<p><img src="img/11-1.jpg" alt="&apos;retro&apos;"></p>
+<p>Dengan menggunakan URL berikut <a href="http://api.themoviedb.org/3/movie/top_rated?api_key=MASUKKAN_API_KEY" target="_blank">http://api.themoviedb.org/3/movie/top_rated?api_key=MASUKKAN_API_KEY</a>, kita bisa mendapatkan 50 film terakhir. Hal ini bisa kita cek dengan cara memasukkan link tersebut ke browser.</p>
+<p><img src="img/11-2.jpg" alt="&apos;retro&apos;"></p>
+<ol>
+<li><p>Buat project baru dengan Empty Activity.</p>
+</li>
+<li><p>Buka file <code>build.gradle</code> dan tambahkan semua pustaka yang akan kita gunakan.</p>
+</li>
+</ol>
+<pre><code class="lang-java">implementation <span class="hljs-string">&apos;com.squareup.picasso:picasso:2.71828&apos;</span>
+implementation <span class="hljs-string">&apos;com.squareup.retrofit2:retrofit:2.3.0&apos;</span>
+implementation <span class="hljs-string">&apos;com.squareup.retrofit2:converter-gson:2.3.0&apos;</span>
+implementation <span class="hljs-string">&apos;com.android.support:recyclerview-v7:27.1.1&apos;</span>
+</code></pre>
+<p>Kita menggunakan Picasso untuk memuat URL gambar ke imageView dan menampilkan detail film dalam RecyclerView</p>
+<ol>
+<li>Karena kita akan melakukan query ke API TMDB sehingga kita perlu menambahkan izin akses internet di dalam file <code>AndroidManifest.xml</code>. Sebelum baris kode <code>&lt;application ...&gt;&lt;/application&gt;</code> tambahkan kode berikut:</li>
+</ol>
+<pre><code class="lang-java">&lt;uses-permission android:name=<span class="hljs-string">&quot;android.permission.INTERNET&quot;</span> /&gt;
+</code></pre>
+<ol>
+<li><p>Buat 4 package baru di dalam main pacakage dengan nama <strong>activity</strong>, <strong>adapter</strong>, <strong>model</strong>, dan <strong>rest</strong>. Pindahkan MainActivity yang masih kosong ke dalam package activity.</p>
+</li>
+<li><p>Buat class bernama Movie.java di dalam package model yang merupakan POJO sederhana untuk menampung semua field dan menyediakan method setter dan getter untuk field di objek response JSON. Tambahkan kode berikut di dalam <code>Movie.java</code>.</p>
+</li>
+</ol>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Movie</span> </span>{
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;poster_path&quot;</span>)
+    <span class="hljs-keyword">private</span> String posterPath;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;adult&quot;</span>)
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> adult;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;overview&quot;</span>)
+    <span class="hljs-keyword">private</span> String overview;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;release_date&quot;</span>)
+    <span class="hljs-keyword">private</span> String releaseDate;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;genre_ids&quot;</span>)
+    <span class="hljs-keyword">private</span> List&lt;Integer&gt; genreIds = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;id&quot;</span>)
+    <span class="hljs-keyword">private</span> Integer id;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;original_title&quot;</span>)
+    <span class="hljs-keyword">private</span> String originalTitle;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;original_language&quot;</span>)
+    <span class="hljs-keyword">private</span> String originalLanguage;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;title&quot;</span>)
+    <span class="hljs-keyword">private</span> String title;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;backdrop_path&quot;</span>)
+    <span class="hljs-keyword">private</span> String backdropPath;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;popularity&quot;</span>)
+    <span class="hljs-keyword">private</span> Double popularity;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;vote_count&quot;</span>)
+    <span class="hljs-keyword">private</span> Integer voteCount;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;video&quot;</span>)
+    <span class="hljs-keyword">private</span> Boolean video;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;vote_average&quot;</span>)
+    <span class="hljs-keyword">private</span> Double voteAverage;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Movie</span><span class="hljs-params">(String posterPath, <span class="hljs-keyword">boolean</span> adult, String overview, String releaseDate, List&lt;Integer&gt; genreIds, Integer id,
+                 String originalTitle, String originalLanguage, String title, String backdropPath, Double popularity,
+                 Integer voteCount, Boolean video, Double voteAverage)</span> </span>{
+        <span class="hljs-keyword">this</span>.posterPath = posterPath;
+        <span class="hljs-keyword">this</span>.adult = adult;
+        <span class="hljs-keyword">this</span>.overview = overview;
+        <span class="hljs-keyword">this</span>.releaseDate = releaseDate;
+        <span class="hljs-keyword">this</span>.genreIds = genreIds;
+        <span class="hljs-keyword">this</span>.id = id;
+        <span class="hljs-keyword">this</span>.originalTitle = originalTitle;
+        <span class="hljs-keyword">this</span>.originalLanguage = originalLanguage;
+        <span class="hljs-keyword">this</span>.title = title;
+        <span class="hljs-keyword">this</span>.backdropPath = backdropPath;
+        <span class="hljs-keyword">this</span>.popularity = popularity;
+        <span class="hljs-keyword">this</span>.voteCount = voteCount;
+        <span class="hljs-keyword">this</span>.video = video;
+        <span class="hljs-keyword">this</span>.voteAverage = voteAverage;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getPosterPath</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> posterPath;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setPosterPath</span><span class="hljs-params">(String posterPath)</span> </span>{
+        <span class="hljs-keyword">this</span>.posterPath = posterPath;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isAdult</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> adult;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAdult</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> adult)</span> </span>{
+        <span class="hljs-keyword">this</span>.adult = adult;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getOverview</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> overview;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setOverview</span><span class="hljs-params">(String overview)</span> </span>{
+        <span class="hljs-keyword">this</span>.overview = overview;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getReleaseDate</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> releaseDate;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setReleaseDate</span><span class="hljs-params">(String releaseDate)</span> </span>{
+        <span class="hljs-keyword">this</span>.releaseDate = releaseDate;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">getGenreIds</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> genreIds;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setGenreIds</span><span class="hljs-params">(List&lt;Integer&gt; genreIds)</span> </span>{
+        <span class="hljs-keyword">this</span>.genreIds = genreIds;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> id;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setId</span><span class="hljs-params">(Integer id)</span> </span>{
+        <span class="hljs-keyword">this</span>.id = id;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getOriginalTitle</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> originalTitle;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setOriginalTitle</span><span class="hljs-params">(String originalTitle)</span> </span>{
+        <span class="hljs-keyword">this</span>.originalTitle = originalTitle;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getOriginalLanguage</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> originalLanguage;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setOriginalLanguage</span><span class="hljs-params">(String originalLanguage)</span> </span>{
+        <span class="hljs-keyword">this</span>.originalLanguage = originalLanguage;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getTitle</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> title;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTitle</span><span class="hljs-params">(String title)</span> </span>{
+        <span class="hljs-keyword">this</span>.title = title;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getBackdropPath</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> backdropPath;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setBackdropPath</span><span class="hljs-params">(String backdropPath)</span> </span>{
+        <span class="hljs-keyword">this</span>.backdropPath = backdropPath;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">getPopularity</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> popularity;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setPopularity</span><span class="hljs-params">(Double popularity)</span> </span>{
+        <span class="hljs-keyword">this</span>.popularity = popularity;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getVoteCount</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> voteCount;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setVoteCount</span><span class="hljs-params">(Integer voteCount)</span> </span>{
+        <span class="hljs-keyword">this</span>.voteCount = voteCount;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Boolean <span class="hljs-title">getVideo</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> video;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setVideo</span><span class="hljs-params">(Boolean video)</span> </span>{
+        <span class="hljs-keyword">this</span>.video = video;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">getVoteAverage</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> voteAverage;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setVoteAverage</span><span class="hljs-params">(Double voteAverage)</span> </span>{
+        <span class="hljs-keyword">this</span>.voteAverage = voteAverage;
+    }
+}
+</code></pre>
+<ol>
+<li>Kita juga perlu membuat class MovieResponse.java di dalam package model. Class ini berisi semua film yang diambil dan informasi tambahan. Tambahkan kode berikut pada <code>MovieResponse.java</code>.</li>
+</ol>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MovieResponse</span> </span>{
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;page&quot;</span>)
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> page;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;results&quot;</span>)
+    <span class="hljs-keyword">private</span> List&lt;Movie&gt; results;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;total_results&quot;</span>)
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> totalResults;
+    <span class="hljs-meta">@SerializedName</span>(<span class="hljs-string">&quot;total_pages&quot;</span>)
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> totalPages;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getPage</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> page;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setPage</span><span class="hljs-params">(<span class="hljs-keyword">int</span> page)</span> </span>{
+        <span class="hljs-keyword">this</span>.page = page;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Movie&gt; <span class="hljs-title">getResults</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> results;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setResults</span><span class="hljs-params">(List&lt;Movie&gt; results)</span> </span>{
+        <span class="hljs-keyword">this</span>.results = results;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getTotalResults</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> totalResults;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTotalResults</span><span class="hljs-params">(<span class="hljs-keyword">int</span> totalResults)</span> </span>{
+        <span class="hljs-keyword">this</span>.totalResults = totalResults;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getTotalPages</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> totalPages;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTotalPages</span><span class="hljs-params">(<span class="hljs-keyword">int</span> totalPages)</span> </span>{
+        <span class="hljs-keyword">this</span>.totalPages = totalPages;
+    }
+}
+</code></pre>
+<ol>
+<li>Buat sebuah interface bernama <code>MovieApiService.java</code> di dalam package res, kemudian tambahkan kode berikut.</li>
+</ol>
+<pre><code class="lang-java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">MovieApiService</span> </span>{
+    <span class="hljs-meta">@GET</span>(<span class="hljs-string">&quot;movie/top_rated&quot;</span>)
+    <span class="hljs-function">Call&lt;MovieResponse&gt; <span class="hljs-title">getTopRatedMovies</span><span class="hljs-params">(@Query(<span class="hljs-string">&quot;api_key&quot;</span>)</span> String apiKey)</span>;
+}
+</code></pre>
+<ol>
+<li>Buka <code>colors.xml</code> dan tambahkan kode berikut.</li>
+</ol>
+<pre><code class="lang-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+&lt;color name=&quot;colorPrimary&quot;&gt;#3F51B5&lt;/color&gt;
+&lt;color name=&quot;colorPrimaryDark&quot;&gt;#303F9F&lt;/color&gt;
+&lt;color name=&quot;colorAccent&quot;&gt;#FF4081&lt;/color&gt;
+&lt;color name=&quot;orange&quot;&gt;#FF3909&lt;/color&gt;
+&lt;color name=&quot;colorAccentDark&quot;&gt;#00B482&lt;/color&gt;
+&lt;color name=&quot;colorBlack&quot;&gt;#555555&lt;/color&gt;
+&lt;color name=&quot;colorWhite&quot;&gt;#FFFFFF&lt;/color&gt;
+&lt;color name=&quot;colorGrey&quot;&gt;#707070&lt;/color&gt;
+&lt;color name=&quot;colorGreyLight&quot;&gt;#8A8A8A&lt;/color&gt;
+&lt;/resources&gt;
+</code></pre>
+<ol>
+<li>Buat layout bernama <code>star.xml</code> di dalam <code>/res/drawable/</code> kemudian tambahkan kode berikut.</li>
+</ol>
+<pre><code class="lang-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:width=&quot;24dp&quot;
+    android:height=&quot;24dp&quot;
+    android:viewportHeight=&quot;24&quot;
+    android:viewportWidth=&quot;24&quot;&gt;
+    &lt;path android:fillColor=&quot;#000&quot;
+    android:pathData=&quot;M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z&quot; /&gt;
+&lt;/vector&gt;
+</code></pre>
+<ol>
+<li>Buka file <code>activity_main.xml</code> dan tambahkan kode berikut.</li>
+</ol>
+<pre><code class="lang-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;com.example.asus.retro.activity.MainActivity&quot;&gt;
+    &lt;android.support.v7.widget.RecyclerView 
+        android:id=&quot;@+id/recycler_view&quot;
+        android:scrollbars=&quot;vertical&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;/&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+<ol>
+<li>Buat layout baru bernama <code>list_item_movie.xml</code> di dalam <code>/res/layout/</code>.</li>
+</ol>
+<pre><code class="lang-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:id=&quot;@+id/movies_layout&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:gravity=&quot;center_vertical&quot;
+    android:minHeight=&quot;72dp&quot;
+    android:orientation=&quot;horizontal&quot;
+    android:padding=&quot;16dp&quot;&gt;
+    &lt;LinearLayout
+    android:layout_width=&quot;0dp&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_weight=&quot;1&quot;
+    android:orientation=&quot;vertical&quot;&gt;
+    &lt;ImageView
+    android:id=&quot;@+id/movie_image&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_gravity=&quot;top&quot;
+    android:paddingRight=&quot;16dp&quot;/&gt;
+    &lt;TextView
+    android:id=&quot;@+id/title&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:paddingRight=&quot;16dp&quot;
+    android:textStyle=&quot;bold&quot;
+    android:textColor=&quot;@color/colorBlack&quot;
+    android:textSize=&quot;16sp&quot; /&gt;
+    &lt;TextView
+    android:id=&quot;@+id/date&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:paddingRight=&quot;16dp&quot;
+    android:textColor=&quot;@color/colorGreyLight&quot; /&gt;
+    &lt;TextView
+    android:id=&quot;@+id/description&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:maxLines=&quot;3&quot;
+    android:paddingRight=&quot;16dp&quot;
+    android:textColor=&quot;@color/colorGreyLight&quot; /&gt;
+    &lt;/LinearLayout&gt;
+&lt;LinearLayout
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;35dp&quot;
+    android:orientation=&quot;horizontal&quot;&gt;
+    &lt;ImageView
+    android:id=&quot;@+id/rating_image&quot;
+    android:layout_width=&quot;15dp&quot;
+    android:layout_height=&quot;15dp&quot;
+    android:layout_centerInParent=&quot;true&quot;
+    android:scaleType=&quot;centerCrop&quot;
+    android:src=&quot;@drawable/star&quot;
+    android:tint=&quot;@color/colorAccent&quot; /&gt;
+    &lt;TextView
+    android:id=&quot;@+id/rating&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_marginLeft=&quot;8dp&quot;
+    android:text=&quot;5.0&quot; /&gt;
+    &lt;/LinearLayout&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+<ol>
+<li>Adapter berfungsi untuk mengikat tampilan dan data. Buat class bernama <code>MoviesAdapter.java</code> di dalam package adapter.</li>
+</ol>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MoviesAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RecyclerView</span>.<span class="hljs-title">Adapter</span>&lt;<span class="hljs-title">MoviesAdapter</span>.<span class="hljs-title">MovieViewHolder</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> List&lt;Movie&gt; movies;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> rowLayout;
+    <span class="hljs-keyword">private</span> Context context;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String IMAGE_URL_BASE_PATH=<span class="hljs-string">&quot;http://image.tmdb.org/t/p/w342//&quot;</span>;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MoviesAdapter</span><span class="hljs-params">(List&lt;Movie&gt; movies, <span class="hljs-keyword">int</span> rowLayout, Context context)</span> </span>{
+        <span class="hljs-keyword">this</span>.movies = movies;
+        <span class="hljs-keyword">this</span>.rowLayout = rowLayout;
+        <span class="hljs-keyword">this</span>.context = context;
+    }
+    <span class="hljs-comment">//View holder</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MovieViewHolder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RecyclerView</span>.<span class="hljs-title">ViewHolder</span> </span>{
+        LinearLayout moviesLayout;
+        TextView movieTitle;
+        TextView data;
+        TextView movieDescription;
+        TextView rating;
+        ImageView movieImage;
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MovieViewHolder</span><span class="hljs-params">(View v)</span> </span>{
+            <span class="hljs-keyword">super</span>(v);
+            moviesLayout = (LinearLayout) v.findViewById(R.id.movies_layout);
+            movieImage = (ImageView) v.findViewById(R.id.movie_image);
+            movieTitle = (TextView) v.findViewById(R.id.title);
+            data = (TextView) v.findViewById(R.id.date);
+            movieDescription = (TextView) v.findViewById(R.id.description);
+            rating = (TextView) v.findViewById(R.id.rating);
+        }
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> MoviesAdapter.<span class="hljs-function">MovieViewHolder <span class="hljs-title">onCreateViewHolder</span><span class="hljs-params">(ViewGroup parent,
+                                                            <span class="hljs-keyword">int</span> viewType)</span> </span>{
+        View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, <span class="hljs-keyword">false</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MovieViewHolder(view);
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBindViewHolder</span><span class="hljs-params">(MovieViewHolder holder, <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> position)</span> </span>{
+        String image_url = IMAGE_URL_BASE_PATH + movies.get(position).getPosterPath();
+        Picasso.get()
+                .load(image_url)
+                .placeholder(android.R.drawable.sym_def_app_icon)
+                .error(android.R.drawable.sym_def_app_icon)
+                .into(holder.movieImage);
+        holder.movieTitle.setText(movies.get(position).getTitle());
+        holder.data.setText(movies.get(position).getReleaseDate());
+        holder.movieDescription.setText(movies.get(position).getOverview());
+        holder.rating.setText(movies.get(position).getVoteAverage().toString());
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getItemCount</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> movies.size();
+    }
+}
+</code></pre>
+<ol>
+<li>Class MainActivity.java merupakan activity dimana kita membuat request ke API Movie DB. Buka <code>MainActivity.java</code> dan tambahkan kode berikut. <strong>Jangan lupa isikan API key sesuai dengan API key yang sudah didapatkan sebelumnya.</strong></li>
+</ol>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span></span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String TAG = MainActivity.class.getSimpleName();
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String BASE_URL = <span class="hljs-string">&quot;http://api.themoviedb.org/3/&quot;</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Retrofit retrofit = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">private</span> RecyclerView recyclerView = <span class="hljs-keyword">null</span>;
+    <span class="hljs-comment">// Masukkan API key themoviedb.org API KEY di bawah ini</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> String API_KEY = <span class="hljs-string">&quot;&quot;</span>;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(<span class="hljs-keyword">true</span>);
+        recyclerView.setLayoutManager(<span class="hljs-keyword">new</span> LinearLayoutManager(<span class="hljs-keyword">this</span>));
+        connectAndGetApiData();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">connectAndGetApiData</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">if</span> (retrofit == <span class="hljs-keyword">null</span>) {
+            retrofit = <span class="hljs-keyword">new</span> Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        MovieApiService movieApiService = retrofit.create(MovieApiService.class);
+        Call&lt;MovieResponse&gt; call = movieApiService.getTopRatedMovies(API_KEY);
+        call.enqueue(<span class="hljs-keyword">new</span> Callback&lt;MovieResponse&gt;() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onResponse</span><span class="hljs-params">(Call&lt;MovieResponse&gt; call, Response&lt;MovieResponse&gt; response)</span> </span>{
+                List&lt;Movie&gt; movies = response.body().getResults();
+                recyclerView.setAdapter(<span class="hljs-keyword">new</span> MoviesAdapter(movies, R.layout.list_item_movie, getApplicationContext()));
+                Log.d(TAG, <span class="hljs-string">&quot;Jumlah film: &quot;</span> + movies.size());
+            }
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onFailure</span><span class="hljs-params">(Call&lt;MovieResponse&gt; call, Throwable throwable)</span> </span>{
+                Log.e(TAG, throwable.toString());
+            }
+        });
+    }
+}
+</code></pre>
+<ol>
+<li>Jalankan program dan amati hasilnya.</li>
+</ol>
+<h2 id="tugas">Tugas</h2>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="10/tugas.html" class="navigation navigation-prev " aria-label="Previous page: Tugas">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="12.html" class="navigation navigation-next " aria-label="Next page: Retrofit Picasso n Custom Layout, Rest dengan Token">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Retrofit dengan RecyclerView","level":"1.12","depth":1,"next":{"title":"Retrofit Picasso n Custom Layout, Rest dengan Token","level":"1.13","depth":1,"path":"12.md","ref":"12.md","articles":[]},"previous":{"title":"Tugas","level":"1.11.8","depth":2,"path":"10/tugas.md","ref":"10/tugas.md","articles":[]},"dir":"ltr"},"config":{"plugins":["noembed"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"noembed":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"id","gitbook":"*"},"file":{"path":"11-rev.md","mtime":"2019-04-15T03:44:43.433Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-15T03:46:45.098Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-noembed/scripts.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
